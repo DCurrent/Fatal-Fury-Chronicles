@@ -1,0 +1,10 @@
+renamekey   moveup      Move_Up
+renamekey   movedown    Move_Down
+renamekey   moveleft    Move_Left
+renamekey   moveright   Move_Right
+renamekey   attack      Attack
+renamekey   jump        Jump
+renamekey   special     Defend
+renamekey   attack2	    Attack_+_Jump	
+disablekey  attack3
+disablekey	attack4
