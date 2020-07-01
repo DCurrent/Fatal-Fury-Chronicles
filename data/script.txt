@@ -1,0 +1,2 @@
+nocmdcompatible 1
+alwaysupdate	1
