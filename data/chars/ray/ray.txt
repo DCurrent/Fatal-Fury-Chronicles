@@ -1,0 +1,1566 @@
+icon		data/chars/ray/icon_default.png	1
+icondie		data/chars/ray/icon_ko.png		1
+iconpain	data/chars/ray/icon_pain.png	1
+
+name			Ray
+health			150
+speed			10
+type			enemy
+shadow			0
+throw			5 2
+grabback		1
+grabdistance	40
+gfxshadow		1
+falldie			2
+nodieblink      3
+dust			fall_land jump_land jump_liftoff
+aggression      -1020
+projectilehit   enemy obstacle trap
+hostile			player
+candamage		player obstacle
+combostyle		1
+atchain			1 1 2 0 3
+nopassiveblock	1
+holdblock		2
+blockodds		1
+#blockodds		2147483647
+bflash			Block
+
+onspawnscript		data/chars/ray/scripts/onspawn.c
+animationscript		data/chars/ray/scripts/animation.c
+didhitscript		data/scripts/common/event_hit.c
+takedamagescript	data/scripts/common/event_damage.c
+
+palette   		data/chars/ray/default.act			# Light blue jeans, white shirt, red bolt
+alternatepal	data/chars/ray/default_no_bolt.act 
+alternatepal	data/chars/ray/adam_hunter.act 
+
+anim blockrelease # Block release
+
+	delay	6
+	offset	75 170
+
+	bbox.position.x 55
+	bbox.position.y 74
+	bbox.size.x 28
+	bbox.size.y 95
+
+	frame	data/chars/ray/block_start_0.png
+	
+anim block
+
+	#Normal block
+
+	delay	3
+	offset	75 170
+		
+	bbox.position.x 55
+	bbox.position.y 74
+	bbox.size.x 28
+	bbox.size.y 95
+	
+	move	-2
+		
+	frame	data/chars/ray/block_0.png
+		move	0
+		offset	78 170
+	frame	data/chars/ray/block_0.png
+		offset	75 170
+	frame	data/chars/ray/block_0.png
+		offset	78 170
+	frame	data/chars/ray/block_0.png
+		delay	30
+		offset	75 170
+	frame	data/chars/ray/block_0.png
+	
+	delay	12
+		
+	bbox.position.x 59
+	bbox.position.y 74
+	bbox.size.x 28
+	bbox.size.y 95
+		
+	frame	data/chars/ray/block_start_0.png
+
+anim idle
+		
+	loop	1
+
+	delay	14
+	offset	75 170
+		
+	bbox.position.x 58
+	bbox.position.y 72
+	bbox.size.x 34
+	bbox.size.y 97
+	
+    frame	data/chars/ray/idle_0.png
+    frame	data/chars/ray/idle_1.png
+    frame	data/chars/ray/idle_2.png
+    frame	data/chars/ray/idle_3.png
+    frame	data/chars/ray/idle_2.png
+    frame	data/chars/ray/idle_1.png
+
+anim walk
+		
+	loop	1
+
+	delay   10
+	offset	75 170
+	
+	bbox.position.x 58
+	bbox.position.y 72
+	bbox.size.x 34
+	bbox.size.y 97
+	
+	frame	data/chars/ray/walk_0.png
+	frame	data/chars/ray/walk_1.png
+	frame	data/chars/ray/walk_2.png
+	frame	data/chars/ray/walk_3.png
+	frame	data/chars/ray/walk_4.png
+    frame	data/chars/ray/walk_5.png
+
+anim backwalk
+		
+	loop	1
+
+	delay   10
+	offset	75 170
+	
+	bbox.position.x 58
+	bbox.position.y 72
+	bbox.size.x 34
+	bbox.size.y 97
+	
+	frame	data/chars/ray/walk_back_0.png
+	frame	data/chars/ray/walk_back_1.png
+	frame	data/chars/ray/walk_back_2.png
+	frame	data/chars/ray/walk_back_3.png
+	frame	data/chars/ray/walk_back_4.png
+    frame	data/chars/ray/walk_back_5.png
+
+anim turn
+
+	delay   10
+	offset	75 170
+		
+	bbox.position.x 58
+	bbox.position.y 72
+	bbox.size.x 34
+	bbox.size.y 97
+		
+		
+	frame	data/chars/ray/turn_0.png
+	frame	data/chars/ray/turn_1.png
+	frame	data/chars/ray/turn_2.png
+
+
+
+
+anim rise
+
+	delay	10
+	offset	75 160
+	
+	frame	data/chars/ray/rise_0.png
+	frame	data/chars/ray/rise_1.png
+	
+	offset	75 170
+	
+	frame	data/chars/ray/rise_2.png
+	frame	data/chars/ray/rise_3.png
+	
+	offset 150 175
+	
+	frame	data/chars/ray/R_HELD_0.png
+
+
+#Jab
+anim attack1
+
+	range 10 70
+	
+	delay   1
+	offset	75 170
+     	
+		
+	bbox.position.x 64
+	bbox.position.y 72
+	bbox.size.x 34
+	bbox.size.y 97
+     	
+	# Alternate combo finish.
+	@cmd	dc_combo_alt openborconstant("ANI_FREESPECIAL10")
+	frame	data/chars/ray/10_0.png
+	
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_LIGHT
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_LIGHT
+
+	delay 9	
+
+	frame	data/chars/ray/10_0.png
+     	
+     delay	5
+     	
+	bbox.position.x 68
+	bbox.position.y 72
+	bbox.size.x 34
+	bbox.size.y 98
+     	
+	attack.block.penetrate 0
+	attack.damage.force 5
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 85
+	attack.position.y 80
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 18
+	attack.size.x 61
+	attack.size.y 17
+	
+     
+     frame	data/chars/ray/10_1.png
+	
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	
+	delay   4
+    
+    frame	data/chars/ray/10_2.png
+    
+    frame	data/chars/ray/10_3.png
+    
+    delay   8
+    
+	bbox.position.x 64
+	bbox.position.y 72
+	bbox.size.x 34
+	bbox.size.y 97
+    
+    frame	data/chars/ray/10_4.png
+
+#Cross
+anim attack2
+		
+	range 10 50
+
+	offset	75 170
+	delay   12
+     	
+	bbox.position.x 55
+	bbox.position.y 72
+	bbox.size.x 38
+	bbox.size.y 97
+    
+    @cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
+    
+    frame	data/chars/ray/30_0.png
+    
+    delay 4
+    
+    frame	data/chars/ray/32_0.png	
+	
+	attack.block.penetrate 0
+	attack.damage.force 5
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 78
+	attack.position.y 82
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 18
+	attack.size.x 47
+	attack.size.y 19
+	
+	
+	frame	data/chars/ray/32_1.png
+	
+	bbox.position.x 64
+	bbox.position.y 72
+	bbox.size.x 34
+	bbox.size.y 97
+	
+    frame	data/chars/ray/32_2.png
+    
+	bbox.position.x 61
+	bbox.position.y 72
+	bbox.size.x 34
+	bbox.size.y 97
+    	
+	attack 0
+	
+	frame	data/chars/ray/32_3.png
+	
+	delay 20
+	
+	frame	data/chars/ray/32_2.png
+    
+    delay 10
+    
+    frame	data/chars/ray/32_0.png
+	
+
+#Straight
+anim attack3
+	
+	range 10 70
+
+	delay   8
+	offset	75 170
+	
+	bbox.position.x 64
+	bbox.position.y 73
+	bbox.size.x 36
+	bbox.size.y 96
+	
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
+
+	frame	data/chars/ray/10_0.png
+	
+    delay   9
+    
+    frame	data/chars/ray/11_0.png
+    	
+	bbox.position.x 68
+	bbox.position.y 73
+	bbox.size.x 36
+	bbox.size.y 96
+    	
+    frame	data/chars/ray/11_1.png
+	
+	delay	5
+		
+	bbox.position.x 75
+	bbox.position.y 73
+	bbox.size.x 43
+	bbox.size.y 96
+		
+	attack.block.penetrate 0
+	attack.damage.force 5
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 93
+	attack.position.y 87
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 18
+	attack.size.x 73
+	attack.size.y 16
+	
+    
+    frame	data/chars/ray/11_2.png
+    frame	data/chars/ray/11_3.png
+    
+    delay   8
+	
+	attack 0
+	
+    frame	data/chars/ray/11_3.png
+    
+    bbox.position.x 68
+	bbox.position.y 73
+	bbox.size.x 36
+	bbox.size.y 96
+    
+    frame	data/chars/ray/11_4.png
+    
+    frame	data/chars/ray/idle_0.png
+
+
+anim freespecial10 # Round Kick
+
+	range 20 70
+
+	offset	75 170
+	delay   8
+    
+	bbox.position.x 64
+	bbox.position.y 73
+	bbox.size.x 36
+	bbox.size.y 96
+    
+    frame	data/chars/ray/13_0.png
+
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
+
+    frame	data/chars/ray/13_1.png
+    
+	bbox.position.x 82
+	bbox.position.y 67
+	bbox.size.x 36
+	bbox.size.y 104
+		
+    frame	data/chars/ray/13_2.png
+    
+	bbox.position.x 71
+	bbox.position.y 73
+	bbox.size.x 45
+	bbox.size.y 96
+    
+	attack.block.penetrate 0
+	attack.damage.force 5
+	attack.damage.type 1
+	attack.effect.hit.flash.model flash_fatal_fury
+	attack.position.x 98
+	attack.position.y 65
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 18
+	attack.size.x 69
+	attack.size.y 35
+	
+	
+    frame	data/chars/ray/13_3.png
+    
+    delay   8
+    
+	attack.damage.force 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.size.x 0
+	attack.size.y 0
+	
+    frame	data/chars/ray/13_4.png
+    
+	bbox.position.x 64
+	bbox.position.y 73
+	bbox.size.x 36
+	bbox.size.y 96
+    
+    frame	data/chars/ray/13_5.png
+    frame	data/chars/ray/13_0.png
+
+anim death
+
+	jumpframe 10 1 -0.2 0
+	dropframe 11
+	landframe 12
+	
+	delay	50
+	offset	150 175
+    
+    frame data/chars/ray/R_LAYING_UP_0.png
+	
+	delay	12
+	offset	75 160
+	
+	frame	data/chars/ray/rise_0.png
+	frame	data/chars/ray/rise_1.png
+	
+	offset	75 170
+	
+	frame	data/chars/ray/rise_2.png
+		
+	delay	3
+	offset	77 170
+	
+	frame	data/chars/ray/rise_3.png
+	
+	offset	75 170
+	
+	frame	data/chars/ray/rise_3.png
+	
+	offset	77 170
+	
+	frame	data/chars/ray/rise_3.png
+	
+	offset	75 170
+	
+	frame	data/chars/ray/rise_3.png
+	
+	offset 150 175		
+	delay	50
+	
+	frame	data/chars/ray/R_PAIN_MID_0.png
+	frame	data/chars/ray/R_PAIN_MID_1.png
+		
+	delay   -1000
+	offset 150 205
+		
+    frame	data/chars/ray/R_TILT_UP_0.png
+		
+	offset 150 195
+		
+    frame	data/chars/ray/R_FALLING_UP_0.png
+	
+	delay	20
+	offset 150 175
+    
+    frame	data/chars/ray/R_LAYING_UP_PAIN_0.png		
+    frame	data/chars/ray/R_LAYING_UP_0.png
+
+
+anim follow10
+
+	#Defending poses.
+
+		delay	-1
+		offset	75 115
+		
+	bbox.position.x 27
+	bbox.position.y 85
+	bbox.size.x 93
+	bbox.size.y 31
+	
+			
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 27
+	attack.position.y 84	
+	attack.size.x 92
+	attack.size.y 31
+	
+	frame	data/chars/ray/R_FALLING_UP_0.png
+	
+	bbox.position.x 33
+	bbox.position.y 89
+	bbox.size.x 56
+	bbox.size.y 40
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 32
+	attack.position.y 88
+	attack.size.x 56
+	attack.size.y 39
+	
+	frame	data/chars/ray/R_FALLING_UP_TILT_0.png
+	
+	offset 75 170
+	
+	bbox.position.x 55
+	bbox.position.y 73
+	bbox.size.x 31
+	bbox.size.y 97
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 54
+	attack.position.y 73
+	attack.size.x 31
+	attack.size.y 97
+	
+	frame	data/chars/ray/R_HELD_0.png		
+	
+	offset	75 115
+	
+	bbox.position.x 29
+	bbox.position.y 90
+	bbox.size.x 96
+	bbox.size.y 40
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 29
+	attack.position.y 90
+	attack.size.x 96
+	attack.size.y 40
+	
+	frame	data/chars/ray/R_HORIZONTAL_DOWN_0.png	
+	frame	data/chars/ray/R_HORIZONTAL_DOWN_PAIN_0.png	
+	frame	data/chars/ray/R_HORIZONTAL_DOWN_PAIN_0.png	# 1
+	frame	data/chars/ray/R_HORIZONTAL_DOWN_PAIN_0.png	# 2
+	frame	data/chars/ray/R_HORIZONTAL_UP_0.png	
+	frame	data/chars/ray/R_HORIZONTAL_UP_PAIN_0.png	
+	frame	data/chars/ray/R_HORIZONTAL_UP_PAIN_0.png # 1	
+	frame	data/chars/ray/R_HORIZONTAL_UP_PAIN_0.png # 2	
+	
+	bbox.position.x 25
+	bbox.position.y 98
+	bbox.size.x 109
+	bbox.size.y 21
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 25
+	attack.position.y 98
+	attack.size.x 109
+	attack.size.y 21
+	
+	frame	data/chars/ray/R_LAYING_UP_0.png				
+	
+	bbox.position.x 29
+	bbox.position.y 93
+	bbox.size.x 94
+	bbox.size.y 30
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 29
+	attack.position.y 93
+	attack.size.x 94
+	attack.size.y 30
+	
+	frame	data/chars/ray/R_LAYING_UP_PAIN_0.png
+	frame	data/chars/ray/R_LAYING_UP_PAIN_0.png # 1
+	frame	data/chars/ray/R_LAYING_UP_PAIN_0.png # 2
+	
+	offset	75 170
+	
+	bbox.position.x 54
+	bbox.position.y 71
+	bbox.size.x 35
+	bbox.size.y 97
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 55
+	attack.position.y 71
+	attack.size.x 35
+	attack.size.y 98
+	
+	frame	data/chars/ray/R_PAIN_0.png	
+	
+	bbox.position.x 46
+	bbox.position.y 67
+	bbox.size.x 41
+	bbox.size.y 101
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 45
+	attack.position.y 67
+	attack.size.x 42
+	attack.size.y 101
+	
+	frame	data/chars/ray/R_PAIN_1.png
+	
+	bbox.position.x 24
+	bbox.position.y 69
+	bbox.size.x 62
+	bbox.size.y 100
+	
+	frame	data/chars/ray/R_PAIN_2.png
+	
+	bbox.position.x 54
+	bbox.position.y 75
+	bbox.size.x 39
+	bbox.size.y 95
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 53
+	attack.position.y 76
+	attack.size.x 39
+	attack.size.y 94
+	
+	frame	data/chars/ray/R_PAIN_MID_0.png
+	
+	bbox.position.x 45
+	bbox.position.y 78
+	bbox.size.x 41
+	bbox.size.y 90
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 45
+	attack.position.y 78
+	attack.size.x 40
+	attack.size.y 91
+	
+	frame	data/chars/ray/R_PAIN_MID_1.png
+	
+	bbox.position.x 34
+	bbox.position.y 84
+	bbox.size.x 55
+	bbox.size.y 87
+		
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 35
+	attack.position.y 84
+	attack.size.x 50
+	attack.size.y 84
+	
+	frame	data/chars/ray/R_PAIN_MID_2.png
+	
+	offset	75 115
+	
+	bbox.position.x 51
+	bbox.position.y 91
+	bbox.size.x 58
+	bbox.size.y 65
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 51
+	attack.position.y 90
+	attack.size.x 57
+	attack.size.y 64
+	
+	frame	data/chars/ray/R_TILT_DOWN_0.png
+	
+	offset	75 115
+	
+	bbox.position.x 51
+	bbox.position.y 91
+	bbox.size.x 58
+	bbox.size.y 65
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 51
+	attack.position.y 90
+	attack.size.x 57
+	attack.size.y 64
+	
+	frame	data/chars/ray/R_TILT_FORWARD_0.png
+	
+	bbox.position.x 46
+	bbox.position.y 73
+	bbox.size.x 61
+	bbox.size.y 62
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 46
+	attack.position.y 73
+	attack.size.x 60
+	attack.size.y 62
+	
+	frame	data/chars/ray/R_TILT_UP_0.png
+	
+	bbox.position.x 61
+	bbox.position.y 61
+	bbox.size.x 35
+	bbox.size.y 87
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 61
+	attack.position.y 61
+	attack.size.x 35
+	attack.size.y 87
+	
+	frame	data/chars/ray/R_VERTICAL_DOWN_0.png
+	
+	bbox.position.x 59
+	bbox.position.y 60
+	bbox.size.x 41
+	bbox.size.y 85
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 58
+	attack.position.y 60
+	attack.size.x 42
+	attack.size.y 84
+	
+	frame	data/chars/ray/R_VERTICAL_DOWN_PAIN_0.png
+	
+	bbox.position.x 60
+	bbox.position.y 63
+	bbox.size.x 53
+	bbox.size.y 80
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 60
+	attack.position.y 63
+	attack.size.x 53
+	attack.size.y 80
+	
+	frame	data/chars/ray/R_VERTICAL_DOWN_PAIN_1.png # 1
+	frame	data/chars/ray/R_VERTICAL_DOWN_PAIN_1.png # 2
+	
+	bbox.position.x 55
+	bbox.position.y 61
+	bbox.size.x 30
+	bbox.size.y 105
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.position.x 55
+	attack.position.y 61
+	attack.size.x 29
+	attack.size.y 103
+	
+	frame	data/chars/ray/R_VERTICAL_UP_0.png
+	
+	frame	data/chars/ray/R_VERTICAL_UP_PAIN_0.png
+	frame	data/chars/ray/R_VERTICAL_UP_PAIN_0.png # 1
+	frame	data/chars/ray/R_VERTICAL_UP_PAIN_0.png # 2
+	
+anim pain # Normal Pain
+	
+	delay	11
+	offset	150 175
+		
+	bbox.position.x 123
+	bbox.position.y 78
+	bbox.size.x 54
+	bbox.size.y 97
+	
+	frame	data/chars/ray/R_PAIN_1.png
+	
+	bbox.position.x 109
+	bbox.position.y 78
+	bbox.size.x 68
+	bbox.size.y 97
+	
+	frame	data/chars/ray/R_PAIN_2.png
+	
+	bbox.position.x 123
+	bbox.position.y 78
+	bbox.size.x 54
+	bbox.size.y 97
+	
+	frame	data/chars/ray/R_PAIN_1.png
+	
+	bbox.position.x 123
+	bbox.position.y 78
+	bbox.size.x 54
+	bbox.size.y 97
+	
+	frame	data/chars/ray/R_PAIN_0.png
+
+anim pain2 # Middle pain
+	
+	delay	11
+	offset	150 175
+		
+	bbox.position.x 112
+	bbox.position.y 97
+	bbox.size.x 53
+	bbox.size.y 78
+	
+	frame	data/chars/ray/R_PAIN_MID_1.png
+	
+	bbox.position.x 103
+	bbox.position.y 99
+	bbox.size.x 62
+	bbox.size.y 75
+	
+	frame	data/chars/ray/R_PAIN_MID_2.png
+	
+	bbox.position.x 112
+	bbox.position.y 97
+	bbox.size.x 53
+	bbox.size.y 78
+	
+	frame	data/chars/ray/R_PAIN_MID_1.png
+	
+	bbox.position.x 126
+	bbox.position.y 88
+	bbox.size.x 44
+	bbox.size.y 87
+	
+	frame	data/chars/ray/R_PAIN_MID_0.png
+
+anim grabbed
+
+	loop 1
+	delay 3
+	
+	offset 150 175
+
+	bbox.position.x 134
+	bbox.position.y 78
+	bbox.size.x 36
+	bbox.size.y 96
+	
+	frame data/chars/ray/R_HELD_0.png
+	
+	offset 152 175
+	
+	frame data/chars/ray/R_HELD_0.png
+	
+	offset 150 175
+	
+	frame data/chars/ray/R_HELD_0.png
+	
+	offset 152 175
+	
+	frame data/chars/ray/R_HELD_0.png
+	
+	delay 50
+	offset 150 175
+	
+	frame data/chars/ray/R_HELD_0.png
+
+anim fall # Normal Fall
+	
+	dropframe 2
+	landframe 4
+	
+	delay 20
+	offset	150 175
+	
+	bbox.position.x 109
+	bbox.position.y 80
+	bbox.size.x 52
+	bbox.size.y 95
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 109
+	attack.position.y 80
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 52
+	attack.size.y 95
+	
+	frame	data/chars/ray/R_PAIN_2.png
+	
+	delay	-1000
+	
+	offset	150 205
+	
+	bbox.position.x 119
+	bbox.position.y 145
+	bbox.size.x 62
+	bbox.size.y 65
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 119
+	attack.position.y 145
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 62
+	attack.size.y 65
+	
+	frame	data/chars/ray/R_FALLING_UP_LIFT_0.png
+	
+	delay 20
+	
+	bbox.position.x 117
+	bbox.position.y 146
+	bbox.size.x 83
+	bbox.size.y 52
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 117
+	attack.position.y 146
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 83
+	attack.size.y 52
+	
+	frame data/chars/ray/R_FALLING_UP_CENTER_0.png
+	
+	delay -1000
+	offset 150 195
+	
+	bbox.position.x 102
+	bbox.position.y 159
+	bbox.size.x 96
+	bbox.size.y 32
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 102
+	attack.position.y 159
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 96
+	attack.size.y 32
+	
+	frame	data/chars/ray/R_FALLING_UP_0.png	
+	
+	delay	8
+		
+	bbox.position.x 100
+	bbox.position.y 157
+	bbox.size.x 100
+	bbox.size.y 36
+	
+	
+	delay	8		
+	offset 150 175
+		
+	bbox.position.x 100
+	bbox.position.y 157
+	bbox.size.x 100
+	bbox.size.y 36
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 100
+	attack.position.y 157
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 100
+	attack.size.y 36
+	
+	frame	data/chars/ray/R_LAYING_UP_PAIN_0.png
+	
+	attack 0
+	
+	bbox.position.x 100
+	bbox.position.y 157
+	bbox.size.x 100
+	bbox.size.y 36
+	
+	frame	data/chars/ray/R_LAYING_UP_0
+
+anim fall10 # Thrown 
+
+	dropframe 1
+    landframe 2
+
+	delay   -1000
+	offset	150 195
+	
+	bbox.position.x 103
+	bbox.position.y 156
+	bbox.size.x 58
+	bbox.size.y 39
+	
+	attack.block.penetrate 0
+	attack.damage.force 10
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 103
+	attack.position.y 156
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 58
+	attack.size.y 39
+	
+	
+	frame	data/chars/ray/R_FALLING_UP_TILT_0.png
+	
+	bbox.position.x 104
+	bbox.position.y 154
+	bbox.size.x 78
+	bbox.size.y 34
+	
+	attack.block.penetrate 0
+	attack.damage.force 10
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 104
+	attack.position.y 154
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 78
+	attack.size.y 34
+	
+	
+	frame	data/chars/ray/R_FALLING_UP_0.png
+		
+	delay	20
+	offset	150 175
+	
+	attack 0
+	
+	frame	data/chars/ray/R_LAYING_UP_PAIN_0.png
+	
+	bbox.position.x 97
+	bbox.position.y 166
+	bbox.size.x 104
+	bbox.size.y 20
+	
+	frame	data/chars/ray/R_LAYING_UP_0.png
+
+anim fall11 # Flat fall 
+
+	   
+    landframe 1
+
+	delay   -1000
+	offset	150 195
+	
+	bbox.position.x 104
+	bbox.position.y 154
+	bbox.size.x 78
+	bbox.size.y 34
+	
+	attack.block.penetrate 0
+	attack.damage.force 10
+	attack.damage.type 1
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 104
+	attack.position.y 154
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 78
+	attack.size.y 34
+	
+	
+	frame	data/chars/ray/R_FALLING_UP_0.png
+		
+	delay	20
+	offset	150 175
+	
+	attack 0
+	
+	frame	data/chars/ray/R_LAYING_UP_PAIN_0.png
+	
+	bbox.position.x 97
+	bbox.position.y 166
+	bbox.size.x 104
+	bbox.size.y 20
+	
+	frame	data/chars/ray/R_LAYING_UP_0.png
+	
+anim fall12 # Dive fall 
+
+	   
+    landframe 1
+
+	delay   -1000
+	offset	150 195
+	
+	bbox.position.x 122
+	bbox.position.y 122
+	bbox.size.x 39
+	bbox.size.y 82
+	
+	attack.block.penetrate 0
+	attack.damage.force 10
+	attack.damage.type 1
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 122
+	attack.position.y 122
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 39
+	attack.size.y 82
+	
+	
+	frame	data/chars/ray/R_VERTICAL_DOWN_0.png
+	
+	delay 5
+	
+	attack 0
+	
+	frame	data/chars/ray/R_VERTICAL_DOWN_PAIN_0.png
+	frame	data/chars/ray/R_VERTICAL_DOWN_PAIN_1.png
+	
+	delay 20
+	
+	bbox.position.x 104
+	bbox.position.y 154
+	bbox.size.x 78
+	bbox.size.y 34
+	
+	frame	data/chars/ray/R_FALLING_UP_0.png
+		
+	delay	20
+	offset	150 175
+	
+	frame	data/chars/ray/R_LAYING_UP_PAIN_0.png
+	
+	bbox.position.x 97
+	bbox.position.y 166
+	bbox.size.x 104
+	bbox.size.y 20
+	
+	frame	data/chars/ray/R_LAYING_UP_0.png
+	
+anim follow10 # Reaction Poses
+	
+	offset 150 175
+	delay -1000
+	
+	bbox.position.x 102
+	bbox.position.y 159
+	bbox.size.x 96
+	bbox.size.y 32
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 102
+	attack.position.y 159
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 96
+	attack.size.y 32
+	
+	frame data/chars/ray/R_FALLING_UP_0.png
+		
+	bbox.position.x 117
+	bbox.position.y 146
+	bbox.size.x 83
+	bbox.size.y 52
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 117
+	attack.position.y 146
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 83
+	attack.size.y 52
+	
+	frame data/chars/ray/R_FALLING_UP_CENTER_0.png
+	
+	bbox.position.x 110
+	bbox.position.y 146
+	bbox.size.x 83
+	bbox.size.y 68
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 110
+	attack.position.y 146
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 83
+	attack.size.y 68
+	
+	frame data/chars/ray/R_FALLING_UP_LIFT_0.png
+	
+	bbox.position.x 110
+	bbox.position.y 124
+	bbox.size.x 72
+	bbox.size.y 74
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 110
+	attack.position.y 124
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 72
+	attack.size.y 74
+	
+	frame data/chars/ray/R_FALLING_UP_TILT_0.png
+	
+	bbox.position.x 134
+	bbox.position.y 78
+	bbox.size.x 36
+	bbox.size.y 96
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 134
+	attack.position.y 78
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 36
+	attack.size.y 96
+	
+	frame data/chars/ray/R_HELD_0.png
+	
+	bbox.position.x 103
+	bbox.position.y 157
+	bbox.size.x 100
+	bbox.size.y 36
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 103
+	attack.position.y 157
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 100
+	attack.size.y 36
+	
+	frame data/chars/ray/R_HORIZONTAL_DOWN_0.png
+	
+	bbox.position.x 103
+	bbox.position.y 157
+	bbox.size.x 100
+	bbox.size.y 36
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 103
+	attack.position.y 157
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 100
+	attack.size.y 36
+	
+	frame data/chars/ray/R_HORIZONTAL_DOWN_PAIN_0.png
+	frame data/chars/ray/R_HORIZONTAL_DOWN_PAIN_0.png # 1
+	frame data/chars/ray/R_HORIZONTAL_DOWN_PAIN_0.png # 2
+	
+	bbox.position.x 100
+	bbox.position.y 157
+	bbox.size.x 100
+	bbox.size.y 36
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 100
+	attack.position.y 157
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 100
+	attack.size.y 36
+	
+	frame data/chars/ray/R_HORIZONTAL_UP_0.png	
+	
+	frame data/chars/ray/R_HORIZONTAL_UP_PAIN_0.png
+	frame data/chars/ray/R_HORIZONTAL_UP_PAIN_0.png #1
+	frame data/chars/ray/R_HORIZONTAL_UP_PAIN_0.png #2
+	
+	bbox.position.x 100
+	bbox.position.y 157
+	bbox.size.x 100
+	bbox.size.y 36
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 100
+	attack.position.y 157
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 100
+	attack.size.y 36
+	
+	frame data/chars/ray/R_LAYING_UP_0.png
+	
+	frame data/chars/ray/R_LAYING_UP_PAIN_0.png
+	frame data/chars/ray/R_LAYING_UP_PAIN_0.png #1
+	frame data/chars/ray/R_LAYING_UP_PAIN_0.png #2
+	
+	bbox.position.x 134
+	bbox.position.y 79
+	bbox.size.x 35
+	bbox.size.y 96
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 134
+	attack.position.y 79
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 35
+	attack.size.y 96
+	
+	frame data/chars/ray/R_PAIN_0.png
+	
+	bbox.position.x 124
+	bbox.position.y 79
+	bbox.size.x 35
+	bbox.size.y 96
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 124
+	attack.position.y 79
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 35
+	attack.size.y 96
+	
+	frame data/chars/ray/R_PAIN_1.png
+	
+	bbox.position.x 110
+	bbox.position.y 79
+	bbox.size.x 46
+	bbox.size.y 95
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 110
+	attack.position.y 79
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 46
+	attack.size.y 96
+	
+	frame data/chars/ray/R_PAIN_2.png
+	
+	bbox.position.x 128
+	bbox.position.y 88
+	bbox.size.x 37
+	bbox.size.y 89
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 128
+	attack.position.y 88
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 37
+	attack.size.y 89
+	
+	frame data/chars/ray/R_PAIN_MID_0.png
+	
+	bbox.position.x 112
+	bbox.position.y 97
+	bbox.size.x 39
+	bbox.size.y 77
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 112
+	attack.position.y 97
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 39
+	attack.size.y 77
+	
+	frame data/chars/ray/R_PAIN_MID_1.png
+	
+	bbox.position.x 102
+	bbox.position.y 101
+	bbox.size.x 49
+	bbox.size.y 72
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 102
+	attack.position.y 101
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 49
+	attack.size.y 72
+	
+	frame data/chars/ray/R_PAIN_MID_2.png
+	
+	bbox.position.x 119
+	bbox.position.y 145
+	bbox.size.x 62
+	bbox.size.y 65
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 119
+	attack.position.y 145
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 62
+	attack.size.y 65
+	
+	frame data/chars/ray/R_TILT_DOWN_0.png
+	
+	bbox.position.x 119
+	bbox.position.y 145
+	bbox.size.x 62
+	bbox.size.y 65
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 119
+	attack.position.y 145
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 62
+	attack.size.y 65
+	
+	frame data/chars/ray/R_TILT_FORWARD_0.png
+	
+	bbox.position.x 119
+	bbox.position.y 145
+	bbox.size.x 62
+	bbox.size.y 65
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 119
+	attack.position.y 145
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 62
+	attack.size.y 65
+	
+	frame data/chars/ray/R_TILT_UP_0.png
+	
+	bbox.position.x 124
+	bbox.position.y 120
+	bbox.size.x 46
+	bbox.size.y 87
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 124
+	attack.position.y 120
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 46
+	attack.size.y 87
+	
+	frame data/chars/ray/R_VERTICAL_DOWN_0.png
+	
+	bbox.position.x 117
+	bbox.position.y 129
+	bbox.size.x 50
+	bbox.size.y 79
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 117
+	attack.position.y 129
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 50
+	attack.size.y 79
+	
+	frame data/chars/ray/R_VERTICAL_DOWN_PAIN_0.png
+	frame data/chars/ray/R_VERTICAL_DOWN_PAIN_1.png
+	
+	bbox.position.x 138
+	bbox.position.y 132
+	bbox.size.x 32
+	bbox.size.y 105
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 138
+	attack.position.y 132
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 32
+	attack.size.y 105
+	
+	frame data/chars/ray/R_VERTICAL_UP_0.png
+	
+	bbox.position.x 129
+	bbox.position.y 122
+	bbox.size.x 32
+	bbox.size.y 110
+	
+	attack.damage.force 10
+	attack.effect.hit.flash.model flash_indirect
+	attack.position.x 129
+	attack.position.y 121
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 32
+	attack.size.y 110
+	
+	frame data/chars/ray/R_VERTICAL_UP_PAIN_0.png
