@@ -1,0 +1,65 @@
+# List level filenames here.
+#
+# Syntax:
+#	set	[difficulty]	Start a new set of levels (e.g. "normal")
+#
+#	file	[filename]	A level or part of a level
+#	next			Go to next level (show "stage clear" and stuff)
+#	scene	[filename]	Show a cut-scene
+#
+
+loadingbg    1 2 30 314 125 10
+maxplayers 3
+
+lbarsize  60 3 0 1 0 0 0 0 0
+mpbarsize 60 3 0 1 0 0 0 0 0
+olbarsize 34 3 0 1 0 0 0 0 0
+rush 2 2 Hits 1 1 Max 1 1 #Combo hits counter
+
+timeloc   -77 250 21 20 0
+
+p1smenu      240  272 210  75
+p2smenu       75  272  55  75
+p3smenu      395  272 370  75
+
+p1life       197   11
+p1mp         197   15
+p1namej      197   02  197  21  197  02
+p1icon       171    0 
+p1lifen      184   25 
+p1lifex      175   26
+p1score      197   02  197  -10  197  21
+p1rush	     261  21  291  21  261  12  291  12
+e1life       223   30
+e1icon       197   30
+e1name       223   37
+
+p2life       36   11
+p2mp         36   15
+p2namej      36   02  36  21  36  02
+p2icon       10    0 
+p2lifen      23   25 
+p2lifex      14   26
+p2score      36   02  36  -10  36  21
+p2rush       100  21  130  21  100  12  130  12
+e2life       62   30
+e2icon       36   30
+e2name       62   37
+
+p3life       358   11
+p3mp         358   15
+p3namej      358   02  358  21  362  02
+p3icon       332   2 
+p3lifen      345   25 
+p3lifex      336   26
+p3score      358   02  358  -10  358  21
+p3rush	     422  21  452  21  422  12  452  12
+e3life       384   30
+e3icon       358   30
+e3name       384   37
+
+set	test_area
+lives  1
+nosame 0 2
+z       180 230 
+file	data/levels/test_area.txt
