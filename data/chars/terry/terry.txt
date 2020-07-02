@@ -1,0 +1,2601 @@
+
+#*****Settings***************************************************************************
+
+#*****icons*****
+
+icon		data/chars/terry/icon_default.png	1
+icondie		data/chars/terry/icon_ko.png		1
+iconpain	data/chars/terry/icon_pain.png		1
+
+#*****General*****
+
+name	     	Terry_Bogard
+type	     	player
+bounce	     	2
+health	     	200
+speed	     	12
+Throwdamage  	26
+holdblock    	2
+nodieblink   	2
+falldie      	2
+risetime     	90
+running      	30 4 2 0 0
+#turndelay    	15
+makeinv      	3
+projectilehit 	player obstacle
+candamage     	enemy obstacle
+hostile			enemy
+gfxshadow    	1
+blockpain    	1
+sleepwait       1000
+combostyle		1
+atchain      	1 2 3 4 0 5 6 7
+height 			95
+height 			100
+dust			fall_land jump_land jump_liftoff
+mpset 			100 3 50 1 2 2
+bflash			Block
+
+load terry_crack_shoot
+load terry_power_wave
+load terry_power_wave_fist
+
+#*****Scripts*****
+
+keyscript 			data/chars/terry/scripts/key.c
+animationscript 	data/chars/terry/scripts/ani_p.c
+didblockscript  	data/scripts/common/event_block.c
+takedamagescript	data/scripts/common/event_damage.c
+didhitscript		data/scripts/common/event_hit.c
+onmovezscript		data/scripts/common/event_move_z.c
+#onspawnscript		data/scripts/common/event_move_z.c
+onmoveascript		data/chars/terry/scripts/onmoveascript.c
+
+#*****MP Specific*****
+
+mpset 100 3 50 1 2 2
+
+#*****NPC/Enemy Specific*****
+#*****Inert Specfic*****
+#*****Sub Entites*****
+#*****Alternates*******
+
+#palette			data/chars/terry/example.act
+palette	       data/chars/terry/default_0.act
+alternatepal   data/chars/terry/default_1.act
+alternatepal   data/chars/terry/kof_2000_0.act
+alternatepal   data/chars/terry/kof_2000_1.act
+alternatepal   data/chars/terry/motw_0.act
+alternatepal   data/chars/terry/motw_1.act
+
+#*****Commands*****************************************************************************
+
+com f -> u -> a	freespecial2  	# Force plane up.
+com f -> d -> a	freespecial3  	# Froce plane down.
+com	d -> u -> a	freespecial4	# Plane 	attack up.
+com	u -> d -> a	freespecial5	# Plane 	attack down.
+com	d -> u -> j	freespecial6	# Rising Tackle.	
+com d -> f -> a	freespecial10	# Power wave
+com f -> d -> j	freespecial11	# Crack Shoot
+
+#*****Basic********************************************************************************
+
+#anim spawn
+#anim respawn
+
+anim selectin # Highlighted
+
+		delay	1
+		fshadow 0
+		offset	100 122
+	frame	data/chars/terry/select_0.png
+		offset	100 132
+	frame	data/chars/terry/select_0.png
+		offset	100 142
+	frame	data/chars/terry/select_0.png
+		offset	100 152
+	frame	data/chars/terry/select_0.png
+		offset	100 162
+	frame	data/chars/terry/select_0.png
+		offset	100 172
+	frame	data/chars/terry/select_0.png
+		offset	100 182
+	frame	data/chars/terry/select_0.png
+		offset	100 192
+	frame	data/chars/terry/select_0.png
+		offset	100 202
+	frame	data/chars/terry/select_0.png
+		offset	100 212
+	frame	data/chars/terry/select_0.png
+		offset	100 222
+	frame	data/chars/terry/select_0.png
+		offset	100 232
+	frame	data/chars/terry/select_0.png
+		offset	100 242
+	frame	data/chars/terry/select_0.png
+		offset	100 252
+	frame	data/chars/terry/select_0.png
+		offset	100 262
+	frame	data/chars/terry/select_0.png
+
+ anim selectout # Un Highlighted
+
+		delay	1
+		offset	100 262
+		fshadow 0
+	frame data/chars/terry/select_0.png
+		offset	100 252
+	frame data/chars/terry/select_0.png
+		offset	100 242
+	frame data/chars/terry/select_0.png
+		offset	100 232
+	frame data/chars/terry/select_0.png
+		offset	100 222
+	frame data/chars/terry/select_0.png
+		offset	100 212
+	frame data/chars/terry/select_0.png
+		offset	100 202
+	frame data/chars/terry/select_0.png
+		offset	100 192
+	frame data/chars/terry/select_0.png
+		offset	100 182
+	frame data/chars/terry/select_0.png
+		offset	100 172
+	frame data/chars/terry/select_0.png
+		offset	100 162
+	frame data/chars/terry/select_0.png
+		offset	100 152
+	frame data/chars/terry/select_0.png
+		offset	100 142
+	frame data/chars/terry/select_0.png
+		offset	100 132
+	frame data/chars/terry/select_0.png
+		offset	100 122
+	frame data/chars/terry/select_0.png
+
+anim waiting # Highlight Wait
+
+		delay	1
+		offset	100 272
+		fshadow 0
+		offset	100 272
+	frame	data/chars/terry/select_0.png
+
+#anim select
+
+anim idle # Ready stance.
+
+		loop 	1
+		delay	12
+		offset	76 155
+		
+	bbox.position.x 56
+	bbox.position.y 60
+	bbox.size.x 37
+	bbox.size.y 105
+
+	frame	data/chars/terry/idle_0.png
+	frame	data/chars/terry/idle_1.png
+	frame	data/chars/terry/idle_2.png
+	frame	data/chars/terry/idle_3.png
+	frame	data/chars/terry/idle_2.png
+	frame	data/chars/terry/idle_1.png
+
+anim idle3 # Strafe (opponent front Z)
+
+		range   -250 250
+		rangez  15 250
+
+		loop 	1
+		delay	12
+		offset	76 155
+		
+	bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 42
+	bbox.size.y 105
+
+	frame	data/chars/terry/idle_3_0.png
+	frame	data/chars/terry/idle_3_1.png
+	frame	data/chars/terry/idle_3_2.png
+	frame	data/chars/terry/idle_3_1.png
+
+#anim sleep
+
+anim faint # Faint
+
+	#Heavy fatigue.
+
+		loop 	1
+		delay	15
+		offset	76 155
+	bbox.position.x 54
+	bbox.position.y 64
+	bbox.size.x 42
+	bbox.size.y 101
+	frame	data/chars/terry/22_0.png
+	frame	data/chars/terry/22_1.png
+	frame	data/chars/terry/22_2.png
+	frame	data/chars/terry/22_1.png
+
+anim walk # Normal walk
+
+		loop 	1
+		delay	12
+		offset	76 155
+		
+	bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 42
+	bbox.size.y 105
+
+	frame	data/chars/terry/walk_0.png
+	frame	data/chars/terry/walk_1.png
+	frame	data/chars/terry/walk_2.png
+	frame	data/chars/terry/walk_3.png
+	frame	data/chars/terry/walk_4.png
+
+#Strafe walk (opponent in front on Z)
+anim walk3 # Strafe Walk
+
+		range   -250 250
+		rangez  15 250
+
+		loop 	1
+		delay	12
+		offset	76 155
+		
+		bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 42
+	bbox.size.y 105
+
+	frame	data/chars/terry/walk_3_0.png
+	frame	data/chars/terry/walk_3_1.png
+	frame	data/chars/terry/walk_3_2.png
+	frame	data/chars/terry/walk_3_3.png
+	frame	data/chars/terry/walk_3_4.png
+
+anim run # Dash
+
+		delay	12
+		offset	76 155
+	bbox.position.x 74
+	bbox.position.y 66
+	bbox.size.x 45
+	bbox.size.y 91
+	frame	data/chars/terry/dash_0.png
+	frame	data/chars/terry/dash_1.png
+		delay	5
+		
+	bbox.position.x 60
+	bbox.position.y 74
+	bbox.size.x 45
+	bbox.size.y 84
+		
+	frame	data/chars/terry/jump_land_0.png
+	frame	data/chars/terry/jump_land_2.png
+		@cmd dc_disney_dash_stop
+	frame	data/chars/terry/jump_land_2.png
+
+anim get # Get
+
+	delay	20
+	offset	76 155
+		
+	bbox.position.x 63
+	bbox.position.y 98
+	bbox.size.x 45
+	bbox.size.y 64
+		
+	frame	data/chars/terry/26_0.png
+	delay 12
+	
+	frame	data/chars/terry/rise_2.png
+	
+	bbox.position.x 61
+	bbox.position.y 75
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	frame	data/chars/terry/jump_land_2.png	
+
+
+anim 	attack1 # Long Jab
+
+	range 	0 50
+	rangea	0 100
+
+	fastattack 1
+
+	delay	4
+	offset	76 155
+			
+	bbox.position.x 62
+	bbox.position.y 62
+	bbox.size.x 33
+	bbox.size.y 102
+
+	@cmd	dc_disney_alternate_on_range openborconstant("ANI_FOLLOW1")
+
+	frame	data/chars/terry/15_0.png
+	
+	bbox.position.x 73
+	bbox.position.y 60
+	bbox.size.x 29
+	bbox.size.y 106
+
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_LIGHT
+	
+	@cmd	dc_fidelity_set_sound_chance 0.5
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_LIGHT
+	@cmd	dc_fidelity_set_sound_chance NULL()
+	
+	frame	data/chars/terry/15_1.png
+			
+	bbox.position.x 76
+	bbox.position.y 60
+	bbox.size.x 36
+	bbox.size.y 106
+	
+	attack.damage.force 4
+	attack.position.x 98
+	attack.position.y 73
+	attack.reaction.pause.time 10
+	attack.size.x 60
+	attack.size.y 13
+
+	frame	data/chars/terry/15_2.png
+	
+	bbox.position.x 73
+	bbox.position.y 60
+	bbox.size.x 29
+	bbox.size.y 106
+	
+	attack 0
+	
+	frame	data/chars/terry/15_3.png
+		idle	1
+		
+	bbox.position.x 62
+	bbox.position.y 62
+	bbox.size.x 33
+	bbox.size.y 102
+		
+	frame	data/chars/terry/15_0.png
+
+anim 	attack2	# front kick
+
+		range 	-10 50
+		fastattack 1
+
+			delay	5
+			offset	76 155
+	
+	bbox.position.x 50
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+
+	@cmd	dc_fidelity_set_sound_chance 0.5
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+	@cmd	dc_fidelity_set_sound_chance NULL()
+
+	frame	data/chars/terry/27_0.png
+	
+	
+	frame	data/chars/terry/27_1.png
+			
+
+	attack.damage.force 6
+	attack.position.x 55
+	attack.position.y 77
+	attack.reaction.pause.time 10
+	attack.size.x 73
+	attack.size.y 15
+	attack.effect.hit.flash.model flash_fatal_fury
+
+	frame	data/chars/terry/27_2.png
+	
+	attack 0
+	
+	frame	data/chars/terry/27_1.png
+		idle	1
+	frame	data/chars/terry/27_0.png
+
+anim 	attack3	# Gut punch.
+
+		range 	-10 50
+		fastattack 1
+
+		delay	6
+		offset	76 155
+	bbox.position.x 50
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+
+	@cmd	dc_fidelity_set_sound_chance 0.5
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+	@cmd	dc_fidelity_set_sound_chance NULL()
+	
+	frame	data/chars/terry/28_0.png
+		delay	5
+	attack.block.penetrate 0
+	attack.damage.force 5
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 75
+	attack.position.y 100
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 15
+	attack.size.x 35
+	attack.size.y 20
+	
+	frame	data/chars/terry/28_1.png
+		delay	6
+	
+	attack 0
+	
+frame	data/chars/terry/28_1.png
+		delay	6
+	attack.block.penetrate 0
+	attack.damage.force 10
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 75
+	attack.position.y 75
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 15
+	attack.size.x 55
+	attack.size.y 30
+	
+	frame	data/chars/terry/28_3.png
+	
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame	data/chars/terry/28_4.png
+		idle	1
+	frame	data/chars/terry/28_0.png
+
+anim 	attack4	# Big boot.
+
+		range 	-10 60
+		fastattack 1
+
+		delay	4
+		offset	76 155
+		
+	bbox.position.x 50
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
+
+	frame	data/chars/terry/atk_round_kick_0.png
+	
+		offset	78 158
+	
+	bbox.position.x 59
+	bbox.position.y 60
+	bbox.size.x 39
+	bbox.size.y 105
+	
+	frame	data/chars/terry/29_0.png
+	frame	data/chars/terry/29_1.png
+	
+	bbox.position.x 76
+	bbox.position.y 53
+	bbox.size.x 39
+	bbox.size.y 108
+	
+	frame	data/chars/terry/29_2.png
+	
+	bbox.position.x 89
+	bbox.position.y 50
+	bbox.size.x 43
+	bbox.size.y 111
+	
+
+	attack.block.penetrate 0
+	attack.damage.force 15
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 89
+	attack.position.y 44
+	attack.reaction.fall.force 2
+	attack.reaction.fall.velocity.x 3.0
+	attack.reaction.fall.velocity.y 2.5
+	attack.reaction.fall.velocity.z 0.0
+	attack.reaction.pause.time 15
+	attack.size.x 83
+	attack.size.y 55
+	attack.effect.hit.flash.model flash_fatal_fury
+	
+	damageonlanding 0 1
+
+	frame	data/chars/terry/29_3.png
+	
+	delay	15
+	
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame	data/chars/terry/29_4.png
+		delay	8
+		
+	bbox.position.x 76
+	bbox.position.y 53
+	bbox.size.x 39
+	bbox.size.y 108
+	
+	frame	data/chars/terry/29_5.png
+	frame	data/chars/terry/atk_round_kick_1.png
+	
+	offset	78 158
+	
+	bbox.position.x 50
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	frame	data/chars/terry/atk_round_kick_4.png
+
+# Straight.
+anim 	attack5 # Straight
+
+		delay	3
+		offset	76 155
+				
+	bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 39
+	bbox.size.y 105
+
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+
+	@cmd	dc_fidelity_set_sound_chance 0.5
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+	@cmd	dc_fidelity_set_sound_chance NULL()
+
+	frame	data/chars/terry/15_0.png
+	
+	bbox.position.x 50
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	frame	data/chars/terry/17_0.png
+	
+	bbox.position.x 59
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	frame	data/chars/terry/17_1.png
+	
+	bbox.position.x 64
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+
+	attack.damage.force 12
+	attack.position.x 80
+	attack.position.y 75
+	attack.reaction.pause.time 10
+	attack.size.x 66
+	attack.size.y 15
+
+	frame	data/chars/terry/17_2.png
+
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	delay 8
+	
+	frame	data/chars/terry/17_3.png	
+	
+		idle	1
+	
+	bbox.position.x 59
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	frame	data/chars/terry/17_1.png
+			
+	bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 39
+	bbox.size.y 105
+	
+	frame	data/chars/terry/15_0.png
+
+anim attack6 # Round Kick
+
+	range 50 110
+	delay	6
+	offset	76 155
+				
+	bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 39
+	bbox.size.y 105
+
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+	@cmd	dc_fidelity_set_sound_chance NULL()
+
+	frame	data/chars/terry/atk_round_kick_0.png
+		
+		
+	bbox.position.x 78
+	bbox.position.y 57
+	bbox.size.x 34
+	bbox.size.y 97
+	
+	frame	data/chars/terry/atk_round_kick_1.png
+
+	bbox.position.x 86
+	bbox.position.y 57
+	bbox.size.x 33
+	bbox.size.y 99
+	
+	frame	data/chars/terry/atk_round_kick_2.png
+
+	delay 8
+
+	bbox.position.x 89
+	bbox.position.y 54
+	bbox.size.x 37
+	bbox.size.y 102
+	
+	attack.damage.force 12
+	attack.effect.hit.flash.model flash_fatal_fury
+	attack.position.x 125
+	attack.position.y 86
+	attack.reaction.pause.time 12
+	attack.size.x 60
+	attack.size.y 14
+
+	frame	data/chars/terry/atk_round_kick_3.png
+
+	delay 6
+
+	bbox.position.x 86
+	bbox.position.y 57
+	bbox.size.x 33
+	bbox.size.y 99
+
+	frame	data/chars/terry/atk_round_kick_2.png
+	
+	idle 1
+
+	bbox.position.x 78
+	bbox.position.y 57
+	bbox.size.x 34
+	bbox.size.y 97
+	
+	frame	data/chars/terry/atk_round_kick_1.png
+
+	
+	bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 39
+	bbox.size.y 105
+	
+	frame	data/chars/terry/atk_round_kick_4.png
+	
+	
+#Temp unused
+anim 	follow20 # Backhand
+
+		delay	5
+		offset	76 155
+				
+	bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 39
+	bbox.size.y 105
+
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+
+	@cmd	dc_fidelity_set_sound_chance 0.5
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+	@cmd	dc_fidelity_set_sound_chance NULL()
+
+	frame	data/chars/terry/15_0.png
+		
+	delay 5
+	offset	80 153
+		
+	bbox.position.x 63
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 102		
+	
+	frame	data/chars/terry/18_0.png
+
+		offset	85 153
+		
+	bbox.position.x 83
+	bbox.position.y 60
+	bbox.size.x 38
+	bbox.size.y 99
+
+	frame	data/chars/terry/18_1.png
+
+	bbox.position.x 103
+	bbox.position.y 52
+	bbox.size.x 32
+	bbox.size.y 97
+
+	frame	data/chars/terry/18_2.png
+
+		
+
+	bbox.position.x 113
+	bbox.position.y 52
+	bbox.size.x 32
+	bbox.size.y 97
+
+	attack.damage.force 12
+	attack.position.x 145
+	attack.position.y 56
+	attack.reaction.pause.time 12
+	attack.size.x 33
+	attack.size.y 10
+
+	frame	data/chars/terry/18_3.png
+
+		
+
+	bbox.position.x 103
+	bbox.position.y 52
+	bbox.size.x 32
+	bbox.size.y 97
+
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame	data/chars/terry/18_2.png	
+	
+	bbox.position.x 83
+	bbox.position.y 56
+	bbox.size.x 38
+	bbox.size.y 99
+	
+	frame	data/chars/terry/18_1.png
+	
+		offset	80 153
+		idle	1	
+
+	bbox.position.x 70
+	bbox.position.y 56
+	bbox.size.x 40
+	bbox.size.y 105
+
+	frame	data/chars/terry/18_0.png
+		
+		offset	76 155
+		
+	bbox.position.x 55
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+
+	frame	data/chars/terry/15_0.png
+
+anim 	attack7	# Jumping spin kick.
+
+	jumpframe 3 1.5 0 0 hop_liftoff
+	landframe 8 jump_land
+
+		delay	6
+		offset	76 155
+	bbox.position.x 56
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	frame	data/chars/terry/atk_round_kick_0.png
+	
+	bbox.position.x 78
+	bbox.position.y 54
+	bbox.size.x 37
+	bbox.size.y 105
+	
+	frame data/chars/terry/atk_round_kick_1.png	
+	
+	bbox.position.x 64
+	bbox.position.y 58
+	bbox.size.x 37
+	bbox.size.y 101
+	
+	frame data/chars/terry/5_0.png	
+	bbox.position.x 71
+	bbox.position.y 52
+	bbox.size.x 35
+	bbox.size.y 100
+	
+	frame	data/chars/terry/19_0.png
+	
+	bbox.position.x 58
+	bbox.position.y 53
+	bbox.size.x 37
+	bbox.size.y 98
+	
+	frame	data/chars/terry/19_1.png
+		delay	6
+		
+	bbox.position.x 62
+	bbox.position.y 55
+	bbox.size.x 37
+	bbox.size.y 98
+		
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
+
+	frame	data/chars/terry/19_2.png
+	
+	bbox.position.x 59
+	bbox.position.y 49
+	bbox.size.x 37
+	bbox.size.y 98
+	
+	attack.block.penetrate 0
+	attack.damage.force 16
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 80
+	attack.position.y 80
+	attack.reaction.fall.force 2
+	attack.reaction.pause.time 10
+	attack.size.x 80
+	attack.size.y 16
+	attack.effect.hit.flash.model flash_fatal_fury
+
+	frame	data/chars/terry/19_3.png
+	
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+		delay	-1000
+	frame	data/chars/terry/19_4.png
+		delay	8
+		
+	bbox.position.x 60
+	bbox.position.y 74
+	bbox.size.x 41
+	bbox.size.y 90
+		
+	frame	data/chars/terry/jump_land_0.png	
+	frame	data/chars/terry/jump_land_2.png
+
+anim runattack # Power Charge
+
+	jumpframe 0 0 1.2 0 0
+
+		delay	10
+		offset	76 155
+	bbox.position.x 74
+	bbox.position.y 64
+	bbox.size.x 42
+	bbox.size.y 94
+	
+	frame	data/chars/terry/dash_0.png
+	
+	bbox.position.x 48
+	bbox.position.y 80
+	bbox.size.x 45
+	bbox.size.y 80
+	
+	frame	data/chars/terry/21_4.png
+	
+	
+	bbox.position.x 61
+	bbox.position.y 92
+	bbox.size.x 45
+	bbox.size.y 69
+	
+		@cmd	changeentityproperty getlocalvar("self") "aiflag" "blocking" 1
+
+		@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
+		@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
+
+	frame	data/chars/terry/21_5.png
+	
+	
+	bbox.position.x 78
+	bbox.position.y 81
+	bbox.size.x 45
+	bbox.size.y 80
+	
+	attack.block.penetrate 0
+	attack.damage.force 15
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 80
+	attack.position.y 80
+	attack.reaction.fall.force 2
+	attack.reaction.fall.velocity.x 2.0
+	attack.reaction.fall.velocity.y 2.5
+	attack.reaction.pause.time 10
+	attack.size.x 55
+	attack.size.y 55
+	
+	attack.effect.hit.flash.model flash_fatal_fury
+
+	frame	data/chars/terry/21_6.png
+		delay	12
+		
+	attack 0
+	frame	data/chars/terry/21_7.png
+	
+	bbox.position.x 61
+	bbox.position.y 71
+	bbox.size.x 45
+	bbox.size.y 90
+	
+		@cmd	dc_velocity_set_velocity_x NULL()
+		@cmd	dc_velocity_apply_velocity_x
+		@cmd	changeentityproperty getlocalvar("self") "aiflag" "blocking" 0
+	frame	data/chars/terry/21_8.png
+	frame	data/chars/terry/24_2.png
+	
+
+anim chargeattack # High spin kick.
+
+		fastattack 1
+
+		delay	6
+		offset	76 155
+	bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 41
+	bbox.size.y 92
+	
+	frame	data/chars/terry/23_0.png
+	
+	offset	73 158
+	
+	bbox.position.x 73
+	bbox.position.y 60
+	bbox.size.x 41
+	bbox.size.y 92
+	
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
+
+	frame	data/chars/terry/23_1.png
+	
+	offset	75 158
+	
+	bbox.position.x 85
+	bbox.position.y 60
+	bbox.size.x 41
+	bbox.size.y 92
+	
+	frame	data/chars/terry/23_2.png
+		delay	5
+		
+		offset	74 158
+		
+	attack.block.penetrate 0
+	attack.damage.force 12
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 119
+	attack.position.y 45
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 15
+	attack.size.x 29
+	attack.size.y 45
+	attack.effect.hit.flash.model flash_fatal_fury
+
+	frame	data/chars/terry/23_3.png
+		delay	1
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	frame	data/chars/terry/23_3.png
+		delay	6
+		
+		offset	76 155
+		
+	attack.block.penetrate 0
+	attack.damage.force 15
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 110
+	attack.position.y 35
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 15
+	attack.size.x 45
+	attack.size.y 55
+	attack.effect.hit.flash.model flash_fatal_fury
+
+	frame	data/chars/terry/23_4.png
+	
+	bbox.position.x 75
+	bbox.position.y 60
+	bbox.size.x 41
+	bbox.size.y 92
+	
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	frame	data/chars/terry/23_5.png
+	
+	bbox.position.x 69
+	bbox.position.y 55
+	bbox.size.x 41
+	bbox.size.y 98
+	
+	frame	data/chars/terry/23_6.png
+	
+	bbox.position.x 62
+	bbox.position.y 60
+	bbox.size.x 41
+	bbox.size.y 98
+	
+	frame	data/chars/terry/atk_round_kick_4.png
+
+anim freespecial6 # Rising tackle
+
+	energycost 20
+	mponly	   1
+		loop	   1 5 8
+	jumpframe  2 5.5 0.2 0 jump_liftoff
+	dropframe  9
+	landframe  14 jump_land
+		fastattack 1
+	forcedirection -1
+
+		delay	6
+		offset	76 155
+	bbox.position.x 51
+	bbox.position.y 115
+	bbox.size.x 45
+	bbox.size.y 44
+	frame	data/chars/terry/33_0.png
+	#cmd stereo_sound_command_here "vter0011.wav"
+	frame	data/chars/terry/33_1.png
+		delay	3
+	#cmd stereo_sound_command_here "sand0003.wav"
+	
+	
+	
+	move	25
+	
+	bbox.position.x 0
+	bbox.position.y 0
+	bbox.size.x 0
+	bbox.size.y 0
+	
+	attack.block.penetrate 0
+	attack.damage.force 9
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 70
+	attack.position.y 55
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 15
+	attack.size.x 35
+	attack.size.y 45
+	
+	frame	data/chars/terry/33_2.png	#jumpframe
+	move	0
+	frame	data/chars/terry/33_3.png
+	frame	data/chars/terry/33_4.png
+		delay	4
+		
+	offset	70 168
+		
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame	data/chars/terry/33_5.png 	#Spin start
+	
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+
+	attack.block.penetrate 0
+	attack.damage.force 2
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 20
+	attack.position.y 120
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 6
+	attack.size.x 115
+	attack.size.y 20
+	
+	frame	data/chars/terry/33_6.png
+	
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame	data/chars/terry/33_7.png
+
+	attack.block.penetrate 0
+	attack.damage.force 2
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 20
+	attack.position.y 120
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 6
+	attack.size.x 115
+	attack.size.y 20
+	
+	frame	data/chars/terry/33_8.png 	#Spin end
+		delay	6
+	
+	offset	76 155
+	
+	attack.block.penetrate 0
+	attack.damage.force 2
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 20
+	attack.position.y 100
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 6
+	attack.size.x 115
+	attack.size.y 20
+	
+	bbox.position.x 65
+	bbox.position.y 60
+	bbox.size.x 36
+	bbox.size.y 71
+	
+	frame	data/chars/terry/33_9.png	#dropframe
+	
+	bbox.position.x 65
+	bbox.position.y 60
+	bbox.size.x 36
+	bbox.size.y 57
+	
+	attack.position.x 0
+	attack.position.y 0	
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame	data/chars/terry/33_10.png
+	
+	bbox.position.x 65
+	bbox.position.y 46
+	bbox.size.x 40
+	bbox.size.y 75
+	
+	frame	data/chars/terry/33_11.png
+	
+	bbox.position.x 66
+	bbox.position.y 51
+	bbox.size.x 36
+	bbox.size.y 76
+	
+	frame	data/chars/terry/jump_3.png
+		delay	-1000
+	frame	data/chars/terry/jump_4.png
+		delay	8
+		
+	bbox.position.x 65
+	bbox.position.y 74
+	bbox.size.x 36
+	bbox.size.y 85
+		
+	frame 	data/chars/terry/jump_land_0.png
+	
+	bbox.position.x 61
+	bbox.position.y 83
+	bbox.size.x 40
+	bbox.size.y 75
+	
+	frame data/chars/terry/jump_land_1.png
+	
+	bbox.position.x 65
+	bbox.position.y 74
+	bbox.size.x 36
+	bbox.size.y 85
+	
+	frame 	data/chars/terry/jump_land_2.png
+
+#*****Followups****************************************************************************
+
+anim follow1 # Short jab
+
+		range -10 50
+		fastattack 1
+
+		delay	6
+		offset	76 155
+		
+	bbox.position.x 60
+	bbox.position.y 60
+	bbox.size.x 37
+	bbox.size.y 105
+
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_LIGHT
+	
+	@cmd	dc_fidelity_set_sound_chance 0.5
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_LIGHT
+	@cmd	dc_fidelity_set_sound_chance NULL()
+
+	frame	data/chars/terry/15_0.png
+
+	attack.damage.force 5
+	attack.position.x 75
+	attack.position.y 75
+	attack.reaction.pause.time 10
+	attack.size.x 60
+	attack.size.y 15
+
+	frame	data/chars/terry/16_0.png
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	frame	data/chars/terry/15_0.png
+
+anim follow82 # Down Ataack
+
+		range   0 80
+
+		delay	6
+		offset	76 155
+		
+	bbox.position.x 59
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	frame	data/chars/terry/atk_round_kick_0.png
+	
+	bbox.position.x 69
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+
+	frame	data/chars/terry/34_0.png
+	frame	data/chars/terry/34_1.png
+	
+	attack.block.penetrate 0
+	attack.damage.force 15
+	attack.damage.type 9
+	attack.effect.hit.flash.disable 0
+	attack.position.x 90
+	attack.position.y 125
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 10
+	attack.size.x 60
+	attack.size.y 30
+	attack.staydown.rise.time -200
+	attack.ground.mode 2
+	attack.effect.hit.flash.model flash_fatal_fury
+
+	frame	data/chars/terry/34_2.png
+	
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame	data/chars/terry/34_3.png
+	frame	data/chars/terry/34_4.png
+	frame	data/chars/terry/34_5.png
+	frame	data/chars/terry/34_6.png
+	
+	bbox.position.x 59
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	
+	frame	data/chars/terry/atk_round_kick_0.png
+
+anim follow51 # Defense poses
+
+		loop	1
+		
+		loop 	1
+		delay	12
+		offset	76 155
+		
+	bbox.position.x 56
+	bbox.position.y 60
+	bbox.size.x 37
+	bbox.size.y 105
+
+	frame	data/chars/terry/idle_0.png
+		
+	delay	-100
+	offset	63 158
+		
+	bbox.position.x 59
+	bbox.position.y 65
+	bbox.size.x 37
+	bbox.size.y 99
+	
+	attack.block.penetrate 0
+	attack.damage.force 10
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 59
+	attack.position.y 65
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 37
+	attack.size.y 99
+	
+	frame	data/chars/terry/R_HELD_0.png
+	
+	offset	76 155
+		
+	bbox.position.x 45
+	bbox.position.y 62
+	bbox.size.x 43
+	bbox.size.y 105
+	
+	attack.position.x 45
+	attack.position.y 62
+	attack.size.x 43
+	attack.size.y 105
+	
+	frame	data/chars/terry/R_PAIN_1.png	
+	
+	offset	73 174
+	
+	bbox.position.x 36
+	bbox.position.y 118
+	bbox.size.x 94
+	bbox.size.y 31
+		
+	attack.position.x 36
+	attack.position.y 118
+	attack.size.x 94
+	attack.size.y 31
+	
+	frame	data/chars/terry/R_HORIZONTAL_UP_0.png
+	
+	offset	94 178
+	
+	bbox.position.x 52
+	bbox.position.y 129
+	bbox.size.x 98
+	bbox.size.y 44
+	
+	attack.position.x 52
+	attack.position.y 129
+	attack.size.x 98
+	attack.size.y 44
+	
+	frame	data/chars/terry/R_HORIZONTAL_DOWN_0.png
+	
+	offset	91 166
+	
+	bbox.position.x 68
+	bbox.position.y 64
+	bbox.size.x 51
+	bbox.size.y 103
+	
+	attack.position.x 68
+	attack.position.y 64
+	attack.size.x 51
+	attack.size.y 103
+	
+	frame	data/chars/terry/R_VERTICAL_UP.png
+	
+	bbox.position.x 75
+	bbox.position.y 78
+	bbox.size.x 39
+	bbox.size.y 86
+	
+	attack.position.x 75
+	attack.position.y 78
+	attack.size.x 39
+	attack.size.y 86
+	
+	frame	data/chars/terry/R_VERTICAL_DOWN_0.png
+	
+	offset	89 178
+	
+	bbox.position.x 64
+	bbox.position.y 97
+	bbox.size.x 52
+	bbox.size.y 66
+	
+	attack.position.x 64
+	attack.position.y 97
+	attack.size.x 52
+	attack.size.y 66
+		
+	frame	data/chars/terry/R_TILT_UP_0.png
+	
+	bbox.position.x 61
+	bbox.position.y 91
+	bbox.size.x 68
+	bbox.size.y 66
+	
+	attack.position.x 61
+	attack.position.y 91
+	attack.size.x 68
+	attack.size.y 66
+	
+frame	data/chars/terry/R_TILT_FORWARD_0.png
+	
+	offset	91 166
+	
+	bbox.position.x 68
+	bbox.position.y 78
+	bbox.size.x 51
+	bbox.size.y 88	
+	
+	attack.position.x 68
+	attack.position.y 78
+	attack.size.x 51
+	attack.size.y 88
+	
+	frame	data/chars/terry/R_VERTICAL_DOWN_PAIN_0.png
+	
+	offset	76 155
+	
+	bbox.position.x 38
+	bbox.position.y 134
+	bbox.size.x 90
+	bbox.size.y 31
+	
+	attack.position.x 38
+	attack.position.y 134
+	attack.size.x 90
+	attack.size.y 31
+	
+	frame	data/chars/terry/R_LAYING_UP_0
+	
+	offset	91 169
+	
+	bbox.position.x 63
+	bbox.position.y 141
+	bbox.size.x 88
+	bbox.size.y 36
+	
+	frame	data/chars/terry/R_LAYING_UP_PAIN_0.png
+	
+	offset	74 142
+	
+	bbox.position.x 42
+	bbox.position.y 110
+	bbox.size.x 86
+	bbox.size.y 31
+	
+	attack.position.x 42
+	attack.position.y 110	
+	attack.size.x 86
+	attack.size.y 31
+	
+	frame	data/chars/terry/R_FALLING_UP_0.png				
+	
+	offset 92 130
+	
+	bbox.position.x 58
+	bbox.position.y 82
+	bbox.size.x 57
+	bbox.size.y 52	
+	
+	attack.position.x 58
+	attack.position.y 82
+	attack.size.x 57
+	attack.size.y 52
+	
+	frame	data/chars/terry/R_FALLING_UP_TILT_0.png
+	
+	offset	84 142
+	
+	bbox.position.x 48
+	bbox.position.y 87
+	bbox.size.x 86
+	bbox.size.y 31
+	
+	attack.position.x 48
+	attack.position.y 87
+	attack.size.x 86
+	attack.size.y 31
+	
+	frame	data/chars/terry/R_HORIZONTAL_UP_PAIN_0.png
+	
+	offset	76 155
+		
+	bbox.position.x 44
+	bbox.position.y 78
+	bbox.size.x 35
+	bbox.size.y 79
+	
+	frame	data/chars/terry/R_PAIN_MID_1.png
+
+anim jumpdelay
+
+	offset	76 155
+	delay	8
+			
+	bbox.position.x 61
+	bbox.position.y 75
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	frame data/chars/terry/jump_land_2.png
+
+anim jumpland # Jump land
+
+		delay	4
+		offset	76 155
+		
+	bbox.position.x 61
+	bbox.position.y 75
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	frame data/chars/terry/jump_land_0.png
+	
+	bbox.position.x 61
+	bbox.position.y 83
+	bbox.size.x 40
+	bbox.size.y 75
+	
+	frame data/chars/terry/jump_land_1.png
+	
+	bbox.position.x 61
+	bbox.position.y 75
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	frame data/chars/terry/jump_land_2.png
+
+anim jump # Jump
+
+	dropframe 1
+
+	delay	-1000
+	offset	76 155
+	
+	bbox.position.x 69
+	bbox.position.y 44
+	bbox.size.x 32
+	bbox.size.y 105
+	
+	frame data/chars/terry/jump_0.png
+	
+	delay	8
+	
+	bbox.position.x 69
+	bbox.position.y 44
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame data/chars/terry/jump_1.png
+
+	bbox.position.x 69
+	bbox.position.y 50
+	bbox.size.x 32
+	bbox.size.y 74
+	
+	frame data/chars/terry/jump_2.png
+	
+	bbox.position.x 69
+	bbox.position.y 49
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame data/chars/terry/jump_3.png
+	
+	bbox.position.x 69
+	bbox.position.y 52
+	bbox.size.x 32
+	bbox.size.y 100
+	
+	frame data/chars/terry/jump_4.png
+
+
+anim forwardjump # Jump forward
+
+		dropframe 1
+		
+		delay  20
+		offset	76 155
+	
+	bbox.position.x 55
+	bbox.position.y 56
+	bbox.size.x 53
+	bbox.size.y 80
+	
+	frame data/chars/terry/jump_forward_0.png
+		
+		delay	8
+		
+	bbox.position.x 52
+	bbox.position.y 52
+	bbox.size.x 53
+	bbox.size.y 55
+		
+	frame data/chars/terry/jump_forward_1.png
+	frame data/chars/terry/jump_forward_2.png
+	frame data/chars/terry/jump_forward_3.png
+	
+	bbox.position.x 42
+	bbox.position.y 61
+	bbox.size.x 75
+	bbox.size.y 42
+	
+	frame data/chars/terry/jump_forward_4.png
+	
+	bbox.position.x 52
+	bbox.position.y 53
+	bbox.size.x 52
+	bbox.size.y 82
+	
+	frame data/chars/terry/jump_forward_5.png
+	
+	bbox.position.x 69
+	bbox.position.y 49
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame data/chars/terry/jump_3.png
+	
+	bbox.position.x 69
+	bbox.position.y 52
+	bbox.size.x 32
+	bbox.size.y 100
+	
+	frame data/chars/terry/jump_4.png
+
+anim blockrelease # Block release
+
+		delay	6
+		offset	76 155
+	bbox.position.x 54
+	bbox.position.y 60
+	bbox.size.x 40
+	bbox.size.y 105
+	frame	data/chars/terry/block_start_0.png
+	
+
+anim blockstart # Block start
+
+		delay	6
+		offset	76 155
+		
+	bbox.position.x 54
+	bbox.position.y 60
+	bbox.size.x 40
+	bbox.size.y 105
+	
+		
+	frame	data/chars/terry/block_start_0.png
+
+anim block # Block
+
+	#Defence.
+
+		delay	6
+		offset	76 155
+		bbox 	50 60 45 105
+	frame	data/chars/terry/block_0.png
+
+
+anim blockpain	# Normal block.
+
+		delay	3
+		offset	76 155
+	bbox.position.x 44
+	bbox.position.y 60
+	bbox.size.x 45
+	bbox.size.y 105
+	move	-2
+	frame	data/chars/terry/block_impact_0.png
+		offset	73 158
+	frame	data/chars/terry/block_impact_0.png
+		offset	76 155
+	frame	data/chars/terry/block_impact_0.png
+		offset	73 158
+	frame	data/chars/terry/block_impact_0.png
+		delay	20
+		offset	76 155
+	frame	data/chars/terry/block_impact_0.png
+
+anim blockpain2	# Middle block.
+
+		delay	3
+		offset	76 155
+	bbox.position.x 54
+	bbox.position.y 60
+	bbox.size.x 34
+	bbox.size.y 105
+	move	-2
+	frame	data/chars/terry/block_impact_mid_0.png
+		offset	73 158
+	frame	data/chars/terry/block_impact_mid_0.png
+		offset	76 155
+	frame	data/chars/terry/block_impact_mid_0.png
+		offset	73 158
+	frame	data/chars/terry/block_impact_mid_0.png
+		delay	6
+		offset	76 155
+		
+	bbox.position.x 58
+	bbox.position.y 60
+	bbox.size.x 36
+	bbox.size.y 105
+		
+	frame	data/chars/terry/block_impact_mid_1.png
+	frame	data/chars/terry/block_impact_mid_2.png
+
+anim blockpain3	# Low block.
+
+		delay	3
+		offset	76 155
+	bbox.position.x 43
+	bbox.position.y 85
+	bbox.size.x 50
+	bbox.size.y 75
+	move	-2
+	frame	data/chars/terry/block_impact_low_0.png
+		offset	73 158
+	frame	data/chars/terry/block_impact_low_0.png
+		offset	76 155
+	frame	data/chars/terry/block_impact_low_0.png
+		offset	73 158
+	frame	data/chars/terry/block_impact_low_0.png
+		delay	10
+		offset	76 155
+	frame	data/chars/terry/block_impact_low_1.png
+	
+	bbox.position.x 61
+	bbox.position.y 85
+	bbox.size.x 43
+	bbox.size.y 75
+	
+	frame	data/chars/terry/jump_land_1.png
+	bbox.position.x 58
+	bbox.position.y 73
+	bbox.size.x 45
+	bbox.size.y 90
+	frame	data/chars/terry/25_0.png
+
+
+
+anim rise # Rise
+
+		delay	12
+		offset	76 155
+		bbox 	0
+	frame	data/chars/terry/rise_0.png
+	frame	data/chars/terry/rise_1.png
+	frame	data/chars/terry/rise_2.png
+	frame	data/chars/terry/jump_land_2.png
+
+anim pain # Normal pain
+
+	delay	11
+	offset	76 155
+		
+	bbox.position.x 45
+	bbox.position.y 62
+	bbox.size.x 43
+	bbox.size.y 105
+	
+	frame	data/chars/terry/R_PAIN_1.png
+	
+	offset	67 158
+	
+	bbox.position.x 25
+	bbox.position.y 62
+	bbox.size.x 63
+	bbox.size.y 105
+	
+	frame	data/chars/terry/R_PAIN_2.png
+	
+	offset	76 155
+	
+	bbox.position.x 45
+	bbox.position.y 62
+	bbox.size.x 43
+	bbox.size.y 105
+	
+	frame	data/chars/terry/R_PAIN_1.png
+	
+	bbox.position.x 50
+	bbox.position.y 62
+	bbox.size.x 38
+	bbox.size.y 105
+	
+	frame	data/chars/terry/R_PAIN_0.png
+
+anim pain2	# Middle pain.
+
+	delay	11
+	offset	76 155
+		
+	bbox.position.x 44
+	bbox.position.y 78
+	bbox.size.x 35
+	bbox.size.y 79
+	
+	frame	data/chars/terry/R_PAIN_MID_1.png
+	
+	offset	67 158
+	
+	bbox.position.x 37
+	bbox.position.y 90
+	bbox.size.x 45
+	bbox.size.y 68
+	
+	frame	data/chars/terry/R_PAIN_MID_2.png
+	
+	offset	76 155
+	
+	bbox.position.x 44
+	bbox.position.y 78
+	bbox.size.x 35
+	bbox.size.y 79
+	
+	frame	data/chars/terry/R_PAIN_MID_1.png
+	
+	bbox.position.x 50
+	bbox.position.y 66
+	bbox.size.x 38
+	bbox.size.y 97
+	
+	frame	data/chars/terry/R_PAIN_MID_0.png
+
+anim fall # Normal Fall
+
+	dropframe 1
+	landframe 2
+	
+	delay	-1000
+	
+	offset	89 178
+	
+	bbox.position.x 64
+	bbox.position.y 97
+	bbox.size.x 52
+	bbox.size.y 66
+	
+	attack.block.penetrate 0
+	attack.damage.force 10
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 64
+	attack.position.y 97
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 52
+	attack.size.y 66
+	
+	frame	data/chars/terry/R_TILT_UP_0.png
+	
+	offset	84 142
+	
+	bbox.position.x 48
+	bbox.position.y 87
+	bbox.size.x 86
+	bbox.size.y 31
+	
+	attack.block.penetrate 0
+	attack.damage.force 10
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 48
+	attack.position.y 87
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 86
+	attack.size.y 31
+	
+	frame	data/chars/terry/R_HORIZONTAL_UP_PAIN_0.png
+	
+	delay 15
+	
+	offset	74 142
+	
+	bbox.position.x 42
+	bbox.position.y 110
+	bbox.size.x 86
+	bbox.size.y 31
+	
+	attack.block.penetrate 0
+	attack.damage.force 10
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 42
+	attack.position.y 110
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 86
+	attack.size.y 31
+	
+	frame	data/chars/terry/R_FALLING_UP_0.png
+	
+	
+	
+	
+		delay	20
+		
+	bbox.position.x 63
+	bbox.position.y 141
+	bbox.size.x 88
+	bbox.size.y 36
+	
+	
+		delay	20		
+		offset	91 169
+		
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	bbox.position.x 63
+	bbox.position.y 141
+	bbox.size.x 88
+	bbox.size.y 36
+	
+	frame	data/chars/terry/R_LAYING_UP_PAIN_0.png
+	
+	offset	76 155
+	
+	bbox.position.x 38
+	bbox.position.y 134
+	bbox.size.x 90
+	bbox.size.y 31
+	
+	frame	data/chars/terry/R_LAYING_UP_0
+
+#*****Footer********************************************************************************
+
+#Always make sure to include a single blank line at bottom of file.
+
+anim jumpattack # Heavy air punch
+
+	delay	8
+	offset	76 155
+	
+	bbox.position.x 66
+	bbox.position.y 57
+	bbox.size.x 35
+	bbox.size.y 60
+	
+	frame data/chars/terry/45_0.png
+
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+
+	frame data/chars/terry/45_1.png
+	
+	delay  5
+	
+	bbox.position.x 71
+	bbox.position.y 51
+	bbox.size.x 35
+	bbox.size.y 60
+	
+	attack.damage.force 25
+	attack.position.x 94
+	attack.position.y 69
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 51
+	attack.size.y 46
+	
+	frame data/chars/terry/45_2.png
+	
+	delay 10
+	
+	attack.damage.force 15
+	
+	frame data/chars/terry/45_2.png
+	
+	bbox.position.x 66
+	bbox.position.y 57
+	bbox.size.x 35
+	bbox.size.y 60
+	
+	attack.damage.force 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame data/chars/terry/45_1.png
+	
+	delay 8
+	
+	bbox.position.x 69
+	bbox.position.y 49
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame data/chars/terry/jump_3.png
+	
+	bbox.position.x 69
+	bbox.position.y 52
+	bbox.size.x 32
+	bbox.size.y 100
+	
+	frame data/chars/terry/jump_4.png
+
+anim runjumpattack
+	
+	delay	6
+	offset	76 155
+	
+	bbox.position.x 66
+	bbox.position.y 45
+	bbox.size.x 29
+	bbox.size.y 72
+	
+	frame data/chars/terry/43_0.png
+
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+
+	frame data/chars/terry/43_1.png
+	
+	delay  45
+	
+	bbox.position.x 55
+	bbox.position.y 46
+	bbox.size.x 53
+	bbox.size.y 60
+	
+	attack.damage.force 15
+	attack.position.x 77
+	attack.position.y 88
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 60
+	attack.size.y 53
+	attack.effect.hit.flash.model flash_fatal_fury
+	
+	frame data/chars/terry/49_0.png
+
+	delay 10	
+	
+	bbox.position.x 66
+	bbox.position.y 45
+	bbox.size.x 29
+	bbox.size.y 72
+	
+	attack.damage.force 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame data/chars/terry/43_0.png
+	
+	delay 8
+	
+	bbox.position.x 69
+	bbox.position.y 49
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame data/chars/terry/jump_3.png
+	
+	bbox.position.x 69
+	bbox.position.y 52
+	bbox.size.x 32
+	bbox.size.y 100
+	
+	frame data/chars/terry/jump_4.png
+	
+anim jumpforward
+	
+	delay	6
+	offset	76 155
+	
+	bbox.position.x 66
+	bbox.position.y 45
+	bbox.size.x 29
+	bbox.size.y 72
+	
+	frame data/chars/terry/19_4.png
+
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+
+	frame data/chars/terry/44_0.png
+	
+	delay  8
+	
+	bbox.position.x 55
+	bbox.position.y 46
+	bbox.size.x 53
+	bbox.size.y 60
+	
+	attack.damage.force 15
+	attack.position.x 58
+	attack.position.y 90
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 10
+	attack.size.x 92
+	attack.size.y 25
+	attack.effect.hit.flash.model flash_fatal_fury
+
+	frame data/chars/terry/44_1.png
+	
+	delay 14
+	
+	attack.damage.force 10
+	
+	frame data/chars/terry/44_1.png
+	
+	delay 8
+	
+	bbox.position.x 66
+	bbox.position.y 45
+	bbox.size.x 29
+	bbox.size.y 72
+	
+	attack.damage.force 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame data/chars/terry/44_0.png
+	
+	delay 8
+	
+	bbox.position.x 69
+	bbox.position.y 49
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame data/chars/terry/jump_3.png
+	
+	bbox.position.x 69
+	bbox.position.y 52
+	bbox.size.x 32
+	bbox.size.y 100
+	
+	frame data/chars/terry/jump_4.png
+
+anim jumpattack2
+	
+	delay	8
+	offset	76 155
+	
+	bbox.position.x 66
+	bbox.position.y 57
+	bbox.size.x 35
+	bbox.size.y 60
+	
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+
+	frame data/chars/terry/42_0.png
+	
+	delay  10
+	
+	bbox.position.x 71
+	bbox.position.y 51
+	bbox.size.x 35
+	bbox.size.y 60
+	
+	attack.damage.force 15
+	attack.position.x 99
+	attack.position.y 66
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 15
+	attack.size.x 29
+	attack.size.y 41
+	
+	frame data/chars/terry/42_1.png
+	
+	delay 140
+	
+	attack.damage.force 6
+	
+	frame data/chars/terry/42_1.png
+	
+	delay 10	
+	
+	bbox.position.x 66
+	bbox.position.y 57
+	bbox.size.x 35
+	bbox.size.y 60
+	
+	attack.damage.force 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	frame data/chars/terry/42_0.png
+	
+	delay 8
+	
+	bbox.position.x 69
+	bbox.position.y 49
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame data/chars/terry/jump_3.png
+	
+	bbox.position.x 69
+	bbox.position.y 52
+	bbox.size.x 32
+	bbox.size.y 100
+	
+	frame data/chars/terry/jump_4.png
+
+anim freespecial # Backward dash
+	
+	jumpframe 1 1.5 -2 0 hop_liftoff
+	dropframe 2
+	landframe 3 jump_land
+	
+	offset	76 155
+	delay	8
+			
+	bbox.position.x 0
+	bbox.position.y 0
+	bbox.size.x 0
+	bbox.size.y 0
+	
+	frame data/chars/terry/jump_land_2.png
+	
+	delay -1000
+	
+	frame data/chars/terry/dash_back_0.png
+	
+	bbox.position.x 52
+	bbox.position.y 59
+	bbox.size.x 34
+	bbox.size.y 73
+	
+	frame data/chars/terry/dash_back_1.png
+	
+	delay 8
+	
+	bbox.position.x 61
+	bbox.position.y 75
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	frame data/chars/terry/jump_land_2.png
+	
+anim freespecial10 # Power Wave
+
+	energycost	5 
+	mponly		1
+	
+
+	range 	205 600		
+
+	delay	6
+	offset	76 155
+	
+	bbox.position.x 56
+	bbox.position.y 68
+	bbox.size.x 35
+	bbox.size.y 89
+	
+	@cmd dc_fidelity_quick_play "power_wave"
+
+	frame	data/chars/terry/28_0.png
+
+	bbox.position.x 62
+	bbox.position.y 66
+	bbox.size.x 34
+	bbox.size.y 94
+
+	# Spawn sub entity and set it as entity for binding.
+	@cmd dc_elmers_set_entity dc_gauntlet_quick_spawn("terry_power_wave_fist")
+
+	@cmd dc_elmers_dump_instance
+	
+	@cmd dc_elmers_set_bind_property "sort_id" 1
+	@cmd dc_elmers_set_animation_match (openborconstant("BIND_ANIMATION_TARGET")+openborconstant("BIND_ANIMATION_REMOVE")+openborconstant("BIND_ANIMATION_FRAME_TARGET"))
+	
+	@cmd dc_elmers_quick_bind
+	
+	frame	data/chars/terry/50_0.png		
+		
+	bbox.position.x 56
+	bbox.position.y 64
+	bbox.size.x 34
+	bbox.size.y 93
+
+	delay 4
+
+	# Extra frame controls fist glow bind.
+	frame	data/chars/terry/50_1.png
+	frame	data/chars/terry/50_1.png
+		
+	delay 6
+
+	bbox.position.x 61
+	bbox.position.y 75
+	bbox.size.x 35
+	bbox.size.y 82
+	
+	frame	data/chars/terry/50_2.png
+		
+	bbox.position.x 66
+	bbox.position.y 77
+	bbox.size.x 38
+	bbox.size.y 81
+	
+	frame	data/chars/terry/50_3.png
+		
+	bbox.position.x 66
+	bbox.position.y 94
+	bbox.size.x 47
+	bbox.size.y 64
+	
+	frame	data/chars/terry/50_4.png
+	
+	delay 8
+	
+	bbox.position.x 65
+	bbox.position.y 95
+	bbox.size.x 57
+	bbox.size.y 65
+	
+	@cmd dc_gauntlet_set_model_name "terry_power_wave"
+	@cmd dc_gauntlet_set_offset_x 45
+	@cmd dc_gauntlet_set_offset_y 0
+	@cmd dc_gauntlet_dump_instance
+	@cmd dc_guantlet_spawn_projectile
+	@cmd set_entity_property dc_gauntlet_get_spawn() "position_base" get_entity_property(getlocalvar("self"),"position_base")
+	
+	frame	data/chars/terry/50_5.png
+	
+	delay 30
+
+	# At this point we don't want fist effect bound
+	# any more, so remove the bind target and set autokill so
+	# the effect will terminate when it finishes up.
+
+	@cmd dc_elmers_set_target NULL()	
+	
+	frame	data/chars/terry/50_6.png
+	
+	delay 12
+	
+	frame	data/chars/terry/50_7.png
+	
+	bbox.position.x 61
+	bbox.position.y 75
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	frame data/chars/terry/jump_land_2.png
+
+ anim freespecial11 # Crack Shoot
+	
+	energycost 5
+	jumpframe 2 2 4 0 hop_liftoff
+	landframe 9 jump_land
+	
+	offset	76 155
+	delay	8
+			
+	bbox.position.x 57
+	bbox.position.y 72
+	bbox.size.x 33
+	bbox.size.y 85
+	
+	frame data/chars/terry/33_0.png
+	
+	delay 8
+	
+	bbox.position.x 66
+	bbox.position.y 62
+	bbox.size.x 40
+	bbox.size.y 95
+	
+	frame data/chars/terry/33_1.png	
+	
+	bbox.position.x 47
+	bbox.position.y 54
+	bbox.size.x 38
+	bbox.size.y 68
+
+	# Spawn the blur overlay.
+	@cmd dc_elmers_quick_overlay dc_gauntlet_quick_spawn("terry_crack_shoot")
+	
+	frame data/chars/terry/51_0.png	
+		
+	bbox.position.x 54
+	bbox.position.y 47
+	bbox.size.x 40
+	bbox.size.y 53
+	
+	attack.damage.force 12
+	attack.position.x 40
+	attack.position.y 18
+	attack.reaction.pause.time 15
+	attack.size.x 55
+	attack.size.y 83
+	attack.effect.hit.flash.model flash_fatal_fury
+	
+	frame data/chars/terry/51_1.png
+	
+	delay 1
+	
+	attack 0
+	
+	frame data/chars/terry/51_1.png
+	
+	delay 8
+	
+	bbox.position.x 57
+	bbox.position.y 44
+	bbox.size.x 31
+	bbox.size.y 63
+	
+	attack.damage.force 12
+	attack.position.x 73
+	attack.position.y 31
+	attack.reaction.pause.time 15
+	attack.size.x 51
+	attack.size.y 72
+	attack.effect.hit.flash.model flash_fatal_fury
+
+	frame data/chars/terry/51_2.png
+	
+	delay 1
+	
+	attack 0
+	
+	frame data/chars/terry/51_2.png
+	
+	delay 10
+	
+	bbox.position.x 51
+	bbox.position.y 56
+	bbox.size.x 45
+	bbox.size.y 57
+	
+	hitflash flash_fatal_fury
+
+	attack.damage.force 12
+	attack.position.x 50
+	attack.position.y 63
+	attack.reaction.pause.time 15
+	attack.size.x 88
+	attack.size.y 39
+	attack.effect.hit.flash.model flash_fatal_fury
+
+	
+
+	frame data/chars/terry/51_3.png
+	
+	delay -1000
+	
+	attack 0
+	
+	bbox.position.x 69
+	bbox.position.y 69
+	bbox.size.x 36
+	bbox.size.y 74
+	
+	frame data/chars/terry/52_4.png	
+	
+	delay 8
+	
+	bbox.position.x 61
+	bbox.position.y 75
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	frame data/chars/terry/jump_land_0.png
+	
+	bbox.position.x 64
+	bbox.position.y 87
+	bbox.size.x 40
+	bbox.size.y 71
+	
+	frame data/chars/terry/jump_land_1.png
+	
+	bbox.position.x 61
+	bbox.position.y 75
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	frame data/chars/terry/jump_land_2.png

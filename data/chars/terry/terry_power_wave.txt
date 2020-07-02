@@ -1,0 +1,81 @@
+name         terry_power_wave
+type	     none
+health	     1
+alpha	     1
+speedf		 2.0
+remove		 0
+
+#animationscript data/scripts/dc_disney/main.c
+script data/chars/terry/power_wave/onmovex.c
+
+palette	data/chars/terry/power_wave/1_0.png
+
+anim spawn
+
+	delay	3
+	offset	101 87
+
+	followanim 1
+	followcond 1
+
+	attack.ground.mode 1
+	attack.damage.force 15
+	attack.position.x 85
+	attack.position.y 60
+	attack.size.x 45	
+	attack.size.y 45
+	attack.staydown.rise.time -200
+	attack.ground.mode 1
+
+	frame	data/chars/terry/power_wave/0_0.png	
+	frame	data/chars/terry/power_wave/0_1.png
+
+anim idle
+
+	loop	1
+	delay	4
+	offset	101 87
+
+	followanim 1
+	followcond 1
+
+	attack.damage.force 12
+	attack.position.x 76
+	attack.position.y 44
+	attack.size.x 43
+	attack.size.y 52
+	attack.staydown.rise.time -200
+	attack.ground.mode 1
+	   	
+	frame	data/chars/terry/power_wave/1_0.png	
+	frame	data/chars/terry/power_wave/1_1.png
+	frame	data/chars/terry/power_wave/1_2.png
+	frame	data/chars/terry/power_wave/1_3.png
+	frame	data/chars/terry/power_wave/1_4.png
+
+anim follow1
+
+	delay	2
+	offset	107 86
+
+	followanim 1
+	followcond 1
+
+	@cmd set_entity_property getlocalvar("self") "autokill" 1
+	@cmd changeentityproperty getlocalvar("self") "aimove" openborconstant("AIMOVE1_NOMOVE")
+	@cmd set_entity_property getlocalvar("self") "velocity_x" 0
+	frame	data/chars/terry/power_wave/2_0.png	
+	frame	data/chars/terry/power_wave/2_1.png
+	frame	data/chars/terry/power_wave/2_2.png
+	frame	data/chars/terry/power_wave/2_3.png
+	frame	data/chars/terry/power_wave/2_4.png
+	frame	data/chars/terry/power_wave/2_5.png	
+	frame	data/chars/terry/power_wave/2_6.png
+	frame	data/chars/terry/power_wave/2_7.png
+	frame	data/chars/terry/power_wave/2_8.png
+	frame	data/chars/terry/power_wave/2_9.png
+	frame	data/chars/terry/power_wave/2_10.png	
+	frame	data/chars/terry/power_wave/2_11.png
+	frame	data/chars/terry/power_wave/2_12.png
+	frame	data/chars/terry/power_wave/2_13.png
+	frame	data/chars/terry/power_wave/2_14.png

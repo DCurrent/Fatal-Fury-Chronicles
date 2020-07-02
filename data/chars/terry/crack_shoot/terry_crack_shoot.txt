@@ -1,0 +1,31 @@
+name         terry_crack_shoot
+type	     none
+health	     100
+alpha	     1
+speedf		 0.0
+nomove		1
+antigravity	100
+
+palette	data/chars/terry/default_0.ACT
+
+anim idle
+
+	delay	4
+	offset	55 125
+
+	frame	data/chars/misc/blank.png
+
+anim freespecial11 # Crack shoot
+
+	delay	1000
+	offset	76 155
+
+	frame	data/chars/misc/blank.png
+	frame	data/chars/misc/blank.png
+	frame	data/chars/terry/crack_shoot/51_0.png
+	frame	data/chars/terry/crack_shoot/51_1.png
+	frame	data/chars/terry/crack_shoot/51_1.png
+	frame	data/chars/terry/crack_shoot/51_2.png
+	frame	data/chars/terry/crack_shoot/51_2.png
+	frame	data/chars/terry/crack_shoot/51_3.png
+	
