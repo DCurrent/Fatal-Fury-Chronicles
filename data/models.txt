@@ -11,8 +11,8 @@ noaircancel     2
 
 # Flash/Hit sparks.
 load	Flash				data/chars/misc/flash/flash.txt
-load	flash_fatal_fury	data/chars/misc/flash/flash_fatal_fury.txt
-load	flash_indirect		data/chars/misc/flash/flash_indirect.txt
+load	flash_fatal_fury	data/chars/misc/flash_fatal_fury/flash_fatal_fury.txt
+load	flash_indirect		data/chars/misc/flash_indirect/flash_indirect.txt
 load    flash_blood_cut		data/chars/misc/blood_cut/flash_blood_cut.txt
 load	flash_cvs_cut_heavy data/chars/misc/cvs_cut_flash_heavy/cvs_cut_flash_heavy.txt	
 load	flash_cvs_cut_blunt data/chars/misc/cvs_cut_flash_blunt/cvs_cut_flash_blunt.txt
