@@ -1,0 +1,27 @@
+# Hit flash (thrown into an ally)
+
+name		flash_indirect
+type		none
+shadow		0
+antigravity	100
+lifespan    	2
+
+onspawnscript 	data/chars/misc/flash/flash/scripts/event_spawn.c
+onkillscript  	data/scripts/common/event_kill.c
+
+anim idle	
+	
+	delay	2
+	offset	130 215
+		frame	data/chars/misc/flash/flash/0_0.png
+		frame	data/chars/misc/flash/flash/0_1.png
+		frame	data/chars/misc/flash/flash/0_2.png
+		frame	data/chars/misc/flash/flash/0_3.png
+		frame	data/chars/misc/flash/flash/0_4.png
+		frame	data/chars/misc/flash/flash/0_5.png
+		frame	data/chars/misc/flash/flash/0_6.png
+		frame	data/chars/misc/flash/flash/0_7.png
+		frame	data/chars/misc/flash/flash/0_8.png
+		frame	data/chars/misc/flash/flash/0_9.png
+		frame	data/chars/misc/flash/flash/0_10.png
+		frame	data/chars/misc/flash/flash/0_11.png
