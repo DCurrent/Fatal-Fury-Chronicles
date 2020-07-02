@@ -1,0 +1,62 @@
+# Hit flash
+
+name		flash_blood_cut
+type		none
+shadow		0
+antigravity	100
+lifespan    	5
+alpha		4
+
+#onspawnscript 	data/chars/misc/blood_cut/scripts/event_spawn.c
+onkillscript  	data/scripts/common/event_kill.c
+
+anim idle	
+	
+	delay	1
+	offset	110 115
+		frame	data/chars/misc/blood_cut/idle_0.png
+		frame	data/chars/misc/blood_cut/idle_1.png
+		frame	data/chars/misc/blood_cut/idle_2.png
+		frame	data/chars/misc/blood_cut/idle_3.png
+		frame	data/chars/misc/blood_cut/idle_4.png
+		frame	data/chars/misc/blood_cut/idle_5.png
+		frame	data/chars/misc/blood_cut/idle_6.png
+		frame	data/chars/misc/blood_cut/idle_7.png
+		frame	data/chars/misc/blood_cut/idle_8.png
+		frame	data/chars/misc/blood_cut/idle_9.png
+		frame	data/chars/misc/blood_cut/idle_10.png
+		frame	data/chars/misc/blood_cut/idle_11.png
+		frame	data/chars/misc/blood_cut/idle_12.png
+		frame	data/chars/misc/blood_cut/idle_13.png
+		frame	data/chars/misc/blood_cut/idle_14.png
+		frame	data/chars/misc/blood_cut/idle_15.png
+		frame	data/chars/misc/blood_cut/idle_16.png
+		frame	data/chars/misc/blood_cut/idle_17.png
+		frame	data/chars/misc/blood_cut/idle_18.png
+		frame	data/chars/misc/blood_cut/idle_19.png
+		frame	data/chars/misc/blood_cut/idle_20.png
+		frame	data/chars/misc/blood_cut/idle_21.png
+		frame	data/chars/misc/blood_cut/idle_22.png
+		frame	data/chars/misc/blood_cut/idle_23.png
+		frame	data/chars/misc/blood_cut/idle_24.png
+		frame	data/chars/misc/blood_cut/idle_25.png
+		frame	data/chars/misc/blood_cut/idle_26.png
+		frame	data/chars/misc/blood_cut/idle_27.png
+		frame	data/chars/misc/blood_cut/idle_28.png
+		frame	data/chars/misc/blood_cut/idle_29.png
+		frame	data/chars/misc/blood_cut/idle_30.png
+		frame	data/chars/misc/blood_cut/idle_31.png
+		frame	data/chars/misc/blood_cut/idle_32.png
+		frame	data/chars/misc/blood_cut/idle_33.png
+		frame	data/chars/misc/blood_cut/idle_34.png
+		frame	data/chars/misc/blood_cut/idle_35.png
+		frame	data/chars/misc/blood_cut/idle_36.png
+		frame	data/chars/misc/blood_cut/idle_37.png
+		frame	data/chars/misc/blood_cut/idle_38.png
+		frame	data/chars/misc/blood_cut/idle_39.png
+		frame	data/chars/misc/blood_cut/idle_40.png
+		frame	data/chars/misc/blood_cut/idle_41.png
+		frame	data/chars/misc/blood_cut/idle_42.png
+		frame	data/chars/misc/blood_cut/idle_43.png
+		frame	data/chars/misc/blood_cut/idle_44.png
+		frame	data/chars/misc/blood_cut/idle_45.png
