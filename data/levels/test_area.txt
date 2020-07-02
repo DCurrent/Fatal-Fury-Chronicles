@@ -1,0 +1,16 @@
+music		data/music/Sound_B.bor
+
+BACKGROUND	data/chars/misc/blank.png
+panel		data/chars/misc/blank.png none none
+
+order		a
+
+bgspeed 1 0 
+
+
+#---------------------
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
