@@ -1,0 +1,26 @@
+#Light slam.
+
+name	flash_slam_light
+type	none
+lifespan 2
+shadow	0
+
+onspawnscript 	data/scripts/common/event_spawn_dust.c
+onkillscript	data/scripts/common/event_kill.c
+
+palette		data/chars/misc/dust/0_0.png
+
+anim idle
+
+	#Normal dust.
+
+	delay	8
+	offset	75 40
+		frame	data/chars/misc/dust/0_0.png
+		frame	data/chars/misc/dust/0_1.png
+		frame	data/chars/misc/dust/0_2.png
+		frame	data/chars/misc/dust/0_3.png
+		frame	data/chars/misc/dust/0_4.png
+		frame	data/chars/misc/dust/0_5.png
+		frame	data/chars/misc/dust/0_6.png
+
