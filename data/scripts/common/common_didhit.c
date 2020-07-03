@@ -46,6 +46,8 @@ void dc_common_didhit()
 
 				type = getentityproperty(ent, "type");
 
+				log(type);
+
 				if (type == openborconstant("TYPE_PLAYER"))
 				{
 					dc_fidelity_set_sound_chance(0.5);
