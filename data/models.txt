@@ -1,7 +1,7 @@
 colourselect 	1
 ajspecial 		0
 spdirection 	1 1 1 1
-maxfollows		11
+maxfollows		90
 maxidles		4
 maxwalks		4
 maxattacks      10
@@ -29,10 +29,10 @@ load    flash_slam_heavy	data/chars/misc/dust/flash_slam_heavy.txt
 
 load	mai_shiranui			data/chars/mai/mai.txt
 
-#know	terry_crack_shoot		data/chars/terry/crack_shoot/terry_crack_shoot.txt
-#know	terry_power_wave		data/chars/terry/terry_power_wave.txt
-#know	terry_power_wave_fist	data/chars/terry/terry_power_wave_fist.txt
-#load    Terry					data/chars/terry/terry.txt
+know	terry_crack_shoot		data/chars/terry/crack_shoot/terry_crack_shoot.txt
+know	terry_power_wave		data/chars/terry/terry_power_wave.txt
+know	terry_power_wave_fist	data/chars/terry/terry_power_wave_fist.txt
+load    Terry					data/chars/terry/terry.txt
 
 load	Ray_McDougal data/chars/ray/ray_mcdougal.txt
 know	Ray		data/chars/ray/ray.txt

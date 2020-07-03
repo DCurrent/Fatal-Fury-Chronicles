@@ -48,7 +48,7 @@ didblockscript  	data/scripts/common/event_block.c
 takedamagescript	data/scripts/common/event_damage.c
 didhitscript		data/scripts/common/event_hit.c
 onmovezscript		data/scripts/common/event_move_z.c
-#onspawnscript		data/scripts/common/event_move_z.c
+onspawnscript		data/scripts/common/event_move_z.c
 onmoveascript		data/chars/terry/scripts/onmoveascript.c
 
 #*****MP Specific*****
@@ -1379,7 +1379,7 @@ anim follow82 # Down Ataack
 	
 	frame	data/chars/terry/atk_round_kick_0.png
 
-anim follow51 # Defense poses
+anim follow20 # Defense poses
 
 		loop	1
 		
