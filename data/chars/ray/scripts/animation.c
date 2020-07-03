@@ -5,7 +5,6 @@ Ray McDougal (AI)
 
 */
 
-#include "data/scripts/dc_grapple/main.c" 
 #include "data/scripts/dc_fidelity/main.c" 
 
 // Very simple alternate attack. If first performing an attack
