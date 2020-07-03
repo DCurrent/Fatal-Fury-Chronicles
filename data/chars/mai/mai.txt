@@ -1,0 +1,990 @@
+
+icon		data/chars/ray/icon_default.png	1
+icondie		data/chars/ray/icon_ko.png		1
+iconpain	data/chars/ray/icon_pain.png	1
+
+#*****General*****
+
+name	     	Mai_Shiranui
+type	     	player
+bounce	     	2
+health	     	200
+speed	     	10
+holdblock    	2
+nopassiveblock  1
+nodieblink   	2
+falldie      	2
+risetime     	150
+running      	30 4.2 2 1 1
+makeinv      	3
+projectilehit 	player
+candamage     	enemy obstacle
+hostile			enemy
+gfxshadow    	1
+blockpain    	1
+sleepwait       1000
+combostyle		1
+atchain      	1 2 3 4 0 5 6 7
+height 			95
+dust			fall_land jump_land jump_liftoff
+mpset 			100 3 50 1 2 2
+jumpheight		4
+bflash			Block
+
+#*****Scripts*****
+#*****Sub Entites*****
+#*****Alternates*******
+
+palette	       data/chars/mai/pal_default.act
+
+#*****Commands*****************************************************************************
+
+animationscript data/chars/mai/scripts/animation.c
+
+#****Animations****************************************************************************
+
+#anim spawn	
+
+#anim respawn
+
+anim selectin
+
+	delay	1
+	fshadow 0
+	offset	100 122
+		frame	data/chars/mai/select_0.png
+	offset	100 132
+		frame	data/chars/mai/select_0.png
+	offset	100 142
+		frame	data/chars/mai/select_0.png
+	offset	100 152
+		frame	data/chars/mai/select_0.png
+	offset	100 162
+		frame	data/chars/mai/select_0.png
+	offset	100 172
+		frame	data/chars/mai/select_0.png
+	offset	100 182
+		frame	data/chars/mai/select_0.png
+	offset	100 192
+		frame	data/chars/mai/select_0.png
+	offset	100 202
+		frame	data/chars/mai/select_0.png
+	offset	100 212
+		frame	data/chars/mai/select_0.png
+	offset	100 222
+		frame	data/chars/mai/select_0.png
+	offset	100 232
+		frame	data/chars/mai/select_0.png
+	offset	100 242
+		frame	data/chars/mai/select_0.png
+	offset	100 252
+		frame	data/chars/mai/select_0.png
+	offset	100 262
+		frame	data/chars/mai/select_0.png
+
+anim selectout
+
+	delay	1
+	offset	100 262
+	fshadow 0
+		frame	data/chars/mai/select_0.png
+	offset	100 252
+		frame	data/chars/mai/select_0.png
+	offset	100 242
+		frame	data/chars/mai/select_0.png
+	offset	100 232
+		frame	data/chars/mai/select_0.png
+	offset	100 222
+		frame	data/chars/mai/select_0.png
+	offset	100 212
+		frame	data/chars/mai/select_0.png
+	offset	100 202
+		frame	data/chars/mai/select_0.png
+	offset	100 192
+		frame	data/chars/mai/select_0.png
+	offset	100 182
+		frame	data/chars/mai/select_0.png
+	offset	100 172
+		frame	data/chars/mai/select_0.png
+	offset	100 162
+		frame	data/chars/mai/select_0.png
+	offset	100 152
+		frame	data/chars/mai/select_0.png
+	offset	100 142
+		frame	data/chars/mai/select_0.png
+	offset	100 132
+		frame	data/chars/mai/select_0.png
+	offset	100 122
+		frame	data/chars/mai/select_0.png
+
+anim waiting
+
+	fshadow 0
+	delay	1	
+	offset	100 272
+		frame	data/chars/mai/select_0.png
+
+anim select
+
+		delay	8
+		fshadow 0
+		offset	100 272
+	frame	data/chars/mai/select_0.png
+
+
+
+anim idle
+
+
+	loop 	1	
+	delay	11
+	offset	140 207
+
+	bbox.position.x 120
+	bbox.position.y 127
+	bbox.size.x 41
+	bbox.size.y 82
+	
+
+	frame	data/chars/mai/idle_0.png
+	frame	data/chars/mai/idle_1.png
+	frame	data/chars/mai/idle_2.png
+	frame	data/chars/mai/idle_3.png
+	frame	data/chars/mai/idle_4.png
+	frame	data/chars/mai/idle_5.png
+	frame	data/chars/mai/idle_6.png
+	frame	data/chars/mai/idle_7.png
+
+anim walk
+
+	loop	1
+
+	delay	10
+	offset	140 207
+	bbox.position.x 120
+	bbox.position.y 118
+	bbox.size.x 40
+	bbox.size.y 90
+	
+	frame	data/chars/mai/walk_0.png
+	frame	data/chars/mai/walk_1.png
+	frame	data/chars/mai/walk_2.png
+	frame	data/chars/mai/walk_3.png
+	frame	data/chars/mai/walk_4.png
+	frame	data/chars/mai/walk_5.png
+	frame	data/chars/mai/walk_6.png
+
+
+anim jumpdelay
+
+	delay	8
+	offset	140 207
+
+	bbox.position.x 126
+	bbox.position.y 133
+	bbox.size.x 40
+	bbox.size.y 75
+	
+	frame data/chars/mai/duck_start_0.png
+	
+anim jumpland
+
+	delay	4
+	offset	140 207
+	
+	bbox.position.x 126
+	bbox.position.y 133
+	bbox.size.x 40
+	bbox.size.y 75
+
+	frame data/chars/mai/duck_start_0.png
+		
+	
+	bbox.position.x 129
+	bbox.position.y 155
+	bbox.size.x 36
+	bbox.size.y 56
+	
+	frame data/chars/mai/duck_0.png
+	
+	bbox.position.x 126
+	bbox.position.y 133
+	bbox.size.x 40
+	bbox.size.y 75
+	
+	frame data/chars/mai/duck_start_0.png
+	
+anim jump
+
+	dropframe 3
+
+	delay	12
+	offset	140 207
+
+	bbox.position.x 132
+	bbox.position.y 121
+	bbox.size.x 25
+	bbox.size.y 94
+	
+	frame data/chars/mai/jump_0.png
+	
+	bbox.position.x 137
+	bbox.position.y 121
+	bbox.size.x 22
+	bbox.size.y 86
+	
+	frame data/chars/mai/jump_1.png
+	
+	delay -1000
+	
+	frame data/chars/mai/jump_2.png
+	
+	delay 8
+	
+	frame data/chars/mai/jump_3.png
+	frame data/chars/mai/jump_4.png
+	
+	bbox.position.x 132
+	bbox.position.y 121
+	bbox.size.x 25
+	bbox.size.y 94
+	
+	frame data/chars/mai/jump_5.png
+	frame data/chars/mai/jump_6.png
+	
+anim forwardjump
+
+	delay	7
+	offset	140 207
+
+	bbox.position.x 126
+	bbox.position.y 143
+	bbox.size.x 47
+	bbox.size.y 64
+	
+	frame data/chars/mai/jump_forward_0.png	
+	
+	bbox.position.x 108
+	bbox.position.y 148
+	bbox.size.x 63
+	bbox.size.y 44
+	
+	frame data/chars/mai/jump_forward_1.png	
+	frame data/chars/mai/jump_forward_2.png
+	
+	bbox.position.x 105
+	bbox.position.y 130
+	bbox.size.x 59
+	bbox.size.y 69
+	
+	frame data/chars/mai/jump_forward_3.png
+	
+	bbox.position.x 115
+	bbox.position.y 106
+	bbox.size.x 39
+	bbox.size.y 96
+	
+	frame data/chars/mai/jump_forward_4.png
+	
+	bbox.position.x 131
+	bbox.position.y 103
+	bbox.size.x 39
+	bbox.size.y 99
+	
+	frame data/chars/mai/jump_forward_5.png
+	
+	bbox.position.x 125
+	bbox.position.y 120
+	bbox.size.x 64
+	bbox.size.y 78
+	
+	frame data/chars/mai/jump_forward_6.png
+	
+	bbox.position.x 115
+	bbox.position.y 150
+	bbox.size.x 65
+	bbox.size.y 43
+	
+	frame data/chars/mai/jump_forward_7.png
+	
+	bbox.position.x 111
+	bbox.position.y 150
+	bbox.size.x 54
+	bbox.size.y 51
+	
+	frame data/chars/mai/jump_forward_8.png
+	
+	bbox.position.x 106
+	bbox.position.y 128
+	bbox.size.x 48
+	bbox.size.y 83
+	
+	frame data/chars/mai/jump_forward_9.png
+	
+	bbox.position.x 120
+	bbox.position.y 117
+	bbox.size.x 31
+	bbox.size.y 97
+	
+	frame data/chars/mai/jump_forward_10.png
+	frame data/chars/mai/jump_forward_11.png
+	frame data/chars/mai/jump_forward_12.png
+
+anim attack1 # Downward Swipe
+	
+	followcond 4
+	followanim 1
+	
+	delay 4	
+	offset	140 207
+	
+	bbox.position.x 120
+	bbox.position.y 127
+	bbox.size.x 41
+	bbox.size.y 82
+	
+	frame	data/chars/mai/atk_down_swipe_0.png
+	
+	bbox.position.x 136
+	bbox.position.y 131
+	bbox.size.x 41
+	bbox.size.y 76
+	
+	# Play voice 50% of the time and clear chance so default is used for 
+	# any subsequent sound play calls.
+	@cmd dc_fidelity_set_sound_chance 0.5
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_LIGHT
+	@cmd dc_fidelity_set_sound_chance NULL()
+		
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_LIGHT
+	
+	frame	data/chars/mai/atk_down_swipe_1.png
+	
+	delay 3	
+	
+	bbox.position.x 139
+	bbox.position.y 141
+	bbox.size.x 51
+	bbox.size.y 66
+	
+	attack.damage.force 6
+	attack.position.x 140
+	attack.position.y 135
+	attack.reaction.pause.time 10
+	attack.size.x 98
+	attack.size.y 60
+	
+	frame	data/chars/mai/atk_down_swipe_2.png
+	frame	data/chars/mai/atk_down_swipe_3.png
+	
+	delay 6
+	
+	attack 0
+	
+	frame	data/chars/mai/atk_down_swipe_4.png	
+	frame	data/chars/mai/atk_down_swipe_5.png
+		
+	bbox.position.x 128
+	bbox.position.y 122
+	bbox.size.x 37
+	bbox.size.y 86
+	
+	frame	data/chars/mai/atk_down_swipe_6.png
+	
+anim follow1 # Down swipe, hit
+
+	delay 11
+	offset	140 207
+
+	attack.damage.force 6
+	attack.position.x 140
+	attack.position.y 135
+	attack.reaction.pause.time 10
+	attack.size.x 98
+	attack.size.y 60
+
+	frame	data/chars/mai/atk_down_swipe_3.png
+	
+	delay 6
+	
+	attack 0
+	
+	frame	data/chars/mai/atk_down_swipe_4.png
+
+	idle 1
+	
+	frame	data/chars/mai/atk_down_swipe_5.png
+		
+	bbox.position.x 128
+	bbox.position.y 122
+	bbox.size.x 37
+	bbox.size.y 86
+	
+	frame	data/chars/mai/atk_down_swipe_6.png
+	
+anim attack2 # Cross Swipe
+
+	range -60 60
+
+	followcond 4
+	followanim 2
+	
+	delay 6	
+	offset	140 207
+	
+	bbox.position.x 120
+	bbox.position.y 127
+	bbox.size.x 41
+	bbox.size.y 82
+	
+	frame	data/chars/mai/atk_down_swipe_6.png	
+	
+	# Play voice 50% of the time and clear chance so default is used for 
+	# any subsequent sound play calls.
+	@cmd dc_fidelity_set_sound_chance 0.5
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_LIGHT
+	@cmd dc_fidelity_set_sound_chance NULL()
+		
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_LIGHT
+	
+		
+	bbox.position.x 139
+	bbox.position.y 140
+	bbox.size.x 51
+	bbox.size.y 66
+	
+	attack.damage.force 6
+	attack.position.x 140
+	attack.position.y 135
+	attack.reaction.pause.time 6
+	attack.size.x 60
+	attack.size.y 9
+	
+	frame	data/chars/mai/atk_cross_swipe_0.png
+	
+	attack 0
+	
+	frame	data/chars/mai/atk_cross_swipe_1.png
+	
+	delay 2
+	
+	frame	data/chars/mai/atk_cross_swipe_2.png	
+	frame	data/chars/mai/atk_cross_swipe_3.png
+	frame	data/chars/mai/atk_cross_swipe_4.png
+	
+	delay 6
+	
+	frame	data/chars/mai/atk_cross_swipe_5.png
+		
+	bbox.position.x 128
+	bbox.position.y 122
+	bbox.size.x 37
+	bbox.size.y 86
+	
+	frame	data/chars/mai/atk_cross_swipe_6.png
+	
+anim follow2 # Cross swipe hit
+
+	delay 6	
+	offset	140 207
+
+	bbox.position.x 139
+	bbox.position.y 140
+	bbox.size.x 51
+	bbox.size.y 66
+
+	attack.damage.force 6
+	attack.position.x 140
+	attack.position.y 135
+	attack.reaction.pause.time 6
+	attack.size.x 60
+	attack.size.y 9
+
+	frame	data/chars/mai/atk_cross_swipe_0.png
+	
+	attack 0
+	
+	frame	data/chars/mai/atk_cross_swipe_1.png
+	
+	delay 2
+	
+	frame	data/chars/mai/atk_cross_swipe_2.png	
+	frame	data/chars/mai/atk_cross_swipe_3.png
+	
+	idle 1
+	
+	frame	data/chars/mai/atk_cross_swipe_4.png
+	
+	delay 6
+	
+	frame	data/chars/mai/atk_cross_swipe_5.png
+		
+	bbox.position.x 128
+	bbox.position.y 122
+	bbox.size.x 37
+	bbox.size.y 86
+	
+	frame	data/chars/mai/atk_cross_swipe_6.png
+
+anim attack3 # Cross Swipe Back
+	
+	range -60 60
+
+	followcond 4
+	followanim 3
+	
+	delay 12	
+	offset	140 207
+	
+	bbox.position.x 130
+	bbox.position.y 122
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	frame	data/chars/mai/atk_cross_swipe_back_0.png	
+	
+	delay 8
+	
+	# Play voice 50% of the time and clear chance so default is used for 
+	# any subsequent sound play calls.
+	@cmd dc_fidelity_set_sound_chance 0.5
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+	@cmd dc_fidelity_set_sound_chance NULL()
+		
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	
+	attack.damage.force 6
+	attack.position.x 140
+	attack.position.y 130
+	attack.reaction.pause.time 8
+	attack.size.x 68
+	attack.size.y 9
+	
+	frame	data/chars/mai/atk_cross_swipe_back_1.png
+	
+	attack 0
+	
+	frame	data/chars/mai/atk_cross_swipe_back_2.png
+	
+	bbox.position.x 130
+	bbox.position.y 122
+	bbox.size.x 29
+	bbox.size.y 86
+	
+	frame	data/chars/mai/atk_cross_swipe_back_3.png
+	frame	data/chars/mai/atk_cross_swipe_back_4.png
+	
+	
+ anim follow3 # Cross Swipe Back, hit
+
+	delay 8
+	offset	140 207
+	
+	bbox.position.x 130
+	bbox.position.y 122
+	bbox.size.x 40
+	bbox.size.y 86
+	
+	attack.damage.force 6
+	attack.position.x 140
+	attack.position.y 130
+	attack.reaction.pause.time 8
+	attack.size.x 68
+	attack.size.y 9
+	
+	frame	data/chars/mai/atk_cross_swipe_back_1.png
+
+	attack 0
+	
+	frame	data/chars/mai/atk_cross_swipe_back_2.png
+	
+	idle 1
+	
+	bbox.position.x 130
+	bbox.position.y 122
+	bbox.size.x 29
+	bbox.size.y 86
+	
+	frame	data/chars/mai/atk_cross_swipe_back_3.png
+	frame	data/chars/mai/atk_cross_swipe_back_4.png
+	
+anim attack4 # Spin kick, high
+	
+	range -50 50
+	
+	delay 8
+	
+	offset	140 207
+	
+	bbox.position.x 143
+	bbox.position.y 125
+	bbox.size.x 30
+	bbox.size.y 87
+	
+	frame	data/chars/mai/atk_spin_kick_0.png
+	
+	bbox.position.x 133
+	bbox.position.y 148
+	bbox.size.x 44
+	bbox.size.y 62
+	
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY		
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
+	
+	frame	data/chars/mai/atk_spin_kick_1.png
+	
+	bbox.position.x 136
+	bbox.position.y 149
+	bbox.size.x 43
+	bbox.size.y 63
+	
+	frame	data/chars/mai/atk_spin_kick_2.png
+	
+	delay 7
+	
+	bbox.position.x 132
+	bbox.position.y 142
+	bbox.size.x 46
+	bbox.size.y 71
+	
+	attack.damage.force 8
+	attack.effect.hit.flash.model flash_fatal_fury
+	attack.position.x 140
+	attack.position.y 90
+	attack.reaction.pause.time 15
+	attack.size.x 70
+	attack.size.y 22
+	
+	frame	data/chars/mai/atk_spin_kick_high_0.png
+	
+	delay 1
+	
+	attack 0
+	
+	frame	data/chars/mai/atk_spin_kick_high_0.png
+	
+	delay 8
+	
+	bbox.position.x 136
+	bbox.position.y 130
+	bbox.size.x 44
+	bbox.size.y 83
+	
+	attack.damage.force 8
+	attack.effect.hit.flash.model flash_fatal_fury
+	attack.position.x 140
+	attack.position.y 127
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 61
+	attack.size.y 29
+	
+	frame data/chars/mai/atk_spin_kick_high_1.png
+	
+	offset	144 207
+	
+	attack.block.penetrate 0
+	attack.damage.force 0
+	attack.damage.type 1
+	attack.effect.hit.flash.disable 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.reaction.fall.force 0
+	attack.reaction.pause.time 0
+	attack.size.x 0
+	attack.size.y 0
+	
+	
+	frame	data/chars/mai/atk_spin_kick_5.png
+	
+	offset	140 207
+	
+	bbox.position.x 133
+	bbox.position.y 123
+	bbox.size.x 28
+	bbox.size.y 91
+	
+	frame	data/chars/mai/atk_spin_kick_6.png
+
+anim attack5 # Round Kick
+	
+	followcond 4
+	followanim 5
+	
+	delay 5
+	
+	offset	140 207
+	
+	bbox.position.x 137
+	bbox.position.y 119
+	bbox.size.x 26
+	bbox.size.y 91
+	
+	frame	data/chars/mai/atk_round_kick_0.png
+	
+	bbox.position.x 148
+	bbox.position.y 120
+	bbox.size.x 22
+	bbox.size.y 93
+	
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_LIGHT		
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	
+	frame	data/chars/mai/atk_round_kick_1.png
+	
+	bbox.position.x 145
+	bbox.position.y 119
+	bbox.size.x 36
+	bbox.size.y 95
+	
+	attack.damage.force 8
+	attack.effect.hit.flash.model flash_fatal_fury
+	attack.position.x 167
+	attack.position.y 137
+	attack.reaction.pause.time 6
+	attack.size.x 62
+	attack.size.y 19
+	
+	frame	data/chars/mai/atk_round_kick_2.png
+	
+	attack 0
+	
+	frame	data/chars/mai/atk_round_kick_3.png
+	
+	bbox.position.x 137
+	bbox.position.y 120
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame	data/chars/mai/atk_round_kick_4.png
+	
+	bbox.position.x 133
+	bbox.position.y 119
+	bbox.size.x 28
+	bbox.size.y 90
+	
+	frame	data/chars/mai/atk_round_kick_5.png
+	
+anim follow5 # Round Kick, hit
+
+	delay 8
+	offset	140 207
+
+	attack.damage.force 8
+	attack.effect.hit.flash.model flash_fatal_fury
+	attack.position.x 167
+	attack.position.y 137
+	attack.reaction.pause.time 6
+	attack.size.x 62
+	attack.size.y 19
+	
+	bbox.position.x 145
+	bbox.position.y 119
+	bbox.size.x 36
+	bbox.size.y 95
+
+	attack 0
+	
+	frame	data/chars/mai/atk_round_kick_2.png
+	frame	data/chars/mai/atk_round_kick_3.png
+	
+	bbox.position.x 137
+	bbox.position.y 120
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame	data/chars/mai/atk_round_kick_4.png
+	
+	idle 1
+	
+	bbox.position.x 133
+	bbox.position.y 119
+	bbox.size.x 28
+	bbox.size.y 90
+	
+	frame	data/chars/mai/atk_round_kick_5.png
+	
+anim attack6 # Spin Swipe
+
+	followcond 4
+	followanim 6
+
+	delay 6
+	
+	offset	140 207
+	
+	bbox.position.x 131
+	bbox.position.y 119
+	bbox.size.x 26
+	bbox.size.y 91
+	
+	frame	data/chars/mai/atk_spin_swipe_0.png
+	
+	bbox.position.x 162
+	bbox.position.y 120
+	bbox.size.x 22
+	bbox.size.y 93
+	
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM			
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	
+	frame	data/chars/mai/atk_spin_swipe_2.png
+	
+	bbox.position.x 167
+	bbox.position.y 116
+	bbox.size.x 31
+	bbox.size.y 93
+	
+	attack.damage.force 12
+	attack.position.x 169
+	attack.position.y 129
+	attack.reaction.pause.time 6
+	attack.size.x 82
+	attack.size.y 13
+	
+	frame	data/chars/mai/atk_spin_swipe_3.png
+	
+	attack 0
+	
+	bbox.position.x 155
+	bbox.position.y 119
+	bbox.size.x 36
+	bbox.size.y 94
+	
+	frame	data/chars/mai/atk_spin_swipe_4.png
+	
+	bbox.position.x 137
+	bbox.position.y 120
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame	data/chars/mai/atk_spin_swipe_5.png
+	
+	offset	145 203
+	
+	bbox.position.x 133
+	bbox.position.y 119
+	bbox.size.x 28
+	bbox.size.y 90
+	
+	frame	data/chars/mai/atk_down_swipe_6.png
+	
+anim follow6 # Spin Swipe, hit
+
+	delay 8
+	offset	140 207
+
+	attack.damage.force 12
+	attack.position.x 169
+	attack.position.y 129
+	attack.reaction.pause.time 6
+	attack.size.x 82
+	attack.size.y 13
+
+	bbox.position.x 167
+	bbox.position.y 116
+	bbox.size.x 31
+	bbox.size.y 93
+	
+	frame	data/chars/mai/atk_spin_swipe_3.png
+	
+	delay 6
+	
+	attack 0
+	
+	bbox.position.x 155
+	bbox.position.y 119
+	bbox.size.x 36
+	bbox.size.y 94
+	
+	frame	data/chars/mai/atk_spin_swipe_4.png
+	
+	idle 1
+	
+	bbox.position.x 137
+	bbox.position.y 120
+	bbox.size.x 32
+	bbox.size.y 93
+	
+	frame	data/chars/mai/atk_spin_swipe_5.png
+	
+	offset	145 203
+	
+	bbox.position.x 133
+	bbox.position.y 119
+	bbox.size.x 28
+	bbox.size.y 90
+	
+	frame	data/chars/mai/atk_down_swipe_6.png
+
+	
+	
+anim attack7 # Spin Kick
+	
+	delay 8
+	
+	offset	140 207
+	
+	bbox.position.x 143
+	bbox.position.y 125
+	bbox.size.x 30
+	bbox.size.y 87
+	
+	frame	data/chars/mai/atk_spin_kick_0.png
+	
+	bbox.position.x 133
+	bbox.position.y 148
+	bbox.size.x 44
+	bbox.size.y 62
+	
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY		
+	@cmd dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
+	
+	frame	data/chars/mai/atk_spin_kick_1.png
+	
+	bbox.position.x 136
+	bbox.position.y 149
+	bbox.size.x 43
+	bbox.size.y 63
+	
+	frame	data/chars/mai/atk_spin_kick_2.png
+	
+	delay 8
+	
+	bbox.position.x 132
+	bbox.position.y 142
+	bbox.size.x 46
+	bbox.size.y 71
+	
+	attack.damage.force 12
+	attack.effect.hit.flash.model flash_fatal_fury
+	attack.position.x 175
+	attack.position.y 118
+	attack.reaction.fall.force 1
+	attack.reaction.pause.time 15
+	attack.size.x 56
+	attack.size.y 16
+	
+	frame	data/chars/mai/atk_spin_kick_3.png
+	
+	attack 0
+	
+	bbox.position.x 136
+	bbox.position.y 130
+	bbox.size.x 44
+	bbox.size.y 83
+	frame	data/chars/mai/atk_spin_kick_4.png
+	
+	bbox.position.x 147
+	bbox.position.y 124
+	bbox.size.x 30
+	bbox.size.y 89
+	
+	frame	data/chars/mai/atk_spin_kick_5.png
+	
+	bbox.position.x 133
+	bbox.position.y 123
+	bbox.size.x 28
+	bbox.size.y 91
+	
+	frame	data/chars/mai/atk_spin_kick_6.png	

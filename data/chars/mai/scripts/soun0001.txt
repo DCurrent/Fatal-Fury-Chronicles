@@ -1,0 +1,479 @@
+music		data/music/sound_beach_ff1.ogg 646118
+
+background	data/bgs/BEACH/back0001
+frontpanel	data/bgs/BEACH/fore0002
+
+# fglayer	filepath								Zpos 	xratio	zratio	xoffset	zoffset	xspace	zspace	xrepeat	zrepeat	trans	alpha	w-mode	amp	wl	ws	move	quake	neon
+
+fglayer		data/bgs/beach/grass_0.png				-40		-0.1 	-0.1 	0 		247 	0		0  		-1 		1 		1       
+		
+
+panel		data/bgs/BEACH/pane0001 none none
+panel		data/bgs/BEACH/pane0002 none none
+panel		data/bgs/BEACH/pane0003 none none
+panel		data/bgs/BEACH/pane0004 none none
+
+order		abcd
+
+bgspeed 1 0 
+
+palette data/bgs/beach/beac0001.act 1	
+palette data/bgs/beach/beac0002.act 1	#First graduation.
+palette data/bgs/beach/beac0003.act 1	
+palette data/bgs/beach/beac0004.act 1	
+palette data/bgs/beach/beac0005.act 1	
+palette data/bgs/beach/beac0006.act 1	
+palette data/bgs/beach/beac0007.act 1	
+palette data/bgs/beach/beac0008.act 1	
+palette data/bgs/beach/beac0009.act 1	#Darkest variation.
+
+# Initial spawn location for players.
+spawn1 50 0
+spawn2 50 15
+spawn3 50 30
+spawn4 50 45
+
+#---------------------
+
+#*****Stage*****
+
+light 256 -32
+at 0
+
+#wall 1 185 1 1 2800 2800 5 1000
+
+#wall {xpos} {zpos} {upperleft} {lowerleft} {upperright} {lowerright} {depth} {alt} {type}
+#wall  200      270    -100          100           320            320           100     200  0
+
+#basemap {xpos} {zpos} {xsize} {zsize} {amin} {amax} 
+#basemap 200		270		200		200	  0      100 
+
+# {int} Layer order from panel toward background.
+# {alpha} Model order along {int} layer.
+# {int} Placement along same layer.
+
+#Layer  0a
+spawn	beac0001
+flip    1
+coords	0 0
+at	0
+
+#Layer  0b1
+spawn	beac0002
+flip    1
+coords	801 137
+at	0
+
+#Layer  0b2
+spawn	beac0002
+flip    1
+coords	1202 137
+at	0
+
+#Layer  0b3
+spawn	beac0002
+flip    1
+coords	1603 137
+at	0
+
+#Layer  1a
+spawn	beac0003
+flip    1
+coords	130 30
+at	0
+
+#Layer  1b1
+spawn	beac0004
+flip    1
+coords	529 122
+at	0
+
+#Layer  1b2
+spawn	beac0004
+flip    1
+coords	658 122
+at	0
+
+#Layer  1b3
+spawn	beac0004
+flip    1
+coords	787 122
+at	0
+
+#Layer  1b4
+spawn	beac0004
+flip    1
+coords	916 122
+at	0
+
+#Layer  1b5
+spawn	beac0004
+flip    1
+coords	1045 122
+at	0
+
+#Layer  1b6
+spawn	beac0004
+flip    1
+coords	1174 122
+at	0
+
+#Layer  1b7
+spawn	beac0004
+flip    1
+coords	1303 122
+at	0
+
+#Layer  1b8
+spawn	beac0004
+flip    1
+coords	1432 122
+at	0
+
+#Layer  1b9
+spawn	beac0005
+flip    1
+coords	1561 30
+at	0
+
+#Layer  2a
+spawn	beac0006
+flip    1
+coords	355 90
+at	0
+
+#Layer  2a2
+spawn	beac0006
+flip    1
+coords	977 90
+at	0
+
+#Fore   0a
+spawn	beac0007
+flip    1
+coords	0 181
+at	0
+
+#Fore   0a
+spawn	beac0007
+flip    0
+coords	2383 181
+at	0
+
+#Fore   0b1
+spawn	beac0008
+flip    0
+coords	500 0
+at	0
+
+#Fore   0b2
+spawn	beac0008
+flip    0
+coords	1200 0
+at	0
+
+#Fore   0b3
+spawn	beac0008
+flip    0
+coords	2000 0
+at	0
+
+#Fore   0b4
+spawn	beac0008
+flip    0
+coords	2500 0
+at	0
+
+#Boat
+spawn 	cabin_cruiser
+Alias	Cruiser
+coords  600 195
+at      0
+
+#Boat
+
+spawn 	cabin_cruiser
+Alias	Cruiser
+flip    1
+#coords  900 195
+coords 100 195
+at      10
+
+#Boat
+spawn 	cabin_cruiser
+Alias	Cruiser
+coords  1650 195
+at      0
+
+#--group1-----
+
+setpalette 1
+at 0
+
+spawn		Crate
+item 		scro0001
+itemalias	scro0001
+itemmap		12
+coords		700 230
+at		0
+
+spawn	Justice_Sword
+coords	200 230
+at	0
+
+spawn	musi0001
+Alias   Estrada
+coords	465 210
+at	0
+
+spawn	musi0001
+Alias   Estrada
+coords	1915 210
+at	0
+
+spawn	ray
+alias 	Random
+map	1
+health	101
+coords	550 210
+#spawnscript data/scripts/spawn.c
+at	0
+
+#spawn	ray
+#alias 	Random
+#map     1
+#health	25
+#coords	530 230
+#at	0
+
+spawn	ray
+alias 	Random
+map	1
+health	25
+coords	-80 240
+at	200
+
+spawn	ray
+alias 	Random
+map	1
+health	100
+coords	-83 243
+at	220
+
+spawn	ray
+alias 	Random
+map	1
+health	55
+coords	-80 260
+at	220
+
+#spawn	biker-k'
+#alias   Jason
+#health  1
+#coords	500 220
+#at	300
+
+#setpalette 2
+#at 300
+
+
+
+wait
+at	320
+
+#--group3-----------
+
+spawn		Crate
+item 		appl0001
+itemalias	Apple
+health		2
+coords		570 215
+at		400
+
+#spawn	biker-k'
+#alias   Jason
+#health  1
+#coords	500 220
+#at	1000
+
+spawn	ray
+alias 	Random
+map	1
+health	30
+coords	550 210
+at	470
+
+spawn   ray
+alias 	Random
+health	25
+coords	-82 250
+at	200
+
+spawn	ray
+alias 	Random
+map     1
+health	65
+coords	550 235
+at	470
+
+#setpalette 3
+#at 450
+
+wait
+at	500
+
+group	3 3
+at	500
+
+spawn	ray
+alias 	Random
+map     1
+health	65
+coords	500 220
+at	500
+
+spawn	ray
+alias 	Random
+map	1
+health	25
+coords	560 220
+at	500
+
+spawn	ray
+alias 	Random
+map	1
+health	55
+coords	-80 210
+at	500
+
+spawn	ray
+alias 	Random
+map     1
+coords	-80 260
+at	500
+
+#------------
+
+group	100 230
+at	510
+
+#setpalette 4
+#at 600
+
+spawn	ray
+alias 	Random
+map	1
+health	25
+coords	580 220
+at	800
+
+spawn	ray
+alias 	Random
+map     1
+coords	-80 230
+at	800
+
+#setpalette 5
+#at 700
+
+
+#setpalette 6
+#at 900
+
+
+#setpalette 7
+#at 1150
+
+
+#setpalette 8
+#at 1350
+
+wait
+at	1200
+
+#------------------
+
+wait
+at	1500
+
+group	1 3
+at	1500
+
+spawn	ray
+alias 	Random
+map	1
+coords	-80 230
+at	1500
+
+spawn	ray
+alias 	Random
+map     1
+coords	-80 220
+at	1500
+
+spawn	ray
+map	1
+alias 	Random
+health	25
+coords	580 260
+at	1500
+
+spawn	ray
+alias 	Random
+map     1
+health	25
+coords	580 230
+at	1500
+
+spawn	ray
+alias 	Random
+map	1
+coords	-80 270
+at	1500
+
+#setpalette 9
+#at 1400
+
+#setpalette 10
+#at 1600
+
+#-------------------
+group	100 100
+at	1800
+
+wait
+at	1800
+
+spawn	ray
+alias 	Random
+map	1
+coords	580 230
+at	1800
+
+spawn	ray
+alias 	Random
+map	1
+health	25
+coords	-80 260
+at	2000
+
+spawn	ray
+alias 	Random
+map	1
+health  45
+coords	500 240
+at	2000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
