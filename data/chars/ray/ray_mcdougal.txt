@@ -14,10 +14,10 @@ gfxshadow		1
 falldie			2
 nodieblink      3
 dust			fall_land jump_land jump_liftoff
-aggression      -1020
-projectilehit   enemy obstacle trap
-hostile			player
-candamage		player obstacle
+aggression      	-1020
+projectilehit   	player obstacle trap
+hostile			enemy
+candamage		enemy obstacle
 combostyle		1
 atchain			1 1 2 0 3
 nopassiveblock	1
@@ -25,6 +25,8 @@ holdblock		2
 blockodds		1
 #blockodds		2147483647
 bflash			Block
+height			100
+
 
 onspawnscript		data/chars/ray/scripts/onspawn.c
 animationscript		data/chars/ray/scripts/animation.c
@@ -154,9 +156,6 @@ anim turn
 	frame	data/chars/ray/turn_1.png
 	frame	data/chars/ray/turn_2.png
 
-
-
-
 anim rise
 
 	delay	10
@@ -190,7 +189,6 @@ anim attack1
 	bbox.size.y 97
      	
 	# Alternate combo finish.
-	@cmd	dc_combo_alt openborconstant("ANI_FREESPECIAL10")
 	frame	data/chars/ray/10_0.png
 	
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_LIGHT
@@ -376,7 +374,7 @@ anim attack3
     frame	data/chars/ray/idle_0.png
 
 
-anim freespecial10 # Round Kick
+anim chargeattack # Round Kick
 
 	range 20 70
 
