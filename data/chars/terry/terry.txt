@@ -338,6 +338,7 @@ anim 	attack1 # Long Jab
 	bbox.size.x 36
 	bbox.size.y 106
 	
+	attack.damage.type 0
 	attack.damage.force 4
 	attack.position.x 98
 	attack.position.y 73
