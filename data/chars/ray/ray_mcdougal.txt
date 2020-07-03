@@ -207,7 +207,7 @@ anim attack1
      	
 	attack.block.penetrate 0
 	attack.damage.force 5
-	attack.damage.type 1
+	attack.damage.type 0
 	attack.effect.hit.flash.disable 0
 	attack.position.x 85
 	attack.position.y 80
@@ -221,7 +221,7 @@ anim attack1
 	
 	attack.block.penetrate 0
 	attack.damage.force 0
-	attack.damage.type 1
+	attack.damage.type 0
 	attack.effect.hit.flash.disable 0
 	attack.position.x 0
 	attack.position.y 0
@@ -270,7 +270,7 @@ anim attack2
 	
 	attack.block.penetrate 0
 	attack.damage.force 5
-	attack.damage.type 1
+	attack.damage.type 0
 	attack.effect.hit.flash.disable 0
 	attack.position.x 78
 	attack.position.y 82
@@ -345,7 +345,7 @@ anim attack3
 		
 	attack.block.penetrate 0
 	attack.damage.force 5
-	attack.damage.type 1
+	attack.damage.type 0
 	attack.effect.hit.flash.disable 0
 	attack.position.x 93
 	attack.position.y 87
@@ -407,7 +407,7 @@ anim chargeattack # Round Kick
     
 	attack.block.penetrate 0
 	attack.damage.force 5
-	attack.damage.type 1
+	attack.damage.type 0
 	attack.effect.hit.flash.model flash_fatal_fury
 	attack.position.x 98
 	attack.position.y 65
@@ -1053,7 +1053,7 @@ anim fall10 # Thrown
 	
 	attack.block.penetrate 0
 	attack.damage.force 10
-	attack.damage.type 1
+	attack.damage.type 0
 	attack.effect.hit.flash.disable 0
 	attack.effect.hit.flash.model flash_indirect
 	attack.position.x 103
@@ -1073,7 +1073,7 @@ anim fall10 # Thrown
 	
 	attack.block.penetrate 0
 	attack.damage.force 10
-	attack.damage.type 1
+	attack.damage.type 0
 	attack.effect.hit.flash.disable 0
 	attack.position.x 104
 	attack.position.y 154
@@ -1114,7 +1114,7 @@ anim fall11 # Flat fall
 	
 	attack.block.penetrate 0
 	attack.damage.force 10
-	attack.damage.type 1
+	attack.damage.type 0
 	attack.effect.hit.flash.model flash_indirect
 	attack.position.x 104
 	attack.position.y 154
@@ -1155,7 +1155,7 @@ anim fall12 # Dive fall
 	
 	attack.block.penetrate 0
 	attack.damage.force 10
-	attack.damage.type 1
+	attack.damage.type 0
 	attack.effect.hit.flash.model flash_indirect
 	attack.position.x 122
 	attack.position.y 122
