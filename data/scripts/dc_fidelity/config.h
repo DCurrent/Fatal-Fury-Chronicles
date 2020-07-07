@@ -9,6 +9,30 @@
 // be unique vs all other libraries. Try to keep it short.
 #define DC_FIDELITY_BASE_ID		"dcfid"
 
+// Miscellaneous
+// Max volume engine allows for sound effects. We use this as a
+// limiter because the menu allows much higher settings, but 
+// the engine overrides them as the sound is played. The engine 
+// does this for backward compatibility with older modules, but 
+// it does present a problem for us.
+//
+// This can potentially ruin calculations like auto balance
+// by location, because the engine sends us the menu values.
+// Those can be (and probably are) much higher than the engine
+// limit. As a result, our own calculations might produce "low" 
+// values higher than the engine limit, and once the limit is 
+// imposed, there is then no difference at all between the 
+// final right/left channel volumes. 
+//
+// We don't want to arbitrarily override the volume in case
+// player sets menu values LOWER than engine limit though.
+// Instead, we will apply this value in our "get" functions
+// for main volume if the get value is higher, but not lower.
+//
+// If later engine updates allow higher volume, we can increase 
+// or eliminate this fix.
+#define DC_FIDELITY_ENGINE_MAX_VOLUME 64
+
 // Logging. Controls what processes get logged for debugging. 
 // Uses a bit masked macro, so add desired options to the
 // control flag. Note some "fail" conditions may be intentional, 
@@ -159,9 +183,10 @@
 #define DC_FIDELITY_DEFAULT_SOUND_LOOP						0
 #define DC_FIDELITY_DEFAULT_SOUND_PRIORITY					1
 #define DC_FIDELITY_DEFAULT_SOUND_SPEED						100
-#define DC_FIDELITY_DEFAULT_SOUND_VOLUME_LEFT				64 //openborvariant("effectvol") 
-#define DC_FIDELITY_DEFAULT_SOUND_VOLUME_RIGHT				64 //openborvariant("effectvol")
+#define DC_FIDELITY_DEFAULT_SOUND_VOLUME_LEFT				openborvariant("effectvol") 
+#define DC_FIDELITY_DEFAULT_SOUND_VOLUME_RIGHT				openborvariant("effectvol")
 #define DC_FIDELITY_DEFAULT_TIMED_LIST						NULL()
+
 
 // Static values.
 #define DC_FIDELITY_TIMED_SAMPLE_ARRAY_SIZE	3

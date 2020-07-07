@@ -263,6 +263,12 @@ int dc_fidelity_get_sound_volume_main_left()
 		result = DC_FIDELITY_DEFAULT_SOUND_VOLUME_LEFT;
 	}
 
+	// Keep us level with engine limit. See config.c for details.
+	if (result > DC_FIDELITY_ENGINE_MAX_VOLUME)
+	{
+		result = DC_FIDELITY_ENGINE_MAX_VOLUME;
+	}
+
 	return result;
 }
 
@@ -294,6 +300,12 @@ int dc_fidelity_get_sound_volume_main_right()
 	if (typeof(result) != openborconstant("VT_INTEGER"))
 	{
 		result = DC_FIDELITY_DEFAULT_SOUND_VOLUME_RIGHT;
+	}
+
+	// Keep us level with engine limit. See config.c for details.
+	if (result > DC_FIDELITY_ENGINE_MAX_VOLUME)
+	{
+		result = DC_FIDELITY_ENGINE_MAX_VOLUME;
 	}
 
 	return result;
