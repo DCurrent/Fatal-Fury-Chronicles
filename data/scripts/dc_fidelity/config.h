@@ -159,8 +159,8 @@
 #define DC_FIDELITY_DEFAULT_SOUND_LOOP						0
 #define DC_FIDELITY_DEFAULT_SOUND_PRIORITY					1
 #define DC_FIDELITY_DEFAULT_SOUND_SPEED						100
-#define DC_FIDELITY_DEFAULT_SOUND_VOLUME_LEFT				openborvariant("effectvol") 
-#define DC_FIDELITY_DEFAULT_SOUND_VOLUME_RIGHT				openborvariant("effectvol")
+#define DC_FIDELITY_DEFAULT_SOUND_VOLUME_LEFT				64 //openborvariant("effectvol") 
+#define DC_FIDELITY_DEFAULT_SOUND_VOLUME_RIGHT				64 //openborvariant("effectvol")
 #define DC_FIDELITY_DEFAULT_TIMED_LIST						NULL()
 
 // Static values.

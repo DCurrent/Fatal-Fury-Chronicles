@@ -283,24 +283,17 @@ int dc_fidelity_play_balanced(int sample_id)
 
 		// Apply default position.
 		pos_x = DC_FIDELITY_DEFAULT_SOUND_LOCATION_POS_X;
-	}
-		
+	}	
 
 	// Get adjusted volumes.
 	if (dc_fidelity_get_sound_location_balance())
 	{
-		volume_left -= dc_fidelity_auto_balance_volume(pos_x, volume_left);
-		volume_right = dc_fidelity_auto_balance_volume(pos_x, volume_right);
-
-		if (volume_left < 0)
-		{
-			volume_left = 0;
-		}
-
-		if (volume_right < 0)
-		{
-			volume_right = 0;
-		}
+		volume_left = dc_fidelity_auto_balance_volume_left(pos_x, volume_left);
+		volume_right = dc_fidelity_auto_balance_volume_right(pos_x, volume_right);
+	
+		//settextobj(0, 40, 30, 1, openborconstant("FRONTPANEL_Z"), "volume_left: " + volume_left);
+		//settextobj(1, 40, 40, 1, openborconstant("FRONTPANEL_Z"), "volume_right: " + volume_right);
+	
 	}
 
 	// Send to play sample function.
@@ -318,7 +311,6 @@ int dc_fidelity_play_balanced(int sample_id)
 // Returns 1 if sample plays, 0 otherwise.
 int dc_fidelity_playsample(int sample_id, int volume_left, int volume_right)
 {
-
 	int priority;
 	int speed;
 	int loop;
