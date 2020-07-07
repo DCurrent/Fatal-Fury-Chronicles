@@ -4,6 +4,7 @@
 void main()
 {
 	void ent = getlocalvar("self");
+	void other = getlocalvar("other");
 	int take_damage_result;
 
 	// Compute result of take damage (knockdown, KO, etc.) so we
