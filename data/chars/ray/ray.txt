@@ -32,6 +32,7 @@ animationscript		data/chars/ray/scripts/animation.c
 didhitscript		data/scripts/common/event_hit.c
 takedamagescript	data/scripts/common/event_damage.c
 onpainscript		data/scripts/common/event_pain.c
+didblockscript		data/scripts/common/event_block.c
 
 palette   		data/chars/ray/default.act			# Light blue jeans, white shirt, red bolt
 alternatepal	data/chars/ray/default_no_bolt.act 
@@ -74,6 +75,41 @@ anim block
 		delay	30
 		offset	75 170
 	frame	data/chars/ray/block_0.png
+	
+	delay	12
+		
+	bbox.position.x 59
+	bbox.position.y 74
+	bbox.size.x 28
+	bbox.size.y 95
+		
+	frame	data/chars/ray/block_start_0.png
+
+anim blockpain2
+
+	# Middle block
+
+	delay	3
+	offset	75 170
+		
+	bbox.position.x 55
+	bbox.position.y 74
+	bbox.size.x 28
+	bbox.size.y 95
+	
+	move	-2
+		
+	frame	data/chars/ray/block_impact_mid_0.png
+		move	0
+		offset	78 170
+	frame	data/chars/ray/block_impact_mid_0.png
+		offset	75 170
+	frame	data/chars/ray/block_impact_mid_0.png
+		offset	78 170
+	frame	data/chars/ray/block_impact_mid_0.png
+		delay	30
+		offset	75 170
+	frame	data/chars/ray/block_impact_mid_0.png
 	
 	delay	12
 		

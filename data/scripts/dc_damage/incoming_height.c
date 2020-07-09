@@ -261,6 +261,47 @@ int dc_damage_incoming_height()
 }
 
 // Caskey, Damon V.
+// 2020-07-08
+//
+// Retool of old pain height system. Play block animation 
+// based on Y position of incoming attack in relation
+// to own height.
+void dc_damage_block_animation_by_height()
+{
+	void ent;
+	int damage_height;
+	int animation;
+
+	ent = dc_damage_get_entity();
+
+	damage_height = dc_damage_incoming_height();
+
+	switch (damage_height)
+	{
+
+	case DC_DAMAGE_INCOMING_HEIGHT_UPPER:
+	default:
+
+		animation = dc_damage_get_reaction_block_upper();
+
+		break;
+
+	case DC_DAMAGE_INCOMING_HEIGHT_MIDDLE:
+
+		animation = dc_damage_get_reaction_block_middle();
+
+	case DC_DAMAGE_INCOMING_HEIGHT_LOWER:
+
+		animation = dc_damage_get_reaction_block_lower();
+
+		break;
+	}
+
+	// Switch to animation.
+	executeanimation(ent, animation);
+}
+
+// Caskey, Damon V.
 // 2020-07-07
 //
 // Retool of old pain height system. Play pain animation 
@@ -300,3 +341,4 @@ void dc_damage_pain_animation_by_height()
 	// Switch to animation.
 	executeanimation(ent, animation);
 }
+

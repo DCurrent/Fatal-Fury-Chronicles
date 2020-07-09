@@ -1,12 +1,12 @@
-#import "data/scripts/common/dc_find_block_height_animation.c"
+#include "data/scripts/dc_damage/main.c"
 
 void main()
 {
-	int animation;
-	void ent;
+	void ent = getlocalvar("self");
+	void other = getlocalvar("other");
 
-	ent = getlocalvar("self");
-	animation = dc_find_block_height_animation();
+	dc_damage_set_entity(ent);
+	dc_damage_set_other(other);
 
-	changeentityproperty(ent, "animation", animation);
+	dc_damage_block_animation_by_height();
 }
