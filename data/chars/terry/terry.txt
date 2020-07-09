@@ -1815,40 +1815,6 @@ anim blockpain2	# Middle block.
 	frame	data/chars/terry/block_impact_mid_1.png
 	frame	data/chars/terry/block_impact_mid_2.png
 
-anim blockpain3	# Low block.
-
-		delay	3
-		offset	76 155
-	bbox.position.x 43
-	bbox.position.y 85
-	bbox.size.x 50
-	bbox.size.y 75
-	move	-2
-	frame	data/chars/terry/block_impact_low_0.png
-		offset	73 158
-	frame	data/chars/terry/block_impact_low_0.png
-		offset	76 155
-	frame	data/chars/terry/block_impact_low_0.png
-		offset	73 158
-	frame	data/chars/terry/block_impact_low_0.png
-		delay	10
-		offset	76 155
-	frame	data/chars/terry/block_impact_low_1.png
-	
-	bbox.position.x 61
-	bbox.position.y 85
-	bbox.size.x 43
-	bbox.size.y 75
-	
-	frame	data/chars/terry/jump_land_1.png
-	bbox.position.x 58
-	bbox.position.y 73
-	bbox.size.x 45
-	bbox.size.y 90
-	frame	data/chars/terry/25_0.png
-
-
-
 anim rise # Rise
 
 		delay	12
