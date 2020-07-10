@@ -991,9 +991,6 @@ anim runattack # Power Charge
 	
 
 anim chargeattack # High spin kick.
-
-		fastattack 1
-
 		delay	6
 		offset	76 155
 	bbox.position.x 58
@@ -1029,28 +1026,19 @@ anim chargeattack # High spin kick.
 		
 	attack.block.penetrate 0
 	attack.damage.force 12
-	attack.damage.type 1
 	attack.effect.hit.flash.disable 0
 	attack.position.x 119
 	attack.position.y 45
 	attack.reaction.fall.force 0
-	attack.reaction.pause.time 15
+	attack.reaction.pause.time 20
 	attack.size.x 29
 	attack.size.y 45
 	attack.effect.hit.flash.model flash_fatal_fury
+	attack.reaction.invincible.time 1
 
 	frame	data/chars/terry/23_3.png
 		delay	1
-	attack.block.penetrate 0
-	attack.damage.force 0
-	attack.damage.type 1
-	attack.effect.hit.flash.disable 0
-	attack.position.x 0
-	attack.position.y 0
-	attack.reaction.fall.force 0
-	attack.reaction.pause.time 0
-	attack.size.x 0
-	attack.size.y 0
+	attack 0
 	frame	data/chars/terry/23_3.png
 		delay	6
 		
@@ -1058,12 +1046,11 @@ anim chargeattack # High spin kick.
 		
 	attack.block.penetrate 0
 	attack.damage.force 15
-	attack.damage.type 1
 	attack.effect.hit.flash.disable 0
 	attack.position.x 110
 	attack.position.y 35
 	attack.reaction.fall.force 0
-	attack.reaction.pause.time 15
+	attack.reaction.pause.time 25
 	attack.size.x 45
 	attack.size.y 55
 	attack.effect.hit.flash.model flash_fatal_fury
