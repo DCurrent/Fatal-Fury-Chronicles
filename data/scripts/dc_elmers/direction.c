@@ -3,7 +3,7 @@
 #import "data/scripts/dc_elmers/instance.c"
 #import "data/scripts/dc_elmers/entity.c"
 
-// Bind direction control.
+// Non binding direction control.
 
 int dc_elmers_get_direction()
 {

@@ -43,7 +43,8 @@ void dc_elmers_quick_particle(void ent)
 	set_bind_property(bind, "mode_x", openborconstant("BIND_MODE_TARGET"));
 	set_bind_property(bind, "mode_y", openborconstant("BIND_MODE_TARGET"));
 	set_bind_property(bind, "mode_z", openborconstant("BIND_MODE_TARGET"));
-	set_bind_property(bind, "direction", openborconstant("DIRECTION_ADJUST_SAME"));
+
+	dc_elmers_alter_bind_direction(openborconstant("DIRECTION_ADJUST_SAME"));
 	
 	// Default sort to front.
 	dc_elmers_set_sorting(DC_ELMERS_SORT_FRONT);
@@ -89,7 +90,8 @@ void dc_elmers_quick_particle_free(void ent)
 	set_bind_property(bind, "mode_x", openborconstant("BIND_MODE_TARGET"));
 	set_bind_property(bind, "mode_y", openborconstant("BIND_MODE_TARGET"));
 	set_bind_property(bind, "mode_z", openborconstant("BIND_MODE_TARGET"));
-	set_bind_property(bind, "direction", openborconstant("DIRECTION_ADJUST_SAME"));
+
+	dc_elmers_alter_bind_direction(openborconstant("DIRECTION_ADJUST_SAME"));
 
 	// Default sort to front.
 	dc_elmers_set_sorting(DC_ELMERS_SORT_FRONT);
@@ -136,8 +138,9 @@ void dc_elmers_quick_overlay(void ent)
 	set_bind_property(bind, "mode_x", openborconstant("BIND_MODE_TARGET"));
 	set_bind_property(bind, "mode_y", openborconstant("BIND_MODE_TARGET"));
 	set_bind_property(bind, "mode_z", openborconstant("BIND_MODE_TARGET"));
-	set_bind_property(bind, "direction", openborconstant("DIRECTION_ADJUST_SAME"));
 
+	dc_elmers_alter_bind_direction(openborconstant("DIRECTION_ADJUST_SAME"));
+	
 	// Default sort to front.
 	dc_elmers_set_sorting(DC_ELMERS_SORT_FRONT);
 
