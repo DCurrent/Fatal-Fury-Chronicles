@@ -17,7 +17,7 @@
 //
 // Bind to target's exact location and direction
 // with exact animation matching, sorted to appear in front
-// of target. Target maintains own colors.
+// of target. Do not match target colors.
 //
 // - Basic particle effects
 // - Blade motion trails
@@ -27,7 +27,7 @@ void dc_elmers_quick_particle(void ent)
 	void target;
 	void bind;
 
-	// Reset instance so we don’t unintentional apply settings from previous uses.
+	// Reset instance so we don’t unintentionally apply settings from previous uses.
 	dc_elmers_reset_instance();
 
 	// Seems redeundant, but gets default if ent is blank.
@@ -62,8 +62,8 @@ void dc_elmers_quick_particle(void ent)
 //
 // Bind to target's exact location and direction
 // with exact animation matching, but not frame,
-// sorted to appear in front of target. Target 
-// maintains own colors.
+// sorted to appear in front of target. Do not
+// match target colors.
 //
 // - Basic particle effects
 // - Blade motion trails
@@ -176,11 +176,9 @@ void dc_elmers_quick_spot(void ent)
 	// sort_id = get_entity_property(target, "sort_id");
 	// sort_id += 1;
 
-	sort_id = dc_elmers_find_front_sort();
+	sort_id = dc_elmers_find_front_sort() + 1;
 	set_entity_property(ent, "sort_id", sort_id);
 
-	
-	
 	dc_elmers_apply_position();
 	dc_elmers_apply_direction();
 
@@ -190,9 +188,8 @@ void dc_elmers_quick_spot(void ent)
 // Caskey, Damon V.
 // 2018-08-27
 //
-// Find the sort position of entity and (if applicable)
-// all other entities bound to it. Then return a sort
-// id one greater than most frontward entity.
+// Find frontmost sort id from target and any 
+// entities that are bound to it.
 int dc_elmers_find_front_sort()
 {
 	void target;
