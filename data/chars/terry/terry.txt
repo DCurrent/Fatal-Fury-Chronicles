@@ -828,7 +828,7 @@ anim 	follow20 # Backhand
 
 anim 	attack7	# Jumping spin kick.
 
-	jumpframe 3 1.5 0 0 hop_liftoff
+	jumpframe 3 1.8 0 0 hop_liftoff
 	landframe 8 jump_land
 
 		delay	6
@@ -2351,15 +2351,8 @@ anim freespecial10 # Power Wave
 	bbox.size.y 94
 
 	# Spawn sub entity and set it as entity for binding.
-	@cmd dc_elmers_set_entity dc_gauntlet_quick_spawn("terry_power_wave_fist")
+	@cmd dc_elmers_quick_particle dc_gauntlet_quick_spawn("terry_power_wave_fist")
 
-	@cmd dc_elmers_dump_instance
-	
-	@cmd dc_elmers_set_bind_property "sort_id" 1
-	@cmd dc_elmers_set_animation_match (openborconstant("BIND_ANIMATION_TARGET")+openborconstant("BIND_ANIMATION_REMOVE")+openborconstant("BIND_ANIMATION_FRAME_TARGET"))
-	
-	@cmd dc_elmers_quick_bind
-	
 	frame	data/chars/terry/50_0.png		
 		
 	bbox.position.x 56
@@ -2402,7 +2395,8 @@ anim freespecial10 # Power Wave
 	bbox.position.y 95
 	bbox.size.x 57
 	bbox.size.y 65
-	
+
+	## Spawn projectile.
 	@cmd dc_gauntlet_set_model_name "terry_power_wave"
 	@cmd dc_gauntlet_set_offset_x 45
 	@cmd dc_gauntlet_set_offset_y 0
@@ -2414,11 +2408,10 @@ anim freespecial10 # Power Wave
 	
 	delay 30
 
-	# At this point we don't want fist effect bound
-	# any more, so remove the bind target and set autokill so
-	# the effect will terminate when it finishes up.
-
-	@cmd dc_elmers_set_target NULL()	
+	## At this point we don't want fist effect bound
+	## any more, so remove the bind target and set autokill so
+	## the effect will terminate when it finishes up.
+	@cmd dc_elmers_set_animation_match (openborconstant("BIND_ANIMATION_TARGET")+openborconstant("BIND_ANIMATION_REMOVE"))
 	
 	frame	data/chars/terry/50_6.png
 	
