@@ -8,6 +8,7 @@ maxattacks      10
 maxfreespecials 20
 maxattacktypes  13
 noaircancel     2
+combodelay		200
 
 # Flash/Hit sparks.
 load	Flash				data/chars/misc/flash/flash.txt
