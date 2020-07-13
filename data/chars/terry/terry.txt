@@ -305,6 +305,7 @@ anim 	attack1 # Long Jab
 
 	range 	0 50
 	rangea	0 100
+	rangez	-15 15
 
 	fastattack 1
 
@@ -368,6 +369,8 @@ anim 	attack1 # Long Jab
 anim 	attack2	# front kick
 
 		range 	-10 50
+		rangez	-15 15
+
 		fastattack 1
 
 			delay	5
@@ -409,6 +412,8 @@ anim 	attack2	# front kick
 anim 	attack3	# Gut punch.
 
 		range 	-10 50
+		rangez	-15 15
+
 		fastattack 1
 
 		delay	6
@@ -475,6 +480,8 @@ frame	data/chars/terry/28_1.png
 anim 	attack4	# Big boot.
 
 		range 	-10 60
+		rangez	-15 15
+
 		fastattack 1
 
 		delay	4
@@ -568,8 +575,12 @@ anim 	attack4	# Big boot.
 # Straight.
 anim 	attack5 # Straight
 
-		delay	3
-		offset	76 155
+	range 	50 110
+	rangea	0 100
+	rangez	-15 15
+
+	delay	3
+	offset	76 155
 				
 	bbox.position.x 58
 	bbox.position.y 60
@@ -646,6 +657,8 @@ anim 	attack5 # Straight
 anim attack6 # Round Kick
 
 	range 50 110
+	rangez	-15 15
+
 	delay	6
 	offset	76 155
 				
@@ -828,6 +841,8 @@ anim 	follow20 # Backhand
 
 anim 	attack7	# Jumping spin kick.
 
+	range 50 200
+	
 	jumpframe 3 1.8 0 0 hop_liftoff
 	landframe 8 jump_land
 
