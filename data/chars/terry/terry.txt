@@ -213,10 +213,10 @@ anim faint # Faint
 	bbox.position.y 64
 	bbox.size.x 42
 	bbox.size.y 101
-	frame	data/chars/terry/22_0.png
-	frame	data/chars/terry/22_1.png
-	frame	data/chars/terry/22_2.png
-	frame	data/chars/terry/22_1.png
+	frame	data/chars/terry/stun_0.png
+	frame	data/chars/terry/stun_1.png
+	frame	data/chars/terry/stun_2.png
+	frame	data/chars/terry/stun_1.png
 
 anim walk # Normal walk
 
