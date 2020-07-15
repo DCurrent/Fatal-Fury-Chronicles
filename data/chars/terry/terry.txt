@@ -1013,7 +1013,7 @@ anim chargeattack # High spin kick.
 	bbox.size.x 41
 	bbox.size.y 92
 	
-	frame	data/chars/terry/high_spin_heel_0.png
+	frame	data/chars/terry/high_spin_heel_kick_0.png
 	
 	offset	73 158
 	
@@ -1025,7 +1025,7 @@ anim chargeattack # High spin kick.
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
 
-	frame	data/chars/terry/high_spin_heel_1.png
+	frame	data/chars/terry/high_spin_heel_kick_1.png
 	
 	offset	75 158
 	
@@ -1034,7 +1034,7 @@ anim chargeattack # High spin kick.
 	bbox.size.x 41
 	bbox.size.y 92
 	
-	frame	data/chars/terry/high_spin_heel_2.png
+	frame	data/chars/terry/high_spin_heel_kick_2.png
 		delay	5
 		
 		offset	74 158
@@ -1051,10 +1051,10 @@ anim chargeattack # High spin kick.
 	attack.effect.hit.flash.model flash_fatal_fury
 	attack.reaction.invincible.time 1
 
-	frame	data/chars/terry/high_spin_heel_3.png
+	frame	data/chars/terry/high_spin_heel_kick_3.png
 		delay	1
 	attack 0
-	frame	data/chars/terry/high_spin_heel_3.png
+	frame	data/chars/terry/high_spin_heel_kick_3.png
 		delay	6
 		
 		offset	76 155
@@ -1070,7 +1070,7 @@ anim chargeattack # High spin kick.
 	attack.size.y 55
 	attack.effect.hit.flash.model flash_fatal_fury
 
-	frame	data/chars/terry/high_spin_heel_4.png
+	frame	data/chars/terry/high_spin_heel_kick_4.png
 	
 	bbox.position.x 75
 	bbox.position.y 60
@@ -1087,14 +1087,14 @@ anim chargeattack # High spin kick.
 	attack.reaction.pause.time 0
 	attack.size.x 0
 	attack.size.y 0
-	frame	data/chars/terry/high_spin_heel_5.png
+	frame	data/chars/terry/high_spin_heel_kick_5.png
 	
 	bbox.position.x 69
 	bbox.position.y 55
 	bbox.size.x 41
 	bbox.size.y 98
 	
-	frame	data/chars/terry/high_spin_heel_6.png
+	frame	data/chars/terry/high_spin_heel_kick_6.png
 	
 	bbox.position.x 62
 	bbox.position.y 60
