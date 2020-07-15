@@ -600,14 +600,14 @@ anim 	attack5 # Straight
 	bbox.size.x 45
 	bbox.size.y 105
 	
-	frame	data/chars/terry/17_0.png
+	frame	data/chars/terry/straight_0.png
 	
 	bbox.position.x 59
 	bbox.position.y 60
 	bbox.size.x 45
 	bbox.size.y 105
 	
-	frame	data/chars/terry/17_1.png
+	frame	data/chars/terry/straight_1.png
 	
 	bbox.position.x 64
 	bbox.position.y 60
@@ -621,7 +621,7 @@ anim 	attack5 # Straight
 	attack.size.x 66
 	attack.size.y 15
 
-	frame	data/chars/terry/17_2.png
+	frame	data/chars/terry/straight_2.png
 
 	attack.block.penetrate 0
 	attack.damage.force 0
@@ -636,7 +636,7 @@ anim 	attack5 # Straight
 	
 	delay 8
 	
-	frame	data/chars/terry/17_3.png	
+	frame	data/chars/terry/straight_3.png	
 	
 		idle	1
 	
@@ -645,7 +645,7 @@ anim 	attack5 # Straight
 	bbox.size.x 45
 	bbox.size.y 105
 	
-	frame	data/chars/terry/17_1.png
+	frame	data/chars/terry/straight_1.png
 			
 	bbox.position.x 58
 	bbox.position.y 60
@@ -1120,9 +1120,9 @@ anim freespecial6 # Rising tackle
 	bbox.position.y 115
 	bbox.size.x 45
 	bbox.size.y 44
-	frame	data/chars/terry/33_0.png
+	frame	data/chars/terry/rising_tackle_0.png
 	#cmd stereo_sound_command_here "vter0011.wav"
-	frame	data/chars/terry/33_1.png
+	frame	data/chars/terry/rising_tackle_1.png
 		delay	3
 	#cmd stereo_sound_command_here "sand0003.wav"
 	
@@ -1146,10 +1146,10 @@ anim freespecial6 # Rising tackle
 	attack.size.x 35
 	attack.size.y 45
 	
-	frame	data/chars/terry/33_2.png	#jumpframe
+	frame	data/chars/terry/rising_tackle_2.png	#jumpframe
 	move	0
-	frame	data/chars/terry/33_3.png
-	frame	data/chars/terry/33_4.png
+	frame	data/chars/terry/rising_tackle_3.png
+	frame	data/chars/terry/rising_tackle_4.png
 		delay	4
 		
 	offset	70 168
@@ -1165,7 +1165,7 @@ anim freespecial6 # Rising tackle
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame	data/chars/terry/33_5.png 	#Spin start
+	frame	data/chars/terry/rising_tackle_5.png 	#Spin start
 	
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
@@ -1181,7 +1181,7 @@ anim freespecial6 # Rising tackle
 	attack.size.x 115
 	attack.size.y 20
 	
-	frame	data/chars/terry/33_6.png
+	frame	data/chars/terry/rising_tackle_6.png
 	
 	attack.block.penetrate 0
 	attack.damage.force 0
@@ -1194,7 +1194,7 @@ anim freespecial6 # Rising tackle
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame	data/chars/terry/33_7.png
+	frame	data/chars/terry/rising_tackle_7.png
 
 	attack.block.penetrate 0
 	attack.damage.force 2
@@ -1207,7 +1207,7 @@ anim freespecial6 # Rising tackle
 	attack.size.x 115
 	attack.size.y 20
 	
-	frame	data/chars/terry/33_8.png 	#Spin end
+	frame	data/chars/terry/rising_tackle_8.png 	#Spin end
 		delay	6
 	
 	offset	76 155
@@ -1228,7 +1228,7 @@ anim freespecial6 # Rising tackle
 	bbox.size.x 36
 	bbox.size.y 71
 	
-	frame	data/chars/terry/33_9.png	#dropframe
+	frame	data/chars/terry/rising_tackle_9.png	#dropframe
 	
 	bbox.position.x 65
 	bbox.position.y 60
@@ -1240,14 +1240,14 @@ anim freespecial6 # Rising tackle
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame	data/chars/terry/33_10.png
+	frame	data/chars/terry/rising_tackle_10.png
 	
 	bbox.position.x 65
 	bbox.position.y 46
 	bbox.size.x 40
 	bbox.size.y 75
 	
-	frame	data/chars/terry/33_11.png
+	frame	data/chars/terry/rising_tackle_11.png
 	
 	bbox.position.x 66
 	bbox.position.y 51
@@ -2442,7 +2442,7 @@ anim freespecial10 # Power Wave
 	bbox.size.x 33
 	bbox.size.y 85
 	
-	frame data/chars/terry/33_0.png
+	frame data/chars/terry/rising_tackle_0.png
 	
 	delay 8
 	
@@ -2451,7 +2451,7 @@ anim freespecial10 # Power Wave
 	bbox.size.x 40
 	bbox.size.y 95
 	
-	frame data/chars/terry/33_1.png	
+	frame data/chars/terry/rising_tackle_1.png	
 	
 	bbox.position.x 47
 	bbox.position.y 54
