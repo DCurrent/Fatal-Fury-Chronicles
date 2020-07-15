@@ -951,7 +951,7 @@ anim runattack # Power Charge
 	bbox.size.x 45
 	bbox.size.y 80
 	
-	frame	data/chars/terry/21_4.png
+	frame	data/chars/terry/power_charge_4.png
 	
 	
 	bbox.position.x 61
@@ -964,7 +964,7 @@ anim runattack # Power Charge
 		@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
 		@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
 
-	frame	data/chars/terry/21_5.png
+	frame	data/chars/terry/power_charge_5.png
 	
 	
 	bbox.position.x 78
@@ -987,11 +987,11 @@ anim runattack # Power Charge
 	
 	attack.effect.hit.flash.model flash_fatal_fury
 
-	frame	data/chars/terry/21_6.png
+	frame	data/chars/terry/power_charge_6.png
 		delay	12
 		
 	attack 0
-	frame	data/chars/terry/21_7.png
+	frame	data/chars/terry/power_charge_7.png
 	
 	bbox.position.x 61
 	bbox.position.y 71
@@ -1001,7 +1001,7 @@ anim runattack # Power Charge
 		@cmd	dc_velocity_set_velocity_x NULL()
 		@cmd	dc_velocity_apply_velocity_x
 		@cmd	changeentityproperty getlocalvar("self") "aiflag" "blocking" 0
-	frame	data/chars/terry/21_8.png
+	frame	data/chars/terry/power_charge_8.png
 	frame	data/chars/terry/24_2.png
 	
 
