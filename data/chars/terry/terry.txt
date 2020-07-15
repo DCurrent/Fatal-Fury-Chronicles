@@ -872,14 +872,14 @@ anim 	attack7	# Jumping spin kick.
 	bbox.size.x 35
 	bbox.size.y 100
 	
-	frame	data/chars/terry/19_0.png
+	frame	data/chars/terry/jumping_spin_kick_0.png
 	
 	bbox.position.x 58
 	bbox.position.y 53
 	bbox.size.x 37
 	bbox.size.y 98
 	
-	frame	data/chars/terry/19_1.png
+	frame	data/chars/terry/jumping_spin_kick_1.png
 		delay	6
 		
 	bbox.position.x 62
@@ -890,7 +890,7 @@ anim 	attack7	# Jumping spin kick.
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
 
-	frame	data/chars/terry/19_2.png
+	frame	data/chars/terry/jumping_spin_kick_2.png
 	
 	bbox.position.x 59
 	bbox.position.y 49
@@ -909,7 +909,7 @@ anim 	attack7	# Jumping spin kick.
 	attack.size.y 16
 	attack.effect.hit.flash.model flash_fatal_fury
 
-	frame	data/chars/terry/19_3.png
+	frame	data/chars/terry/jumping_spin_kick_3.png
 	
 	attack.block.penetrate 0
 	attack.damage.force 0
@@ -922,7 +922,7 @@ anim 	attack7	# Jumping spin kick.
 	attack.size.x 0
 	attack.size.y 0
 		delay	-1000
-	frame	data/chars/terry/19_4.png
+	frame	data/chars/terry/jumping_spin_kick_4.png
 		delay	8
 		
 	bbox.position.x 60
@@ -2160,7 +2160,7 @@ anim jumpforward
 	bbox.size.x 29
 	bbox.size.y 72
 	
-	frame data/chars/terry/19_4.png
+	frame data/chars/terry/jumping_spin_kick_4.png
 
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
