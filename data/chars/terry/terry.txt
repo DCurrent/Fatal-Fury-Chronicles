@@ -759,7 +759,7 @@ anim 	follow20 # Backhand
 	bbox.size.x 45
 	bbox.size.y 102		
 	
-	frame	data/chars/terry/18_0.png
+	frame	data/chars/terry/spin_backhand_0.png
 
 		offset	85 153
 		
@@ -768,14 +768,14 @@ anim 	follow20 # Backhand
 	bbox.size.x 38
 	bbox.size.y 99
 
-	frame	data/chars/terry/18_1.png
+	frame	data/chars/terry/spin_backhand_1.png
 
 	bbox.position.x 103
 	bbox.position.y 52
 	bbox.size.x 32
 	bbox.size.y 97
 
-	frame	data/chars/terry/18_2.png
+	frame	data/chars/terry/spin_backhand_2.png
 
 		
 
@@ -791,7 +791,7 @@ anim 	follow20 # Backhand
 	attack.size.x 33
 	attack.size.y 10
 
-	frame	data/chars/terry/18_3.png
+	frame	data/chars/terry/spin_backhand_3.png
 
 		
 
@@ -811,14 +811,14 @@ anim 	follow20 # Backhand
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame	data/chars/terry/18_2.png	
+	frame	data/chars/terry/spin_backhand_2.png	
 	
 	bbox.position.x 83
 	bbox.position.y 56
 	bbox.size.x 38
 	bbox.size.y 99
 	
-	frame	data/chars/terry/18_1.png
+	frame	data/chars/terry/spin_backhand_1.png
 	
 		offset	80 153
 		idle	1	
@@ -828,7 +828,7 @@ anim 	follow20 # Backhand
 	bbox.size.x 40
 	bbox.size.y 105
 
-	frame	data/chars/terry/18_0.png
+	frame	data/chars/terry/spin_backhand_0.png
 		
 		offset	76 155
 		
