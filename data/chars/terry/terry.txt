@@ -1310,7 +1310,7 @@ anim follow1 # Short jab
 	attack.size.x 60
 	attack.size.y 15
 
-	frame	data/chars/terry/16_0.png
+	frame	data/chars/terry/short_jab_0.png
 	attack.block.penetrate 0
 	attack.damage.force 0
 	attack.damage.type 1
