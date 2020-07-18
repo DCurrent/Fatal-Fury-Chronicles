@@ -387,10 +387,10 @@ anim 	attack2	# front kick
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 	@cmd	dc_fidelity_set_sound_chance NULL()
 
-	frame	data/chars/terry/27_0.png
+	frame	data/chars/terry/atk_front_kick_0.png
 	
 	
-	frame	data/chars/terry/27_1.png
+	frame	data/chars/terry/atk_front_kick_1.png
 			
 
 	attack.damage.force 6
@@ -401,13 +401,13 @@ anim 	attack2	# front kick
 	attack.size.y 15
 	attack.effect.hit.flash.model flash_fatal_fury
 
-	frame	data/chars/terry/27_2.png
+	frame	data/chars/terry/atk_front_kick_2.png
 	
 	attack 0
 	
-	frame	data/chars/terry/27_1.png
+	frame	data/chars/terry/atk_front_kick_1.png
 		idle	1
-	frame	data/chars/terry/27_0.png
+	frame	data/chars/terry/atk_front_kick_0.png
 
 anim 	attack3	# Gut punch.
 
@@ -429,7 +429,7 @@ anim 	attack3	# Gut punch.
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 	@cmd	dc_fidelity_set_sound_chance NULL()
 	
-	frame	data/chars/terry/28_0.png
+	frame	data/chars/terry/atk_gut_upper_0.png
 		delay	5
 	attack.block.penetrate 0
 	attack.damage.force 5
@@ -442,12 +442,12 @@ anim 	attack3	# Gut punch.
 	attack.size.x 35
 	attack.size.y 20
 	
-	frame	data/chars/terry/28_1.png
+	frame	data/chars/terry/atk_gut_upper_1.png
 		delay	6
 	
 	attack 0
 	
-frame	data/chars/terry/28_1.png
+frame	data/chars/terry/atk_gut_upper_1.png
 		delay	6
 	attack.block.penetrate 0
 	attack.damage.force 10
@@ -460,7 +460,7 @@ frame	data/chars/terry/28_1.png
 	attack.size.x 55
 	attack.size.y 30
 	
-	frame	data/chars/terry/28_3.png
+	frame	data/chars/terry/atk_gut_upper_3.png
 	
 	attack.block.penetrate 0
 	attack.damage.force 0
@@ -473,9 +473,9 @@ frame	data/chars/terry/28_1.png
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame	data/chars/terry/28_4.png
+	frame	data/chars/terry/atk_gut_upper_4.png
 		idle	1
-	frame	data/chars/terry/28_0.png
+	frame	data/chars/terry/atk_gut_upper_0.png
 
 anim 	attack4	# Big boot.
 
@@ -504,15 +504,15 @@ anim 	attack4	# Big boot.
 	bbox.size.x 39
 	bbox.size.y 105
 	
-	frame	data/chars/terry/29_0.png
-	frame	data/chars/terry/29_1.png
+	frame	data/chars/terry/boot_kick_0.png
+	frame	data/chars/terry/boot_kick_1.png
 	
 	bbox.position.x 76
 	bbox.position.y 53
 	bbox.size.x 39
 	bbox.size.y 108
 	
-	frame	data/chars/terry/29_2.png
+	frame	data/chars/terry/boot_kick_2.png
 	
 	bbox.position.x 89
 	bbox.position.y 50
@@ -537,7 +537,7 @@ anim 	attack4	# Big boot.
 	
 	damageonlanding 0 1
 
-	frame	data/chars/terry/29_3.png
+	frame	data/chars/terry/boot_kick_3.png
 	
 	delay	15
 	
@@ -552,7 +552,7 @@ anim 	attack4	# Big boot.
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame	data/chars/terry/29_4.png
+	frame	data/chars/terry/boot_kick_4.png
 		delay	8
 		
 	bbox.position.x 76
@@ -560,7 +560,7 @@ anim 	attack4	# Big boot.
 	bbox.size.x 39
 	bbox.size.y 108
 	
-	frame	data/chars/terry/29_5.png
+	frame	data/chars/terry/boot_kick_5.png
 	frame	data/chars/terry/atk_round_kick_1.png
 	
 	offset	78 158
@@ -1013,7 +1013,7 @@ anim chargeattack # High spin kick.
 	bbox.size.x 41
 	bbox.size.y 92
 	
-	frame	data/chars/terry/high_spin_heel_kick_0.png
+	frame	data/chars/terry/atk_high_spin_heel_kick_0.png
 	
 	offset	73 158
 	
@@ -1025,7 +1025,7 @@ anim chargeattack # High spin kick.
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
 
-	frame	data/chars/terry/high_spin_heel_kick_1.png
+	frame	data/chars/terry/atk_high_spin_heel_kick_1.png
 	
 	offset	75 158
 	
@@ -1034,7 +1034,7 @@ anim chargeattack # High spin kick.
 	bbox.size.x 41
 	bbox.size.y 92
 	
-	frame	data/chars/terry/high_spin_heel_kick_2.png
+	frame	data/chars/terry/atk_high_spin_heel_kick_2.png
 		delay	5
 		
 		offset	74 158
@@ -1051,10 +1051,10 @@ anim chargeattack # High spin kick.
 	attack.effect.hit.flash.model flash_fatal_fury
 	attack.reaction.invincible.time 1
 
-	frame	data/chars/terry/high_spin_heel_kick_3.png
+	frame	data/chars/terry/atk_high_spin_heel_kick_3.png
 		delay	1
 	attack 0
-	frame	data/chars/terry/high_spin_heel_kick_3.png
+	frame	data/chars/terry/atk_high_spin_heel_kick_3.png
 		delay	6
 		
 		offset	76 155
@@ -1070,7 +1070,7 @@ anim chargeattack # High spin kick.
 	attack.size.y 55
 	attack.effect.hit.flash.model flash_fatal_fury
 
-	frame	data/chars/terry/high_spin_heel_kick_4.png
+	frame	data/chars/terry/atk_high_spin_heel_kick_4.png
 	
 	bbox.position.x 75
 	bbox.position.y 60
@@ -1087,14 +1087,14 @@ anim chargeattack # High spin kick.
 	attack.reaction.pause.time 0
 	attack.size.x 0
 	attack.size.y 0
-	frame	data/chars/terry/high_spin_heel_kick_5.png
+	frame	data/chars/terry/atk_high_spin_heel_kick_5.png
 	
 	bbox.position.x 69
 	bbox.position.y 55
 	bbox.size.x 41
 	bbox.size.y 98
 	
-	frame	data/chars/terry/high_spin_heel_kick_6.png
+	frame	data/chars/terry/atk_high_spin_heel_kick_6.png
 	
 	bbox.position.x 62
 	bbox.position.y 60
@@ -1121,11 +1121,11 @@ anim freespecial6 # Rising tackle
 	bbox.size.x 45
 	bbox.size.y 44
 	frame	data/chars/terry/rising_tackle_0.png
-	#cmd stereo_sound_command_here "vter0011.wav"
+	
+	@cmd	dc_fidelity_quick_play "rising_tackle_voice"
 	frame	data/chars/terry/rising_tackle_1.png
 		delay	3
-	#cmd stereo_sound_command_here "sand0003.wav"
-	
+	@cmd	dc_fidelity_quick_play "rising_tackle_sound"
 	
 	
 	move	25
@@ -1167,8 +1167,8 @@ anim freespecial6 # Rising tackle
 	
 	frame	data/chars/terry/rising_tackle_5.png 	#Spin start
 	
-	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
-	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
+	#cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
+	
 
 	attack.block.penetrate 0
 	attack.damage.force 2
@@ -1345,8 +1345,8 @@ anim follow82 # Down Ataack
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 
-	frame	data/chars/terry/34_0.png
-	frame	data/chars/terry/34_1.png
+	frame	data/chars/terry/atk_low_round_kick_0.png
+	frame	data/chars/terry/atk_low_round_kick_1.png
 	
 	attack.block.penetrate 0
 	attack.damage.force 15
@@ -1362,7 +1362,7 @@ anim follow82 # Down Ataack
 	attack.ground.mode 2
 	attack.effect.hit.flash.model flash_fatal_fury
 
-	frame	data/chars/terry/34_2.png
+	frame	data/chars/terry/atk_low_round_kick_2.png
 	
 	attack.effect.hit.flash.disable 0
 	attack.position.x 0
@@ -1370,10 +1370,10 @@ anim follow82 # Down Ataack
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame	data/chars/terry/34_3.png
-	frame	data/chars/terry/34_4.png
-	frame	data/chars/terry/34_5.png
-	frame	data/chars/terry/34_6.png
+	frame	data/chars/terry/atk_low_round_kick_3.png
+	frame	data/chars/terry/atk_low_round_kick_4.png
+	frame	data/chars/terry/atk_low_round_kick_5.png
+	frame	data/chars/terry/atk_low_round_kick_6.png
 	
 	bbox.position.x 59
 	bbox.position.y 60
@@ -2165,7 +2165,7 @@ anim jumpforward
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 
-	frame data/chars/terry/44_0.png
+	frame data/chars/terry/atk_j_side_kick_0.png
 	
 	delay  8
 	
@@ -2183,13 +2183,13 @@ anim jumpforward
 	attack.size.y 25
 	attack.effect.hit.flash.model flash_fatal_fury
 
-	frame data/chars/terry/44_1.png
+	frame data/chars/terry/atk_j_side_kick_1.png
 	
 	delay 14
 	
 	attack.damage.force 10
 	
-	frame data/chars/terry/44_1.png
+	frame data/chars/terry/atk_j_side_kick_1.png
 	
 	delay 8
 	
@@ -2204,7 +2204,7 @@ anim jumpforward
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame data/chars/terry/44_0.png
+	frame data/chars/terry/atk_j_side_kick_0.png
 	
 	delay 8
 	
@@ -2345,7 +2345,7 @@ anim freespecial10 # Power Wave
 	
 	@cmd dc_fidelity_quick_play "power_wave"
 
-	frame	data/chars/terry/28_0.png
+	frame	data/chars/terry/atk_gut_upper_0.png
 
 	bbox.position.x 62
 	bbox.position.y 66
