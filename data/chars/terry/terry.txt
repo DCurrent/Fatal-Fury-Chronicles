@@ -61,12 +61,12 @@ mpset 100 3 50 1 2 2
 #*****Alternates*******
 
 #palette			data/chars/terry/example.act
-palette	       data/chars/terry/default_0.act
-alternatepal   data/chars/terry/default_1.act
-alternatepal   data/chars/terry/kof_2000_0.act
-alternatepal   data/chars/terry/kof_2000_1.act
-alternatepal   data/chars/terry/motw_0.act
-alternatepal   data/chars/terry/motw_1.act
+palette	       data/chars/terry/default_0_cs.act
+alternatepal   data/chars/terry/default_1_cs.act
+#alternatepal   data/chars/terry/kof_2000_0.act
+#alternatepal   data/chars/terry/kof_2000_1.act
+#alternatepal   data/chars/terry/motw_0.act
+#alternatepal   data/chars/terry/motw_1.act
 
 #*****Commands*****************************************************************************
 
