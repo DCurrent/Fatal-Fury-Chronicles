@@ -235,8 +235,8 @@ anim walk # Normal walk
 	frame	data/chars/terry/walk_3.png
 	frame	data/chars/terry/walk_4.png
 
-#Strafe walk (opponent in front on Z)
-anim walk3 # Strafe Walk
+# Plane up (opponent in front on Z)
+anim walk3 # Plane up Walk
 
 		range   -250 250
 		rangez  15 250
@@ -250,11 +250,11 @@ anim walk3 # Strafe Walk
 	bbox.size.x 42
 	bbox.size.y 105
 
-	frame	data/chars/terry/walk_3_0.png
-	frame	data/chars/terry/walk_3_1.png
-	frame	data/chars/terry/walk_3_2.png
-	frame	data/chars/terry/walk_3_3.png
-	frame	data/chars/terry/walk_3_4.png
+	frame	data/chars/terry/walk_plane_up_0.png
+	frame	data/chars/terry/walk_plane_up_1.png
+	frame	data/chars/terry/walk_plane_up_2.png
+	frame	data/chars/terry/walk_plane_up_3.png
+	frame	data/chars/terry/walk_plane_up_4.png
 
 anim run # Dash
 
