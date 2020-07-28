@@ -319,7 +319,7 @@ anim 	attack1 # Long Jab
 
 	@cmd	dc_disney_alternate_on_range openborconstant("ANI_FOLLOW1")
 
-	frame	data/chars/terry/jab_0.png
+	frame	data/chars/terry/atk_jab_0.png
 	
 	bbox.position.x 73
 	bbox.position.y 60
@@ -332,8 +332,10 @@ anim 	attack1 # Long Jab
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_LIGHT
 	@cmd	dc_fidelity_set_sound_chance NULL()
 	
-	frame	data/chars/terry/jab_1.png
-			
+	frame	data/chars/terry/atk_jab_1.png
+	
+	delay 3
+		
 	bbox.position.x 76
 	bbox.position.y 60
 	bbox.size.x 36
@@ -347,16 +349,21 @@ anim 	attack1 # Long Jab
 	attack.size.x 60
 	attack.size.y 13
 
-	frame	data/chars/terry/jab_2.png
+	frame	data/chars/terry/atk_jab_2.png
 	
+	delay  3
+	attack 0
+
+	frame	data/chars/terry/atk_jab_3.png
+	
+	delay 4
+
 	bbox.position.x 73
 	bbox.position.y 60
 	bbox.size.x 29
 	bbox.size.y 106
 	
-	attack 0
-	
-	frame	data/chars/terry/jab_3.png
+	frame	data/chars/terry/atk_jab_4.png
 		idle	1
 		
 	bbox.position.x 62
@@ -364,7 +371,7 @@ anim 	attack1 # Long Jab
 	bbox.size.x 33
 	bbox.size.y 102
 		
-	frame	data/chars/terry/jab_0.png
+	frame	data/chars/terry/atk_jab_0.png
 
 anim 	attack2	# front kick
 
@@ -593,7 +600,7 @@ anim 	attack5 # Straight
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 	@cmd	dc_fidelity_set_sound_chance NULL()
 
-	frame	data/chars/terry/jab_0.png
+	frame	data/chars/terry/atk_jab_0.png
 	
 	bbox.position.x 50
 	bbox.position.y 60
@@ -652,7 +659,7 @@ anim 	attack5 # Straight
 	bbox.size.x 39
 	bbox.size.y 105
 	
-	frame	data/chars/terry/jab_0.png
+	frame	data/chars/terry/atk_jab_0.png
 
 anim attack6 # Round Kick
 
@@ -749,7 +756,7 @@ anim 	follow20 # Backhand
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 	@cmd	dc_fidelity_set_sound_chance NULL()
 
-	frame	data/chars/terry/jab_0.png
+	frame	data/chars/terry/atk_jab_0.png
 		
 	delay 5
 	offset	80 153
@@ -837,7 +844,7 @@ anim 	follow20 # Backhand
 	bbox.size.x 45
 	bbox.size.y 105
 
-	frame	data/chars/terry/jab_0.png
+	frame	data/chars/terry/atk_jab_0.png
 
 anim 	attack7	# Jumping spin kick.
 
@@ -1301,7 +1308,7 @@ anim follow1 # Short jab
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_LIGHT
 	@cmd	dc_fidelity_set_sound_chance NULL()
 
-	frame	data/chars/terry/jab_0.png
+	frame	data/chars/terry/atk_jab_0.png
 
 	attack.damage.force 5
 	attack.position.x 75
@@ -1321,7 +1328,7 @@ anim follow1 # Short jab
 	attack.reaction.pause.time 0
 	attack.size.x 0
 	attack.size.y 0
-	frame	data/chars/terry/jab_0.png
+	frame	data/chars/terry/atk_jab_0.png
 
 anim follow82 # Down Ataack
 
