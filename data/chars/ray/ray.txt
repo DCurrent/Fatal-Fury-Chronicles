@@ -26,7 +26,7 @@ blockodds		1
 #blockodds		2147483647
 bflash			Block
 height			100
-nomove 1
+#nomove 1
 
 onspawnscript		data/chars/ray/scripts/onspawn.c
 animationscript		data/chars/ray/scripts/animation.c
