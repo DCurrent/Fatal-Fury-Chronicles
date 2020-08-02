@@ -86,9 +86,7 @@ void main(){
 	else if (get_entity_property(ent, "link"))
 	{
 		dc_try_grapple_side_switch();
-	}
-
-	
+	}	
 }
 
 // Caskey, Damon V.
