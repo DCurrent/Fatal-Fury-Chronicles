@@ -112,7 +112,9 @@ int dc_try_terry_rising_tackle()
 
     // -- Can pay the energy cost.
 
-    int energy_cost = getentityproperty(ent, "energycost", "cost", openborconstant("ANI_FREESPECIAL6"));
+    void animation = getentityproperty(ent, "animation.handle", openborconstant("ANI_FREESPECIAL6"));
+
+    int energy_cost = get_animation_property(animation, "energy_cost_amount");
     int mp = get_entity_property(ent, "mp"); 
     int seal = get_entity_property(ent, "seal_energy");   
 
