@@ -2468,7 +2468,7 @@ anim freespecial10 # Power Wave
 	# Spawn the blur overlay.
 	@cmd dc_elmers_quick_overlay dc_gauntlet_quick_spawn("terry_crack_shoot")
 	
-	frame data/chars/terry/51_0.png	
+	frame data/chars/terry/crack_shoot_0.png	
 		
 	bbox.position.x 54
 	bbox.position.y 47
@@ -2483,13 +2483,13 @@ anim freespecial10 # Power Wave
 	attack.size.y 83
 	attack.effect.hit.flash.model flash_fatal_fury
 	
-	frame data/chars/terry/51_1.png
+	frame data/chars/terry/crack_shoot_1.png
 	
 	delay 1
 	
 	attack 0
 	
-	frame data/chars/terry/51_1.png
+	frame data/chars/terry/crack_shoot_1.png
 	
 	delay 8
 	
@@ -2506,13 +2506,13 @@ anim freespecial10 # Power Wave
 	attack.size.y 72
 	attack.effect.hit.flash.model flash_fatal_fury
 
-	frame data/chars/terry/51_2.png
+	frame data/chars/terry/crack_shoot_2.png
 	
 	delay 1
 	
 	attack 0
 	
-	frame data/chars/terry/51_2.png
+	frame data/chars/terry/crack_shoot_2.png
 	
 	delay 10
 	
@@ -2533,7 +2533,7 @@ anim freespecial10 # Power Wave
 
 	
 
-	frame data/chars/terry/51_3.png
+	frame data/chars/terry/crack_shoot_3.png
 	
 	delay -1000
 	
@@ -2544,7 +2544,7 @@ anim freespecial10 # Power Wave
 	bbox.size.x 36
 	bbox.size.y 74
 	
-	frame data/chars/terry/52_4.png	
+	frame data/chars/terry/crack_shoot_4.png	
 	
 	delay 8
 	

@@ -22,10 +22,10 @@ anim freespecial11 # Crack shoot
 
 	frame	data/chars/misc/blank.png
 	frame	data/chars/misc/blank.png
-	frame	data/chars/terry/crack_shoot/51_0.png
-	frame	data/chars/terry/crack_shoot/51_1.png
-	frame	data/chars/terry/crack_shoot/51_1.png
-	frame	data/chars/terry/crack_shoot/51_2.png
-	frame	data/chars/terry/crack_shoot/51_2.png
-	frame	data/chars/terry/crack_shoot/51_3.png
+	frame	data/chars/terry/crack_shoot/crack_shoot_0.png
+	frame	data/chars/terry/crack_shoot/crack_shoot_1.png
+	frame	data/chars/terry/crack_shoot/crack_shoot_1.png
+	frame	data/chars/terry/crack_shoot/crack_shoot_2.png
+	frame	data/chars/terry/crack_shoot/crack_shoot_2.png
+	frame	data/chars/terry/crack_shoot/crack_shoot_3.png
 	
