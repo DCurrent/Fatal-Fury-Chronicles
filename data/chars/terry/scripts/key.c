@@ -1,3 +1,152 @@
+
+#define DC_DISNEY_CANCEL_KEY_PREFIX "dc_cancel_"
+
+void dc_disney_cancel_setup(int animation_cancel_to, int animation_cancel_from, int frame_start, int frame_end, int hits_min, int hits_max)
+{
+    int index = 0;
+    char key = "";
+
+    log("\n");
+    log("\n dc_disney_cancel_setup()");
+
+    // Find the first available index by checking
+    // for previous cancel sets until we get an
+    // uninitialized variable.
+
+    do
+    {
+        key = DC_DISNEY_CANCEL_KEY_PREFIX + animation_cancel_to + "_" + index;
+        index++;
+
+        log("\n key: " + key);
+
+    } while (getlocalvar(key + "_ani"));
+
+    index--;
+
+    // Create an artificial 2D array. This array is keyed
+    // by a combination of the cancel into animation and
+    // sequential index (see above).
+    //
+    // Each array element is an array containing the ID 
+    // of an animation that can be canceled from, and the 
+    // start/end frame range.
+    //
+    // cancel_list[animation_cancel_to + index] = {animation_cancel_from, frame_range_start, frame_range_end}
+    //
+    // We are using an artificial array instead of OpenBOR
+    // Script's native array support because native arrays
+    // must be actively removed from memory once established.
+    // By using local vars, our artificial array here is
+    // fire and forget.
+
+    setlocalvar(key + "_ani", animation_cancel_from);
+    setlocalvar(key + "_frame_start", frame_start);
+    setlocalvar(key + "_frame_end", frame_end);
+    setlocalvar(key + "_hits_min", hits_min);
+    setlocalvar(key + "_hits_max", hits_max);
+
+    log("\n\t" + key + " _ani: " + getlocalvar(key + "_ani"));
+    log("\n\t" + key + " _frame_start: " + getlocalvar(key + "_frame_start"));
+    log("\n\t" + key + " _frame_end: " + getlocalvar(key + "_frame_end"));
+}
+
+int dc_disney_check_cancel(void ent, int animation_cancel_to)
+{
+    int index = 0;
+    char key = "";
+
+    int animation_id = get_entity_property(ent, "animation_id");
+    int animation_frame = get_entity_property(ent, "animation_frame");
+
+    int cancel_from;
+
+    int frame_start = 0;
+    int frame_end = 0;
+    int hits_max = 0;
+    int hits_min = 0;
+    int hits_count = 0;
+
+    // Loop over artificial array (dc_disney_cancel_setup)
+    // and attempt to locate cancel from entries for our
+    // current animation. If we find an animation entry,
+    // check current frame vs. frame range of cancel.
+
+    log("\n");
+    log("\n dc_disney_check_cancel()");
+
+    do
+    {
+        key = DC_DISNEY_CANCEL_KEY_PREFIX + animation_cancel_to + "_" + index;
+
+        log("\n key: " + key);
+
+        cancel_from = getlocalvar(key + "_ani");
+
+        log("\n cancel_from: " + cancel_from);
+        log("\n animation_id: " + animation_id);
+
+        if (cancel_from == animation_id)
+        {
+            frame_start = getlocalvar(key + "_frame_start");
+            frame_end = getlocalvar(key + "_frame_start");
+
+            // Make sure empty values are integers.
+            if (!frame_start) frame_start = 0;
+            if (!frame_end) frame_end = 0;
+
+            log("\n animation_frame: " + animation_frame);
+            log("\n frame_start: " + frame_start);
+            log("\n frame_end: " + frame_end);
+
+            // Current frame is within frame range or 
+            // there is no frame range at all?
+            if ((animation_frame >= frame_start || frame_start == -1) && (animation_frame <= frame_end || frame_end == -1))
+            {
+                // Now run same check as frame, but for
+                // minimum and maximum hits.
+
+                hits_min = getlocalvar(key + "_hits_min");
+                hits_max = getlocalvar(key + "_hits_max");
+
+                if (!hits_min) hits_min = 0;
+                if (!hits_max) hits_max = 0;
+
+                hits_count = getentityproperty(ent, "rush_count");
+
+                log("\n hits_count: " + hits_count);
+                log("\n hits_min: " + hits_min);
+                log("\n hits_max: " + hits_max);
+
+                if ((hits_count >= hits_min || hits_min == -1) && (hits_count <= hits_max || hits_max == -1))
+                {                    
+                    return 1;
+                }
+            }
+        }
+
+        // Increment index for next loop.
+        index++;
+
+    }
+    while (cancel_from);
+
+    // If we get here, there were no valid
+    // cancels found. Return false.
+    return 0;
+}
+
+void oncreate()
+{    
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK1"), -1, -1, -1, -1);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK2"), -1, -1 - 1, -1);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK3"), -1, -1 - 1, -1);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK4"), -1, -1 - 1, -1);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK5"), -1, -1 - 1, -1);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK6"), -1, -1 - 1, -1);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_CHARGEATTACK"), -1, -1 - 1, -1);
+}
+
 // Terry Bogard key key capture.
 int dc_try_terry_rising_tackle()
 {
@@ -94,12 +243,19 @@ int dc_try_terry_rising_tackle()
     	return 0;
     }
 
-    // -- Not in pain.
+    // -- Idle, or can be canceled.
 
-    if (get_entity_property(ent, "in_pain") || get_entity_property(ent, "in_pain_back"))
+    if (!get_entity_property(ent, "idle_state") && !dc_disney_check_cancel(ent, openborconstant("ANI_FREESPECIAL6")))
     {
         return 0;
     }
+
+    // not losing.
+
+    //if (get_entity_property(ent, "in_pain") || get_entity_property(ent, "in_pain_back") || get_entity_property(ent, "fall_state"))
+    //{
+    //    return 0;
+    //}
 
     // -- Not holding Special key.
 
