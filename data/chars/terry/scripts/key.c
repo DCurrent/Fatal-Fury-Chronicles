@@ -1,7 +1,9 @@
 
 #define DC_DISNEY_CANCEL_KEY_PREFIX "dc_cancel_"
 
-void dc_disney_cancel_setup(int animation_cancel_to, int animation_cancel_from, int frame_start, int frame_end, int hits_min, int hits_max)
+
+
+void dc_disney_cancel_setup(int animation_cancel_to, int animation_cancel_from, int frame_start, int frame_end, int hits_min)
 {
     int index = 0;
     char key = "";
@@ -9,47 +11,107 @@ void dc_disney_cancel_setup(int animation_cancel_to, int animation_cancel_from, 
     log("\n");
     log("\n dc_disney_cancel_setup()");
 
+    // Create an artificial 2D array. This array is keyed
+     // by a combination of the cancel into animation, the
+     // cancel from animation and a sequential index.
+     //
+     // Each element of the array contains an encoded value
+     // of cancel data (frame start, frame end, etc.) using
+     // bitwise operations. We can decode the data back into
+     // its seperate parts when we need to use it again. 
+     //
+     // cancel_list[animation_cancel_to + animation_cancel_from + index] = {frame_range_start, frame_range_end, required hits}
+     //
+     // We are using an artificial array instead of OpenBOR
+     // Script's native array support because native arrays
+     // must be actively removed from memory once established.
+     // By using local vars, our artificial array here is
+     // fire and forget. Encoding the data rather than using 
+     // variables for each saves a lot of memory and time as 
+     // otherwise we'd need another artficial array for each 
+     // portion of the data. 
+
     // Find the first available index by checking
     // for previous cancel sets until we get an
     // uninitialized variable.
 
     do
     {
-        key = DC_DISNEY_CANCEL_KEY_PREFIX + animation_cancel_to + "_" + index;
+        key = DC_DISNEY_CANCEL_KEY_PREFIX + animation_cancel_to + "_" + animation_cancel_from + "_" + index;
         index++;
 
         log("\n key: " + key);
 
-    } while (getlocalvar(key + "_ani"));
+    } while (getlocalvar(key));
 
     index--;
 
-    // Create an artificial 2D array. This array is keyed
-    // by a combination of the cancel into animation and
-    // sequential index (see above).
+    // Masks and bit shift values. 
+    // 
+    // Masks must be the top range of a value, keeping 
+    // in mind 0 indexing. For example, an 8bit sized 
+    // value gives us 256 possible combinations, meaning
+    // a number range of 0-255. Therefore the mask should
+    // be 255, or a hexadecimal of 0xFF.
     //
-    // Each array element is an array containing the ID 
-    // of an animation that can be canceled from, and the 
-    // start/end frame range.
-    //
-    // cancel_list[animation_cancel_to + index] = {animation_cancel_from, frame_range_start, frame_range_end}
-    //
-    // We are using an artificial array instead of OpenBOR
-    // Script's native array support because native arrays
-    // must be actively removed from memory once established.
-    // By using local vars, our artificial array here is
-    // fire and forget.
+    // Bit shifts are the starting set of bits for our 
+    // values. Bits are 0 indexed left to right. As an 
+    // example, assume we are encoding four 8bit values. 
+    // The first value always starts at bit 0, so it does
+    // not need a shift. Since it's 8bit in size, it occupies
+    // bits 0-7. That means the second value must start at 
+    // bit 8, so we shift to 8. Continuing the same pattern,
+    // our second value occupies bits 8-15, so we shift to 
+    // 16 for the third value's start bit. Finally, the third 
+    // value occupies bits 16-23, so we shift to bit 24 for 
+    // the fourth, which then occupies remaining bits 24-32.
 
-    setlocalvar(key + "_ani", animation_cancel_from);
-    setlocalvar(key + "_frame_start", frame_start);
-    setlocalvar(key + "_frame_end", frame_end);
-    setlocalvar(key + "_hits_min", hits_min);
-    setlocalvar(key + "_hits_max", hits_max);
+    #define MASK_FRAME 511
+    #define MASK_HITS 16383
 
-    log("\n\t" + key + " _ani: " + getlocalvar(key + "_ani"));
-    log("\n\t" + key + " _frame_start: " + getlocalvar(key + "_frame_start"));
-    log("\n\t" + key + " _frame_end: " + getlocalvar(key + "_frame_end"));
+    #define SHIFT_FRAME_START 0
+    #define SHIFT_FRAME_END 9
+    #define SHIFT_HITS_MAX 18
+
+    int encoded = 0;
+
+    // Compress values into single integer and use it
+    // to populate local var.
+    encoded = (frame_start << SHIFT_FRAME_START) | (frame_end << SHIFT_FRAME_END) | (hits_min << SHIFT_HITS_MAX);
+
+    setlocalvar(key, encoded);    
+
+    
+    // Debug. Remove when finished.
+
+    // First blank and output encoded so
+    // we know anything below is taken
+    // from localvar call.
+    encoded = NULL();
+    log("\n encoded: " + encoded);
+    
+    // Get encoded data, decompress and output to log.
+    encoded = getlocalvar(key);
+
+    log("\n encoded: " + encoded);
+
+    log("\n frame start: " + ((encoded >> SHIFT_FRAME_START) & MASK_FRAME));
+    log("\n frame end: " + ((encoded >> SHIFT_FRAME_END) & MASK_FRAME));
+    log("\n Required hits: " + ((encoded >> SHIFT_HITS_MAX) & MASK_HITS));
+    
+    // End debug.
+
+    #undef MASK_FRAME
+    #undef MASK_HITS
+    
+    #undef SHIFT_FRAME_START
+    #undef SHIFT_FRAME_END
+    #undef SHIFT_HITS_MAX
+
 }
+
+// 1. Command triggered?
+// -- 2. Look up list of cancel "to" animations vs. 
 
 int dc_disney_check_cancel(void ent, int animation_cancel_to)
 {
@@ -138,13 +200,14 @@ int dc_disney_check_cancel(void ent, int animation_cancel_to)
 
 void oncreate()
 {    
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK1"), -1, -1, -1, -1);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK2"), -1, -1 - 1, -1);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK3"), -1, -1 - 1, -1);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK4"), -1, -1 - 1, -1);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK5"), -1, -1 - 1, -1);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK6"), -1, -1 - 1, -1);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_CHARGEATTACK"), -1, -1 - 1, -1);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK1"), 0, 0, 0);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK2"), 1, 2, 3);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK3"), 0, 0, 0);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK4"), 0, 0, 0);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK5"), 0, 0, 0);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK6"), 0, 0, 0);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_CHARGEATTACK"), 3, 2, 4000);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_CHARGEATTACK"), 23, 245, 1000);
 }
 
 // Terry Bogard key key capture.
@@ -161,6 +224,8 @@ int dc_try_terry_rising_tackle()
     int attacking;
     int elapsed_time;   
     int key_jump_press_time;
+
+    
 
     // Let's set up foundation variables.
 
