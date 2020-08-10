@@ -2,6 +2,12 @@
 #define DC_DISNEY_CANCEL_KEY_PREFIX "dc_cancel_"
 
 
+#define MASK_FRAME 511
+#define MASK_HITS 16383
+
+#define SHIFT_FRAME_START 0
+#define SHIFT_FRAME_END 9
+#define SHIFT_HITS_MAX 18
 
 void dc_disney_cancel_setup(int animation_cancel_to, int animation_cancel_from, int frame_start, int frame_end, int hits_min)
 {
@@ -66,12 +72,6 @@ void dc_disney_cancel_setup(int animation_cancel_to, int animation_cancel_from, 
     // value occupies bits 16-23, so we shift to bit 24 for 
     // the fourth, which then occupies remaining bits 24-32.
 
-    #define MASK_FRAME 511
-    #define MASK_HITS 16383
-
-    #define SHIFT_FRAME_START 0
-    #define SHIFT_FRAME_END 9
-    #define SHIFT_HITS_MAX 18
 
     int encoded = 0;
 
@@ -100,14 +100,6 @@ void dc_disney_cancel_setup(int animation_cancel_to, int animation_cancel_from, 
     log("\n Required hits: " + ((encoded >> SHIFT_HITS_MAX) & MASK_HITS));
     
     // End debug.
-
-    #undef MASK_FRAME
-    #undef MASK_HITS
-    
-    #undef SHIFT_FRAME_START
-    #undef SHIFT_FRAME_END
-    #undef SHIFT_HITS_MAX
-
 }
 
 // 1. Command triggered?
@@ -121,11 +113,10 @@ int dc_disney_check_cancel(void ent, int animation_cancel_to)
     int animation_id = get_entity_property(ent, "animation_id");
     int animation_frame = get_entity_property(ent, "animation_frame");
 
-    int cancel_from;
+    int cancel_data;
 
     int frame_start = 0;
     int frame_end = 0;
-    int hits_max = 0;
     int hits_min = 0;
     int hits_count = 0;
 
@@ -139,23 +130,27 @@ int dc_disney_check_cancel(void ent, int animation_cancel_to)
 
     do
     {
-        key = DC_DISNEY_CANCEL_KEY_PREFIX + animation_cancel_to + "_" + index;
+        // Get cancel data using a key made up of the animation 
+        // we want to cancel into, (supplied by argument), the
+        // animation we can cancel from (current animation), and
+        // an index. 
+
+        key = DC_DISNEY_CANCEL_KEY_PREFIX + animation_cancel_to + "_" + animation_id + "_" + index;
 
         log("\n key: " + key);
 
-        cancel_from = getlocalvar(key + "_ani");
+        cancel_data = getlocalvar(key);
 
-        log("\n cancel_from: " + cancel_from);
-        log("\n animation_id: " + animation_id);
+        log("\n cancel_data: " + cancel_data);
 
-        if (cancel_from == animation_id)
+        // If we got any cancel data, we need to decode it back
+        // into indivdiual parts (see cancel setup function). 
+        // Then we can determine if we are elgible to cancel.
+
+        if (typeof(cancel_data) == openborconstant("VT_INTEGER"))
         {
-            frame_start = getlocalvar(key + "_frame_start");
-            frame_end = getlocalvar(key + "_frame_start");
-
-            // Make sure empty values are integers.
-            if (!frame_start) frame_start = 0;
-            if (!frame_end) frame_end = 0;
+            frame_start = (cancel_data >> SHIFT_FRAME_START) & MASK_FRAME;
+            frame_end = (cancel_data >> SHIFT_FRAME_END) & MASK_FRAME;
 
             log("\n animation_frame: " + animation_frame);
             log("\n frame_start: " + frame_start);
@@ -163,24 +158,22 @@ int dc_disney_check_cancel(void ent, int animation_cancel_to)
 
             // Current frame is within frame range or 
             // there is no frame range at all?
-            if ((animation_frame >= frame_start || frame_start == -1) && (animation_frame <= frame_end || frame_end == -1))
+            if ((animation_frame >= frame_start && animation_frame <= frame_end) || (!frame_start && !frame_end))
             {
                 // Now run same check as frame, but for
                 // minimum and maximum hits.
-
-                hits_min = getlocalvar(key + "_hits_min");
-                hits_max = getlocalvar(key + "_hits_max");
-
-                if (!hits_min) hits_min = 0;
-                if (!hits_max) hits_max = 0;
-
+                                
+                hits_min = (cancel_data >> SHIFT_HITS_MAX) & MASK_HITS;
                 hits_count = getentityproperty(ent, "rush_count");
 
                 log("\n hits_count: " + hits_count);
                 log("\n hits_min: " + hits_min);
-                log("\n hits_max: " + hits_max);
-
-                if ((hits_count >= hits_min || hits_min == -1) && (hits_count <= hits_max || hits_max == -1))
+                
+                // We've reached the minimum hits or there is no required
+                // minimum? note tos ave on flags, if the minimum hits is 
+                // set to it's maximum allowed value, we use that as a 
+                // logical "no minimum".
+                if (hits_count >= hits_min || hits_min == MASK_HITS)
                 {                    
                     return 1;
                 }
@@ -189,23 +182,30 @@ int dc_disney_check_cancel(void ent, int animation_cancel_to)
 
         // Increment index for next loop.
         index++;
-
     }
-    while (cancel_from);
+    while (cancel_data);
 
     // If we get here, there were no valid
     // cancels found. Return false.
     return 0;
 }
 
+#undef MASK_FRAME
+#undef MASK_HITS
+
+#undef SHIFT_FRAME_START
+#undef SHIFT_FRAME_END
+#undef SHIFT_HITS_MAX
+
+
 void oncreate()
 {    
     dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK1"), 0, 0, 0);
     dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK2"), 1, 2, 3);
     dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK3"), 0, 0, 0);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK4"), 0, 0, 0);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK4"), 0, 0, 2651);
     dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK5"), 0, 0, 0);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK6"), 0, 0, 0);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK6"), 43, 82, 8200);
     dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_CHARGEATTACK"), 3, 2, 4000);
     dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_CHARGEATTACK"), 23, 245, 1000);
 }
