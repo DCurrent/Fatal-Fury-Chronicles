@@ -4,11 +4,29 @@
 
 #define MASK_FRAME 511
 #define MASK_HITS 16383
+#define HITS_REQUIRE_NONE MASK_HITS
 
 #define SHIFT_FRAME_START 0
 #define SHIFT_FRAME_END 9
 #define SHIFT_HITS_MAX 18
 
+// Caskey, Damon V.
+// 2020-08-06
+//
+// Set up a cancel point and its limitations. Mutiple cancels
+// into and/or out of a given animation are allowed. Just repeat
+// the function with the new cancel arguments.
+//
+// -- animation_cancel_to: Animation that can be cancled into. 
+// -- animation_cancel_from: Animation that can be canceled out of.
+//
+// -- frame_start/end: Frame range animation from must be within to 
+// allow cancel. Maximum range is 0 to 510. Set both to 0 for no 
+// required frame range.
+//
+// -- hits_min: Minium number of previous hits to allow a cancel. 
+// maximum range is 0 to 1023. Use HITS_REQUIRE_NONE to only allow 
+// cancel when no previous hits occured.
 void dc_disney_cancel_setup(int animation_cancel_to, int animation_cancel_from, int frame_start, int frame_end, int hits_min)
 {
     int index = 0;
@@ -18,24 +36,24 @@ void dc_disney_cancel_setup(int animation_cancel_to, int animation_cancel_from, 
     log("\n dc_disney_cancel_setup()");
 
     // Create an artificial 2D array. This array is keyed
-     // by a combination of the cancel into animation, the
-     // cancel from animation and a sequential index.
-     //
-     // Each element of the array contains an encoded value
-     // of cancel data (frame start, frame end, etc.) using
-     // bitwise operations. We can decode the data back into
-     // its seperate parts when we need to use it again. 
-     //
-     // cancel_list[animation_cancel_to + animation_cancel_from + index] = {frame_range_start, frame_range_end, required hits}
-     //
-     // We are using an artificial array instead of OpenBOR
-     // Script's native array support because native arrays
-     // must be actively removed from memory once established.
-     // By using local vars, our artificial array here is
-     // fire and forget. Encoding the data rather than using 
-     // variables for each saves a lot of memory and time as 
-     // otherwise we'd need another artficial array for each 
-     // portion of the data. 
+    // by a combination of the cancel into animation, the
+    // cancel from animation and a sequential index.
+    //
+    // Each element of the array contains an encoded value
+    // of cancel data (frame start, frame end, etc.) using
+    // bitwise operations. We can decode the data back into
+    // its seperate parts when we need to use it again. 
+    //
+    // cancel_list[animation_cancel_to + animation_cancel_from + index] = {frame_range_start, frame_range_end, required hits}
+    //
+    // We are using an artificial array instead of OpenBOR
+    // Script's native array support because native arrays
+    // must be actively removed from memory once established.
+    // By using local vars, our artificial array here is
+    // fire and forget. Encoding the data rather than using 
+    // variables for each saves a lot of memory and time as 
+    // otherwise we'd need another artficial array for each 
+    // portion of the data. 
 
     // Find the first available index by checking
     // for previous cancel sets until we get an
@@ -169,11 +187,15 @@ int dc_disney_check_cancel(void ent, int animation_cancel_to)
                 log("\n hits_count: " + hits_count);
                 log("\n hits_min: " + hits_min);
                 
-                // We've reached the minimum hits or there is no required
-                // minimum? note tos ave on flags, if the minimum hits is 
-                // set to it's maximum allowed value, we use that as a 
-                // logical "no minimum".
-                if (hits_count >= hits_min || hits_min == MASK_HITS)
+                // Check required hits. If HITS_REQUIRE_NONE is
+                // set then no hits are allowed. Otherwise compare
+                // current hits to min hits.
+
+                if (hits_min == HITS_REQUIRE_NONE && hits_count > 0)
+                {
+                    return 0;
+                }
+                else if (hits_count >= hits_min)
                 {                    
                     return 1;
                 }
@@ -224,8 +246,6 @@ int dc_try_terry_rising_tackle()
     int attacking;
     int elapsed_time;   
     int key_jump_press_time;
-
-    
 
     // Let's set up foundation variables.
 

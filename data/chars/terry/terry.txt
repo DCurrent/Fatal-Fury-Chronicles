@@ -46,7 +46,7 @@ keyscript 			data/chars/terry/scripts/key.c
 animationscript 	data/chars/terry/scripts/ani_p.c
 didblockscript  	data/scripts/common/event_block.c
 takedamagescript	data/scripts/common/event_damage.c
-didhitscript		data/scripts/common/event_hit.c
+didhitscript		data/chars/terry/scripts/event_didhit.c
 onmovezscript		data/scripts/common/event_move_z.c
 onspawnscript		data/scripts/common/event_move_z.c
 onmoveascript		data/chars/terry/scripts/onmoveascript.c
@@ -1114,11 +1114,11 @@ anim freespecial6 # Rising tackle
 
 	energycost 20
 	mponly	   1
-		loop	   1 5 8
-	jumpframe  2 5.5 0.2 0 jump_liftoff
-	dropframe  9
-	landframe  14 jump_land
-		fastattack 1
+		loop	   1 6 10
+	jumpframe  3 5.5 0.2 0 jump_liftoff
+	dropframe  11
+	landframe  16 jump_land
+	#fastattack 1
 	forcedirection -1
 
 		delay	6
@@ -1148,27 +1148,60 @@ anim freespecial6 # Rising tackle
 	attack.effect.hit.flash.disable 0
 	attack.position.x 70
 	attack.position.y 55
-	attack.reaction.fall.force 0
-	attack.reaction.pause.time 15
-	attack.size.x 35
+	attack.reaction.fall.force 1
+	attack.reaction.fall.velocity.x 0.5
+	attack.reaction.fall.velocity.y 3.0
+	attack.reaction.pause.time 30
+	attack.size.x 45
 	attack.size.y 45
+	attack.reaction.invincible.time 5
+
+	frame	data/chars/terry/rising_tackle_2.png
 	
-	frame	data/chars/terry/rising_tackle_2.png	#jumpframe
+	delay  3
+	attack.damage.force 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.size.x 0
+	attack.size.y 0
+	
 	move	0
+	frame	data/chars/terry/rising_tackle_2.png
+	#jumpframe
+	
+	delay 4
+	
+	#attack.block.penetrate 0
+	#attack.damage.force 9
+	#attack.damage.type 1
+	#attack.effect.hit.flash.disable 0
+	#attack.position.x 58
+	#attack.position.y 50
+	#attack.reaction.fall.force 1
+	#attack.reaction.fall.velocity.x 0.5
+	#attack.reaction.fall.velocity.y 2.0
+	#attack.reaction.pause.time 6
+	#attack.size.x 90
+	#attack.size.y 60
+	#attack.reaction.invincible.time 5
+	
 	frame	data/chars/terry/rising_tackle_3.png
+	
+	attack.damage.force 0
+	attack.position.x 0
+	attack.position.y 0
+	attack.size.x 0
+	attack.size.y 0
+	
 	frame	data/chars/terry/rising_tackle_4.png
-		delay	4
+		
+	delay	4
 		
 	offset	70 168
 		
-	attack.block.penetrate 0
 	attack.damage.force 0
-	attack.damage.type 1
-	attack.effect.hit.flash.disable 0
 	attack.position.x 0
 	attack.position.y 0
-	attack.reaction.fall.force 0
-	attack.reaction.pause.time 0
 	attack.size.x 0
 	attack.size.y 0
 	
@@ -1182,22 +1215,20 @@ anim freespecial6 # Rising tackle
 	attack.damage.type 1
 	attack.effect.hit.flash.disable 0
 	attack.position.x 20
-	attack.position.y 120
+	attack.position.y 90
 	attack.reaction.fall.force 0
+	attack.reaction.fall.velocity.x 0.5
+	attack.reaction.fall.velocity.y 2.0
 	attack.reaction.pause.time 6
 	attack.size.x 115
-	attack.size.y 20
-	
+	attack.size.y 60
+	attack.reaction.invincible.time 5
+
 	frame	data/chars/terry/rising_tackle_6.png
 	
-	attack.block.penetrate 0
 	attack.damage.force 0
-	attack.damage.type 1
-	attack.effect.hit.flash.disable 0
 	attack.position.x 0
 	attack.position.y 0
-	attack.reaction.fall.force 0
-	attack.reaction.pause.time 0
 	attack.size.x 0
 	attack.size.y 0
 	
@@ -1208,12 +1239,18 @@ anim freespecial6 # Rising tackle
 	attack.damage.type 1
 	attack.effect.hit.flash.disable 0
 	attack.position.x 20
-	attack.position.y 120
+	attack.position.y 90
 	attack.reaction.fall.force 0
+	attack.reaction.fall.velocity.x 0.5
+	attack.reaction.fall.velocity.y 3.0
 	attack.reaction.pause.time 6
 	attack.size.x 115
-	attack.size.y 20
+	attack.size.y 60
+	attack.reaction.invincible.time 5
+	delay 1
+	frame	data/chars/terry/rising_tackle_8.png 	#Spin end
 	
+	delay 3
 	frame	data/chars/terry/rising_tackle_8.png 	#Spin end
 		delay	6
 	
@@ -1224,11 +1261,13 @@ anim freespecial6 # Rising tackle
 	attack.damage.type 1
 	attack.effect.hit.flash.disable 0
 	attack.position.x 20
-	attack.position.y 100
+	attack.position.y 80
 	attack.reaction.fall.force 1
+	attack.reaction.fall.velocity.x 0.2
+	attack.reaction.fall.velocity.y 3.0
 	attack.reaction.pause.time 6
 	attack.size.x 115
-	attack.size.y 20
+	attack.size.y 60
 	
 	bbox.position.x 65
 	bbox.position.y 60
@@ -1242,8 +1281,9 @@ anim freespecial6 # Rising tackle
 	bbox.size.x 36
 	bbox.size.y 57
 	
+	attack.damage.force 0
 	attack.position.x 0
-	attack.position.y 0	
+	attack.position.y 0
 	attack.size.x 0
 	attack.size.y 0
 	
