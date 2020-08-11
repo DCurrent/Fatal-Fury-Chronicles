@@ -1,4 +1,7 @@
 #include "data/scripts/dc_elmers/main.c"
+#include "data/scripts/dc_fidelity/main.c"	// Used by common_didhit.
+
+#import "data/scripts/common/common_didhit.c"
 
 void main()
 {
@@ -25,5 +28,6 @@ void main()
 		dc_elmers_adjust_distance_to_y();
 	}
 
-	
+	// Run global didhit routines.
+	dc_common_didhit();	
 }
