@@ -645,14 +645,14 @@ anim 	attack5 # Straight
 	
 	frame	data/chars/terry/atk_straight_3.png	
 	
-		idle	1
+	idle	1
 	
 	bbox.position.x 59
 	bbox.position.y 60
 	bbox.size.x 45
 	bbox.size.y 105
 	
-	frame	data/chars/terry/atk_straight_1.png
+	frame	data/chars/terry/atk_straight_4.png
 			
 	bbox.position.x 58
 	bbox.position.y 60
