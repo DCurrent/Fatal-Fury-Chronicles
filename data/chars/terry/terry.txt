@@ -577,7 +577,7 @@ anim 	attack4	# Big boot.
 	bbox.size.x 45
 	bbox.size.y 105
 	
-	frame	data/chars/terry/atk_round_kick_4.png
+	frame	data/chars/terry/atk_round_kick_5.png
 
 # Straight.
 anim 	attack5 # Straight
@@ -695,7 +695,7 @@ anim attack6 # Round Kick
 	
 	frame	data/chars/terry/atk_round_kick_2.png
 
-	delay 8
+	delay 4
 
 	bbox.position.x 89
 	bbox.position.y 54
@@ -711,6 +711,10 @@ anim attack6 # Round Kick
 	attack.size.y 14
 
 	frame	data/chars/terry/atk_round_kick_3.png
+
+	attack 0
+
+	frame	data/chars/terry/atk_round_kick_4.png
 
 	delay 6
 
@@ -736,7 +740,7 @@ anim attack6 # Round Kick
 	bbox.size.x 39
 	bbox.size.y 105
 	
-	frame	data/chars/terry/atk_round_kick_4.png
+	frame	data/chars/terry/atk_round_kick_5.png
 	
 	
 #Temp unused
@@ -1108,7 +1112,7 @@ anim chargeattack # High spin kick.
 	bbox.size.x 41
 	bbox.size.y 98
 	
-	frame	data/chars/terry/atk_round_kick_4.png
+	frame	data/chars/terry/atk_round_kick_5.png
 
 anim freespecial6 # Rising tackle
 
