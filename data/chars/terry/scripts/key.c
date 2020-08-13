@@ -4,7 +4,7 @@
 
 #define MASK_FRAME 511
 #define MASK_HITS 16383
-#define HITS_REQUIRE_NONE MASK_HITS
+#define HITS_REQUIRE_NONE 16383
 
 #define SHIFT_FRAME_START 0
 #define SHIFT_FRAME_END 9
@@ -223,13 +223,13 @@ int dc_disney_check_cancel(void ent, int animation_cancel_to)
 void oncreate()
 {    
     dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK1"), 0, 0, 0);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK2"), 1, 2, 3);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK2"), 0, 0, 0);
     dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK3"), 0, 0, 0);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK4"), 0, 0, 2651);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK4"), 0, 0, 0);
     dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK5"), 0, 0, 0);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK6"), 43, 82, 8200);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_CHARGEATTACK"), 3, 2, 4000);
-    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_CHARGEATTACK"), 23, 245, 1000);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_ATTACK6"), 0, 0, 0);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_CHARGEATTACK"), 0, 0, 0);
+    dc_disney_cancel_setup(openborconstant("ANI_FREESPECIAL6"), openborconstant("ANI_FOLLOW82"), 0, 0, 0);
 }
 
 // Terry Bogard key key capture.
