@@ -1,4 +1,4 @@
-name         terry_crack_shoot
+name         terry_burn_knuckle_fist
 type	     none
 health	     100
 alpha	     1
@@ -6,7 +6,7 @@ speedf		 0.0
 nomove		1
 antigravity	100
 
-palette	data/chars/terry/default_0.ACT
+palette	data/chars/terry/burn_knuckle_fist/default.ACT
 
 anim idle
 
@@ -15,17 +15,16 @@ anim idle
 
 	frame	data/chars/misc/blank.png
 
-anim freespecial11 # Crack shoot
+anim freespecial12 # Burn knuckle
 
-	delay	1000
-	offset	76 155
-
-	frame	data/chars/misc/blank.png
-	frame	data/chars/misc/blank.png
-	frame	data/chars/terry/crack_shoot/crack_shoot_0.png
-	frame	data/chars/terry/crack_shoot/crack_shoot_1.png
-	frame	data/chars/terry/crack_shoot/crack_shoot_1.png
-	frame	data/chars/terry/crack_shoot/crack_shoot_2.png
-	frame	data/chars/terry/crack_shoot/crack_shoot_2.png
-	frame	data/chars/terry/crack_shoot/crack_shoot_3.png
+	loop 	1
+	delay	4
+	offset	76 156
+	
+	frame	data/chars/terry/burn_knuckle_fist/idle_0.png
+	frame	data/chars/terry/burn_knuckle_fist/idle_1.png
+	frame	data/chars/terry/burn_knuckle_fist/idle_2.png
+	frame	data/chars/terry/burn_knuckle_fist/idle_3.png
+	frame	data/chars/terry/burn_knuckle_fist/idle_4.png
+	frame	data/chars/terry/burn_knuckle_fist/idle_5.png
 	
