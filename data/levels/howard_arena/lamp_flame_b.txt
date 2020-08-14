@@ -1,0 +1,22 @@
+name	 howard_arena_lamp_flame_b
+health	 1
+type	 panel
+Speedf   -0.3
+noquake  1 0
+setlayer 450
+alpha	 1
+noquake	 1 1
+
+anim idle 
+
+	loop	1
+	delay	8
+	offset	21 6
+	bbox	0
+	frame data/levels/howard_arena/lamp_flame_0.png
+	frame data/levels/howard_arena/lamp_flame_1.png
+	frame data/levels/howard_arena/lamp_flame_2.png
+	frame data/levels/howard_arena/lamp_flame_3.png
+	
+	
+

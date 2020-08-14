@@ -10,7 +10,7 @@ maxattacktypes  13
 noaircancel     2
 combodelay		200
 
-# Flash/Hit sparks.
+## Flash/Hit sparks.
 load	Flash				data/chars/misc/flash/flash.txt
 load	flash_fatal_fury	data/chars/misc/flash_fatal_fury/flash_fatal_fury.txt
 load	flash_indirect		data/chars/misc/flash_indirect/flash_indirect.txt
@@ -26,14 +26,22 @@ load    jump_land			data/chars/misc/cvs_land_dust/jump_land.txt
 load    flash_slam_light	data/chars/misc/dust/flash_slam_light.txt
 load    flash_slam_heavy	data/chars/misc/dust/flash_slam_heavy.txt
 
-# Miscellaneous special effects.
+## Stage Items (panels, animation effects, etc.)
+# Howard Arena
+know 	howard_arena_lamp_flame		data/levels/howard_arena/lamp_flame.txt
+know 	howard_arena_lamp_flame_b	data/levels/howard_arena/lamp_flame_b.txt
+know 	howard_arena_lightning		data/levels/howard_arena/lightning.txt
+know 	howard_arena_rain			data/levels/howard_arena/rain.txt
+know 	howard_arena_waterfall		data/levels/howard_arena/waterfall.txt
 
 load	mai_shiranui			data/chars/mai/mai.txt
 
-know	terry_crack_shoot		data/chars/terry/crack_shoot/terry_crack_shoot.txt
-know	terry_power_wave		data/chars/terry/terry_power_wave.txt
-know	terry_power_wave_fist	data/chars/terry/terry_power_wave_fist.txt
-load    Terry					data/chars/terry/terry.txt
+know	terry_burn_knuckle_burst	data/chars/terry/burn_knuckle_burst/terry_burn_knuckle_burst.txt
+know	terry_burn_knuckle_fist		data/chars/terry/burn_knuckle_fist/terry_burn_knuckle_fist.txt
+know	terry_crack_shoot			data/chars/terry/crack_shoot/terry_crack_shoot.txt
+know	terry_power_wave			data/chars/terry/terry_power_wave.txt
+know	terry_power_wave_fist		data/chars/terry/terry_power_wave_fist.txt
+load    Terry						data/chars/terry/terry.txt
 
 load	Ray_McDougal data/chars/ray/ray_mcdougal.txt
 know	Ray		data/chars/ray/ray.txt

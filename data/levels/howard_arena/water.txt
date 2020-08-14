@@ -1,0 +1,35 @@
+#Water Background for temple.
+
+name	 temp0004
+health	 1
+type	 panel
+Speedf   0.3
+setlayer -9
+
+anim idle 
+
+	loop	1
+	delay	15
+	offset	0 85
+	bbox	0
+	
+	frame data/bgs/temp0001/wate0001
+	frame data/bgs/temp0001/wate0002
+	frame data/bgs/temp0001/wate0003
+	frame data/bgs/temp0001/wate0004
+	frame data/bgs/temp0001/wate0005
+	frame data/bgs/temp0001/wate0006
+	frame data/bgs/temp0001/wate0005
+	frame data/bgs/temp0001/wate0004
+	frame data/bgs/temp0001/wate0003
+	frame data/bgs/temp0001/wate0002
+	
+		
+	
+
+
+
+	
+
+
+

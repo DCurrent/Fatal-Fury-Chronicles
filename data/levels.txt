@@ -58,8 +58,14 @@ e3life       384   30
 e3icon       358   30
 e3name       384   37
 
-set	test_area
+set	Test:_Blank
 lives  1
 nosame 0 2
 z       180 230 
 file	data/levels/test_area.txt
+
+set	Test:_Howard_Arena
+lives  1
+nosame 0 2
+z       207 265 
+file	data/levels/howard_arena/howard_arena.txt

@@ -1,0 +1,30 @@
+#Rain effect.
+
+name	 howard_arena_rain
+health	 10
+type	 panel
+speedf	 1.0
+setlayer 500
+alpha    2
+noquake  1 1
+
+palette data/levels/howard_arena/rain_0.png
+
+anim spawn
+	
+	delay  5831
+	offset	480 275
+	bbox	0
+	frame data/chars/misc/blank.png
+	
+anim idle 
+
+	loop	1
+	delay	8
+	offset	240 280
+	bbox	0
+	frame data/levels/howard_arena/rain_0.png
+	frame data/levels/howard_arena/rain_1.png
+	frame data/levels/howard_arena/rain_2.png
+	frame data/levels/howard_arena/rain_3.png
+
