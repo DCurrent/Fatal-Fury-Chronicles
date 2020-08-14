@@ -13,6 +13,17 @@
 // that will handle the most common module building needs.
 
 // Caskey, Damon V.
+// 2020-08-13
+//
+// Destory the bound entity.
+void dc_elmers_quick_destroy()
+{
+	void ent = dc_elmers_get_entity(ent);
+
+	killentity(ent);
+}
+
+// Caskey, Damon V.
 // 2019-05-02
 //
 // Bind to target's exact location and direction
