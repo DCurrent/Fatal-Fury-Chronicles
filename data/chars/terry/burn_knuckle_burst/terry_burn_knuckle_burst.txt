@@ -1,0 +1,28 @@
+name         terry_burn_knuckle_burst
+type	     none
+health	     100
+alpha	     1
+speedf		 0.0
+nomove		1
+antigravity	100
+
+palette	data/chars/terry/burn_knuckle_burst/default_0.ACT
+
+anim idle
+
+	delay	2
+	offset	76 155
+	
+	frame	data/chars/terry/burn_knuckle_burst/idle_0.png
+	@cmd set_entity_property getlocalvar("self") "autokill" openborconstant("AUTOKILL_ANIMATION_COMPLETE")
+	frame	data/chars/terry/burn_knuckle_burst/idle_1.png
+	frame	data/chars/terry/burn_knuckle_burst/idle_2.png
+	frame	data/chars/terry/burn_knuckle_burst/idle_3.png
+	frame	data/chars/terry/burn_knuckle_burst/idle_4.png
+	frame	data/chars/terry/burn_knuckle_burst/idle_5.png
+	frame	data/chars/terry/burn_knuckle_burst/idle_6.png
+	frame	data/chars/terry/burn_knuckle_burst/idle_7.png
+	frame	data/chars/terry/burn_knuckle_burst/idle_8.png
+	frame	data/chars/terry/burn_knuckle_burst/idle_9.png
+	frame	data/chars/terry/burn_knuckle_burst/idle_10.png
+	
