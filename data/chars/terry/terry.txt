@@ -36,6 +36,8 @@ dust			fall_land jump_land jump_liftoff
 mpset 			100 3 50 1 2 2
 bflash			Block
 
+load terry_burn_knuckle_burst
+load terry_burn_knuckle_fist
 load terry_crack_shoot
 load terry_power_wave
 load terry_power_wave_fist
@@ -77,6 +79,7 @@ com	u -> d -> a	freespecial5	# Plane 	attack down.
 com	d -> u -> j	freespecial6	# Rising Tackle.	
 com d -> f -> a	freespecial10	# Power wave
 com f -> d -> j	freespecial11	# Crack Shoot
+com f -> d -> a	freespecial12	# Burn Knuckle
 
 #*****Basic********************************************************************************
 
@@ -2505,6 +2508,9 @@ anim freespecial10 # Power Wave
 	bbox.size.x 40
 	bbox.size.y 95
 	
+	@cmd dc_fidelity_quick_play "crack_shoot_voice"
+	@cmd dc_fidelity_quick_play "rising_tackle_sound"
+
 	frame data/chars/terry/rising_tackle_1.png	
 	
 	bbox.position.x 47
@@ -2615,3 +2621,117 @@ anim freespecial10 # Power Wave
 	bbox.size.y 86
 	
 	frame data/chars/terry/jump_land_2.png
+
+anim freespecial12 # Burn Knuckle
+
+	energycost 15
+	mponly 1
+	loop 1 8 10
+	jumpframe 7 2.1 5.1 0 hop_liftoff
+	landframe 11 jump_land
+	
+	
+	offset	76 155
+	delay	3
+			
+	bbox.position.x 61
+	bbox.position.y 72
+	bbox.size.x 33
+	bbox.size.y 85
+	
+	frame data/chars/terry/burn_knuckle_0.png
+	
+	bbox.position.x 54
+	bbox.position.y 52
+	bbox.size.x 41
+	bbox.size.y 105
+	
+	@cmd dc_fidelity_quick_play "burn_knuckle_voice"
+
+	frame data/chars/terry/burn_knuckle_1.png
+	
+	bbox.position.x 64
+	bbox.position.y 68
+	bbox.size.x 39
+	bbox.size.y 89
+	
+	frame data/chars/terry/burn_knuckle_2.png
+	
+	bbox.position.x 56
+	bbox.position.y 79
+	bbox.size.x 44
+	bbox.size.y 78
+	
+	frame data/chars/terry/burn_knuckle_3.png
+	frame data/chars/terry/burn_knuckle_4.png
+	frame data/chars/terry/burn_knuckle_5.png
+	
+	bbox.position.x 65
+	bbox.position.y 70
+	bbox.size.x 51
+	bbox.size.y 84
+	
+	@cmd dc_fidelity_quick_play "rising_tackle_sound"
+
+	frame data/chars/terry/burn_knuckle_6.png	
+	
+	delay 1
+	
+	bbox.position.x 58
+	bbox.position.y 63
+	bbox.size.x 33
+	bbox.size.y 65
+
+	attack.damage.force 20
+	attack.position.x 64
+	attack.position.y 72
+	attack.reaction.fall.force 2
+	attack.reaction.pause.time 25
+	attack.size.x 81
+	attack.size.y 16
+
+	# Spawn the burst and fist. The burst is
+	# fire and forget, so spawn it first and
+	# we can re use the same instance of dc_elmers.
+
+	@cmd dc_elmers_set_offset_x 15
+	@cmd dc_elmers_set_offset_y 15
+	@cmd dc_elmers_quick_spot dc_gauntlet_quick_spawn("terry_burn_knuckle_burst")
+	
+
+	@cmd dc_elmers_quick_particle_free dc_gauntlet_quick_spawn("terry_burn_knuckle_fist")
+	#cmd dc_elmers_quick_particle_free dc_gauntlet_quick_spawn("terry_burn_knuckle_burst")
+		
+	frame data/chars/terry/burn_knuckle_7.png
+	
+	delay 4
+	
+	frame data/chars/terry/burn_knuckle_7.png
+	frame data/chars/terry/burn_knuckle_8.png
+	frame data/chars/terry/burn_knuckle_8.png	
+		
+	bbox.position.x 65
+	bbox.position.y 70
+	bbox.size.x 51
+	bbox.size.y 84	
+	
+	@cmd dc_elmers_quick_destroy NULL()
+
+	frame data/chars/terry/burn_knuckle_6.png
+	
+	bbox.position.x 56
+	bbox.position.y 79
+	bbox.size.x 44
+	bbox.size.y 78
+	
+	frame data/chars/terry/burn_knuckle_3.png
+	frame data/chars/terry/burn_knuckle_4.png
+	frame data/chars/terry/burn_knuckle_3.png
+	
+	bbox.position.x 64
+	bbox.position.y 68
+	bbox.size.x 39
+	bbox.size.y 89
+	
+	frame data/chars/terry/burn_knuckle_2.png
+	
