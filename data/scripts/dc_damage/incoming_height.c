@@ -227,8 +227,8 @@ int dc_damage_incoming_height()
 	lasthit_y = openborvariant("lasthita");
 
 
-	settextobj(1, 40, 20, 1, openborconstant("FRONTPANEL_Z"), "entity_height: " + entity_height);
-	settextobj(2, 40, 30, 1, openborconstant("FRONTPANEL_Z"), "lasthit_y: " + lasthit_y);
+	//settextobj(1, 40, 20, 1, openborconstant("FRONTPANEL_Z"), "entity_height: " + entity_height);
+	//settextobj(2, 40, 30, 1, openborconstant("FRONTPANEL_Z"), "lasthit_y: " + lasthit_y);
 
 	// If we are missing data, just assume a high hit.
 	if (!entity_height || typeof(lasthit_y) == openborconstant("VT_EMPTY"))
@@ -239,7 +239,7 @@ int dc_damage_incoming_height()
 	float upper = entity_height * DC_DAMAGE_DETECT_HEIGHT_UPPER;
 	float middle = entity_height * DC_DAMAGE_DETECT_HEIGHT_MIDDLE;
 
-	settextobj(3, 40, 40, 1, openborconstant("FRONTPANEL_Z"), "height (U, M): " + upper + ", " + middle);
+	//settextobj(3, 40, 40, 1, openborconstant("FRONTPANEL_Z"), "height (U, M): " + upper + ", " + middle);
 
 
 	// Starting high, compare hit height to a % of entity's
