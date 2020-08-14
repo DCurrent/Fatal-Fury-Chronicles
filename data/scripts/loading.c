@@ -172,6 +172,8 @@ void oncreate()
 	dc_fidelity_setup("ryu_hadouken", DC_FIDELITY_TYPE_SOUND_SPAWN, "data/chars/ryu/hadouken/ryu_se_hadou_01.wav");
 	   
 	// Terry
+	dc_fidelity_setup("Terry_Bogard", "burn_knuckle_voice", "data/chars/terry/sounds/rb_terry_voice_burn_knuckle.wav");
+	dc_fidelity_setup("Terry_Bogard", "crack_shoot_voice", "data/chars/terry/sounds/rb_terry_voice_crack_shoot.wav");
 	dc_fidelity_setup("Terry_Bogard", "power_wave", "data/chars/terry/sounds/rb-terry-power-wave-0.wav");
 	dc_fidelity_setup("Terry_Bogard", "rising_tackle_voice", "data/chars/terry/sounds/rb_terry_rising_tackle_0.wav");
 	dc_fidelity_setup("Terry_Bogard", "rising_tackle_sound", "data/chars/terry/sounds/rb_terry_sound_rising_tackle_0.wav");
