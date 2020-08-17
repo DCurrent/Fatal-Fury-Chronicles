@@ -401,7 +401,8 @@ anim 	attack2	# front kick
 	
 	
 	frame	data/chars/terry/atk_front_kick_1.png
-			
+	
+	delay 4		
 
 	attack.damage.force 6
 	attack.position.x 55
@@ -412,10 +413,14 @@ anim 	attack2	# front kick
 	attack.effect.hit.flash.model flash_fatal_fury
 
 	frame	data/chars/terry/atk_front_kick_2.png
-	
+
 	attack 0
 	
-	frame	data/chars/terry/atk_front_kick_1.png
+	frame	data/chars/terry/atk_front_kick_3.png
+	
+	delay	5
+
+	frame	data/chars/terry/atk_front_kick_4.png
 		idle	1
 	frame	data/chars/terry/atk_front_kick_0.png
 
