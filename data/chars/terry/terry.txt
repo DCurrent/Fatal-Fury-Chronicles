@@ -1360,14 +1360,16 @@ anim follow1 # Short jab
 
 	frame	data/chars/terry/atk_jab_0.png
 
+	delay 4
+
 	attack.damage.force 5
 	attack.position.x 75
 	attack.position.y 75
 	attack.reaction.pause.time 10
-	attack.size.x 60
+	attack.size.x 64
 	attack.size.y 15
 
-	frame	data/chars/terry/short_jab_0.png
+	frame	data/chars/terry/jab_short_0.png
 	attack.block.penetrate 0
 	attack.damage.force 0
 	attack.damage.type 1
@@ -1378,6 +1380,10 @@ anim follow1 # Short jab
 	attack.reaction.pause.time 0
 	attack.size.x 0
 	attack.size.y 0
+
+	frame	data/chars/terry/jab_short_1.png
+
+	delay	6
 	frame	data/chars/terry/atk_jab_0.png
 
 anim follow82 # Down Ataack
