@@ -6,7 +6,7 @@ speedf		 0.0
 nomove		1
 antigravity	100
 
-palette	data/chars/terry/default_0.ACT
+palette	data/chars/terry/base_cs.ACT
 
 anim idle
 
