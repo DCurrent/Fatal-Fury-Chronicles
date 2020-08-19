@@ -515,15 +515,15 @@ anim 	attack4	# Big boot.
 	bbox.size.x 39
 	bbox.size.y 105
 	
-	frame	data/chars/terry/boot_kick_0.png
-	frame	data/chars/terry/boot_kick_1.png
+	frame	data/chars/terry/atk_boot_kick_0.png
+	frame	data/chars/terry/atk_boot_kick_1.png
 	
 	bbox.position.x 76
 	bbox.position.y 53
 	bbox.size.x 39
 	bbox.size.y 108
 	
-	frame	data/chars/terry/boot_kick_2.png
+	frame	data/chars/terry/atk_boot_kick_2.png
 	
 	bbox.position.x 89
 	bbox.position.y 50
@@ -548,7 +548,7 @@ anim 	attack4	# Big boot.
 	
 	damageonlanding 0 1
 
-	frame	data/chars/terry/boot_kick_3.png
+	frame	data/chars/terry/atk_boot_kick_3.png
 	
 	delay	15
 	
@@ -563,7 +563,7 @@ anim 	attack4	# Big boot.
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame	data/chars/terry/boot_kick_4.png
+	frame	data/chars/terry/atk_boot_kick_4.png
 		delay	8
 		
 	bbox.position.x 76
@@ -571,7 +571,7 @@ anim 	attack4	# Big boot.
 	bbox.size.x 39
 	bbox.size.y 108
 	
-	frame	data/chars/terry/boot_kick_5.png
+	frame	data/chars/terry/atk_boot_kick_2.png
 	frame	data/chars/terry/atk_round_kick_1.png
 	
 	offset	78 158
