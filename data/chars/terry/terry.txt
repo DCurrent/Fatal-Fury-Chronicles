@@ -444,53 +444,49 @@ anim 	attack3	# Gut punch.
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 	@cmd	dc_fidelity_set_sound_chance NULL()
 	
-	frame	data/chars/terry/atk_gut_upper_0.png
-		delay	5
+	frame	data/chars/terry/atk_body_blow_0.png
+		delay	3
 	attack.block.penetrate 0
 	attack.damage.force 5
 	attack.damage.type 1
 	attack.effect.hit.flash.disable 0
-	attack.position.x 75
-	attack.position.y 100
+	attack.position.x 61
+	attack.position.y 91
 	attack.reaction.fall.force 0
-	attack.reaction.pause.time 15
-	attack.size.x 35
-	attack.size.y 20
+	attack.reaction.pause.time 35
+	attack.size.x 46
+	attack.size.y 13
+	attack.reaction.invincible.time 3
 	
-	frame	data/chars/terry/atk_gut_upper_1.png
-		delay	6
+	frame	data/chars/terry/atk_body_blow_1.png
+		delay	3
 	
 	attack 0
 	
-frame	data/chars/terry/atk_gut_upper_1.png
-		delay	6
+frame	data/chars/terry/atk_body_blow_1.png
+		delay	4
 	attack.block.penetrate 0
 	attack.damage.force 10
 	attack.damage.type 1
 	attack.effect.hit.flash.disable 0
-	attack.position.x 75
-	attack.position.y 75
+	attack.position.x 67
+	attack.position.y 85
 	attack.reaction.fall.force 0
-	attack.reaction.pause.time 15
-	attack.size.x 55
-	attack.size.y 30
+	attack.reaction.pause.time 35
+	attack.size.x 58
+	attack.size.y 19
 	
-	frame	data/chars/terry/atk_gut_upper_3.png
+	frame	data/chars/terry/atk_body_blow_2.png
 	
-	attack.block.penetrate 0
-	attack.damage.force 0
-	attack.damage.type 1
-	attack.effect.hit.flash.disable 0
-	attack.position.x 0
-	attack.position.y 0
-	attack.reaction.fall.force 0
-	attack.reaction.pause.time 0
-	attack.size.x 0
-	attack.size.y 0
+	attack 0
 	
-	frame	data/chars/terry/atk_gut_upper_4.png
+	frame	data/chars/terry/atk_body_blow_3.png
+	
+	delay 6
+	
+	frame	data/chars/terry/atk_body_blow_4.png
 		idle	1
-	frame	data/chars/terry/atk_gut_upper_0.png
+	frame	data/chars/terry/atk_body_blow_0.png
 
 anim 	attack4	# Big boot.
 
@@ -2413,7 +2409,7 @@ anim freespecial10 # Power Wave
 	
 	@cmd dc_fidelity_quick_play "power_wave"
 
-	frame	data/chars/terry/atk_gut_upper_0.png
+	frame	data/chars/terry/atk_body_blow_0.png
 
 	bbox.position.x 62
 	bbox.position.y 66
