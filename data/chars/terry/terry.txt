@@ -1119,7 +1119,7 @@ anim chargeattack # High spin kick.
 	bbox.size.x 41
 	bbox.size.y 98
 	
-	frame	data/chars/terry/atk_round_kick_5.png
+	frame	data/chars/terry/atk_high_spin_heel_kick_7.png
 
 anim freespecial6 # Rising tackle
 
