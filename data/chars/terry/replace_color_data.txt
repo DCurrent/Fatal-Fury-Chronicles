@@ -1,0 +1,6 @@
+Shoe Trim: -175 0 0
+Gloves:	100 0 0
+Upper Arm Skin: 135 0 -15
+Upper Arm Shirt: 55 0 -30, same, 55 80 -30
+
+
