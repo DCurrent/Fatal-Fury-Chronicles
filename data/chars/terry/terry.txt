@@ -2287,8 +2287,9 @@ anim jumpforward
 	frame data/chars/terry/jump_4.png
 
 anim jumpattack2
+	loop 1 3 6
 	
-	delay	8
+	delay	5
 	offset	76 155
 	
 	bbox.position.x 66
@@ -2299,9 +2300,9 @@ anim jumpattack2
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 
-	frame data/chars/terry/42_0.png
+	frame data/chars/terry/atk_j_drop_jab_0.png
 	
-	delay  10
+	delay  6
 	
 	bbox.position.x 71
 	bbox.position.y 51
@@ -2316,44 +2317,16 @@ anim jumpattack2
 	attack.size.x 29
 	attack.size.y 41
 	
-	frame data/chars/terry/42_1.png
-	
-	delay 140
+	frame data/chars/terry/atk_j_drop_jab_1.png
 	
 	attack.damage.force 6
 	
-	frame data/chars/terry/42_1.png
-	
-	delay 10	
-	
-	bbox.position.x 66
-	bbox.position.y 57
-	bbox.size.x 35
-	bbox.size.y 60
-	
-	attack.damage.force 0
-	attack.position.x 0
-	attack.position.y 0
-	attack.size.x 0
-	attack.size.y 0
-	
-	frame data/chars/terry/42_0.png
-	
-	delay 8
-	
-	bbox.position.x 69
-	bbox.position.y 49
-	bbox.size.x 32
-	bbox.size.y 93
-	
-	frame data/chars/terry/jump_3.png
-	
-	bbox.position.x 69
-	bbox.position.y 52
-	bbox.size.x 32
-	bbox.size.y 100
-	
-	frame data/chars/terry/jump_4.png
+	frame data/chars/terry/atk_j_drop_jab_2.png
+	frame data/chars/terry/atk_j_drop_jab_3.png
+	frame data/chars/terry/atk_j_drop_jab_4.png
+	frame data/chars/terry/atk_j_drop_jab_5.png
+	frame data/chars/terry/atk_j_drop_jab_6.png
+	frame data/chars/terry/atk_j_drop_jab_6.png
 
 anim freespecial # Backward dash
 	
