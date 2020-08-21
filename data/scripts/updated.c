@@ -61,6 +61,20 @@ void main() {
 
 		// Execute tint effect on entity.
 		dc_kanga_auto_tint(ent);
+
+		char model = getentityproperty(ent, "defaultmodel");
+
+		if (model == "Terry_Bogard")
+		{
+			int sprite = getentityproperty(ent, "sprite");
+
+			settextobj(1, 40, 20, 1, openborconstant("FRONTPANEL_Z"), "sprite: " + sprite);
+		
+			int pixel = getgfxproperty(sprite, "pixel", 25, 25);
+
+			settextobj(2, 40, 30, 1, openborconstant("FRONTPANEL_Z"), "pixel: " + pixel);
+		
+		}
 		
 	}	
 
