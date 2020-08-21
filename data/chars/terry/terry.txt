@@ -2165,8 +2165,6 @@ anim runjumpattack
 
 	frame data/chars/terry/atk_j_side_kick_a_1.png
 	
-	delay  45
-	
 	bbox.position.x 55
 	bbox.position.y 46
 	bbox.size.x 53
@@ -2181,7 +2179,13 @@ anim runjumpattack
 	attack.size.y 53
 	attack.effect.hit.flash.model flash_fatal_fury
 	
-	frame data/chars/terry/49_0.png
+	frame data/chars/terry/atk_j_side_kick_b_0.png
+	frame data/chars/terry/atk_j_side_kick_b_1.png
+	frame data/chars/terry/atk_j_side_kick_b_2.png
+	frame data/chars/terry/atk_j_side_kick_b_3.png
+	frame data/chars/terry/atk_j_side_kick_b_4.png
+	frame data/chars/terry/atk_j_side_kick_b_1.png
+	frame data/chars/terry/atk_j_side_kick_b_2.png
 
 	delay 10	
 	
@@ -2196,7 +2200,7 @@ anim runjumpattack
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame data/chars/terry/atk_j_side_kick_a_0.png
+	frame data/chars/terry/atk_j_side_kick_a_1.png
 	
 	delay 8
 	
