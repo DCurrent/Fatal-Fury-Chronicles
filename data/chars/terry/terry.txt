@@ -2089,12 +2089,12 @@ anim jumpattack # Heavy air punch
 	bbox.size.x 35
 	bbox.size.y 60
 	
-	frame data/chars/terry/45_0.png
+	frame data/chars/terry/atk_j_diagonal_punch_0.png
 
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 
-	frame data/chars/terry/45_1.png
+	frame data/chars/terry/atk_j_diagonal_punch_1.png
 	
 	delay  5
 	
@@ -2111,13 +2111,13 @@ anim jumpattack # Heavy air punch
 	attack.size.x 51
 	attack.size.y 46
 	
-	frame data/chars/terry/45_2.png
+	frame data/chars/terry/atk_j_diagonal_punch_2.png
 	
 	delay 10
 	
 	attack.damage.force 15
 	
-	frame data/chars/terry/45_2.png
+	frame data/chars/terry/atk_j_diagonal_punch_3.png
 	
 	bbox.position.x 66
 	bbox.position.y 57
@@ -2130,7 +2130,7 @@ anim jumpattack # Heavy air punch
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame data/chars/terry/45_1.png
+	frame data/chars/terry/atk_j_diagonal_punch_1.png
 	
 	delay 8
 	
@@ -2158,12 +2158,12 @@ anim runjumpattack
 	bbox.size.x 29
 	bbox.size.y 72
 	
-	frame data/chars/terry/43_0.png
+	frame data/chars/terry/atk_j_side_kick_a_0.png
 
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 
-	frame data/chars/terry/43_1.png
+	frame data/chars/terry/atk_j_side_kick_a_1.png
 	
 	delay  45
 	
@@ -2196,7 +2196,7 @@ anim runjumpattack
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame data/chars/terry/43_0.png
+	frame data/chars/terry/atk_j_side_kick_a_0.png
 	
 	delay 8
 	
