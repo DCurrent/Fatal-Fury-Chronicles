@@ -2200,7 +2200,7 @@ anim runjumpattack
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame data/chars/terry/atk_j_side_kick_a_1.png
+	frame data/chars/terry/atk_j_side_kick_a_4.png
 	
 	delay 8
 	
@@ -2233,7 +2233,7 @@ anim jumpforward
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_MEDIUM
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_MEDIUM
 
-	frame data/chars/terry/atk_j_side_kick_0.png
+	frame data/chars/terry/atk_j_side_kick_c_0.png
 	
 	delay  8
 	
@@ -2251,13 +2251,12 @@ anim jumpforward
 	attack.size.y 25
 	attack.effect.hit.flash.model flash_fatal_fury
 
-	frame data/chars/terry/atk_j_side_kick_1.png
-	
-	delay 14
+	frame data/chars/terry/atk_j_side_kick_c_1.png
 	
 	attack.damage.force 10
 	
-	frame data/chars/terry/atk_j_side_kick_1.png
+	frame data/chars/terry/atk_j_side_kick_c_2.png
+	frame data/chars/terry/atk_j_side_kick_c_3.png
 	
 	delay 8
 	
@@ -2272,7 +2271,7 @@ anim jumpforward
 	attack.size.x 0
 	attack.size.y 0
 	
-	frame data/chars/terry/atk_j_side_kick_0.png
+	frame data/chars/terry/atk_j_side_kick_a_4.png
 	
 	delay 8
 	
