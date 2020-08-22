@@ -2395,7 +2395,7 @@ anim freespecial10 # Power Wave
 	# Spawn sub entity and set it as entity for binding.
 	@cmd dc_elmers_quick_particle dc_gauntlet_quick_spawn("terry_power_wave_fist")
 
-	frame	data/chars/terry/50_0.png		
+	frame	data/chars/terry/power_wave_0.png		
 		
 	bbox.position.x 56
 	bbox.position.y 64
@@ -2405,8 +2405,8 @@ anim freespecial10 # Power Wave
 	delay 4
 
 	# Extra frame controls fist glow bind.
-	frame	data/chars/terry/50_1.png
-	frame	data/chars/terry/50_1.png
+	frame	data/chars/terry/power_wave_1.png
+	frame	data/chars/terry/power_wave_1.png
 		
 	delay 6
 
@@ -2415,23 +2415,23 @@ anim freespecial10 # Power Wave
 	bbox.size.x 35
 	bbox.size.y 82
 	
-	frame	data/chars/terry/50_2.png
+	frame	data/chars/terry/power_wave_2.png
 		
 	bbox.position.x 66
 	bbox.position.y 77
 	bbox.size.x 38
 	bbox.size.y 81
 	
-	frame	data/chars/terry/50_3.png
+	frame	data/chars/terry/power_wave_3.png
 		
 	bbox.position.x 66
 	bbox.position.y 94
 	bbox.size.x 47
 	bbox.size.y 64
 	
-	frame	data/chars/terry/50_4.png
+	frame	data/chars/terry/power_wave_4.png
 	
-	delay 8
+	delay 6
 	
 	bbox.position.x 65
 	bbox.position.y 95
@@ -2446,20 +2446,22 @@ anim freespecial10 # Power Wave
 	@cmd dc_guantlet_spawn_projectile
 	@cmd set_entity_property dc_gauntlet_get_spawn() "position_base" get_entity_property(getlocalvar("self"),"position_base")
 	
-	frame	data/chars/terry/50_5.png
-	
-	delay 30
+	frame	data/chars/terry/power_wave_5.png
 
 	## At this point we don't want fist effect bound
 	## any more, so remove the bind target and set autokill so
 	## the effect will terminate when it finishes up.
 	@cmd dc_elmers_set_animation_match (openborconstant("BIND_ANIMATION_TARGET")+openborconstant("BIND_ANIMATION_REMOVE"))
 	
-	frame	data/chars/terry/50_6.png
+	frame	data/chars/terry/power_wave_6.png
+	
+	delay 28
+	
+	frame	data/chars/terry/power_wave_7.png
 	
 	delay 12
 	
-	frame	data/chars/terry/50_7.png
+	frame	data/chars/terry/power_wave_8.png
 	
 	bbox.position.x 61
 	bbox.position.y 75
