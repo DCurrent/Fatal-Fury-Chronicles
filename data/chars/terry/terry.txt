@@ -2367,7 +2367,7 @@ anim freespecial # Backward dash
 	
 	frame data/chars/terry/jump_land_2.png
 	
-anim freespecial10 # Power Wave
+ anim freespecial10 # Power Wave
 
 	energycost	5 
 	mponly		1
