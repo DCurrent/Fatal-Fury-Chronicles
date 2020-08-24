@@ -951,76 +951,52 @@ anim 	attack7	# Jumping spin kick.
 	frame	data/chars/terry/jump_land_0.png	
 	frame	data/chars/terry/jump_land_2.png
 
-anim runattack # Power Charge
+anim runattack # Cross
 
-	jumpframe 0 0 1.2 0 0
+	jumpframe 0 0 0.8 0 0
 
-		delay	10
+		delay	8
 		offset	76 155
 	bbox.position.x 74
 	bbox.position.y 64
 	bbox.size.x 42
 	bbox.size.y 94
 	
-	frame	data/chars/terry/dash_0.png
 	
-	bbox.position.x 48
-	bbox.position.y 80
-	bbox.size.x 45
-	bbox.size.y 80
+	frame	data/chars/terry/atk_cross_0.png
 	
-	frame	data/chars/terry/power_charge_4.png
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
+	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
 	
-	
-	bbox.position.x 61
-	bbox.position.y 92
-	bbox.size.x 45
-	bbox.size.y 69
-	
-		@cmd	changeentityproperty getlocalvar("self") "aiflag" "blocking" 1
-
-		@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
-		@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_VOICE_ATTACK_SHOUT_HEAVY
-
-	frame	data/chars/terry/power_charge_5.png
-	
-	
-	bbox.position.x 78
-	bbox.position.y 81
-	bbox.size.x 45
-	bbox.size.y 80
+	frame	data/chars/terry/atk_cross_1.png
 	
 	attack.block.penetrate 0
-	attack.damage.force 15
+	attack.damage.force 12
 	attack.damage.type 1
 	attack.effect.hit.flash.disable 0
-	attack.position.x 80
-	attack.position.y 80
+	attack.position.x 104
+	attack.position.y 72
 	attack.reaction.fall.force 2
-	attack.reaction.fall.velocity.x 2.0
-	attack.reaction.fall.velocity.y 2.5
-	attack.reaction.pause.time 10
-	attack.size.x 55
-	attack.size.y 55
+	attack.reaction.pause.time 20
+	attack.size.x 37
+	attack.size.y 15
 	
-	attack.effect.hit.flash.model flash_fatal_fury
-
-	frame	data/chars/terry/power_charge_6.png
-		delay	12
-		
+	frame	data/chars/terry/atk_cross_2.png
+	
 	attack 0
-	frame	data/chars/terry/power_charge_7.png
 	
-	bbox.position.x 61
-	bbox.position.y 71
-	bbox.size.x 45
-	bbox.size.y 90
+	frame	data/chars/terry/atk_cross_3.png
 	
-		@cmd	dc_velocity_set_velocity_x NULL()
-		@cmd	dc_velocity_apply_velocity_x
-		@cmd	changeentityproperty getlocalvar("self") "aiflag" "blocking" 0
-	frame	data/chars/terry/power_charge_8.png
-	frame	data/chars/terry/24_2.png
+	delay 8
+	
+	frame	data/chars/terry/atk_cross_4.png
+	frame	data/chars/terry/atk_cross_5.png
+	
+	@cmd	dc_velocity_set_velocity_x NULL()
+	@cmd	dc_velocity_apply_velocity_x
+	
+	frame	data/chars/terry/atk_straight_4.png
+	frame	data/chars/terry/atk_straight_0.png
 	
 
 anim chargeattack # High spin kick.
