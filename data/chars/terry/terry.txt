@@ -987,7 +987,7 @@ anim runattack # Cross
 	
 	frame	data/chars/terry/atk_cross_3.png
 	
-	delay 8
+	delay 10
 	
 	frame	data/chars/terry/atk_cross_4.png
 	frame	data/chars/terry/atk_cross_5.png
@@ -996,7 +996,7 @@ anim runattack # Cross
 	@cmd	dc_velocity_apply_velocity_x
 	
 	frame	data/chars/terry/atk_straight_4.png
-	frame	data/chars/terry/atk_straight_0.png
+	frame	data/chars/terry/atk_jab_0.png
 	
 
 anim chargeattack # High spin kick.
