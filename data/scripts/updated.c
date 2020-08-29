@@ -71,9 +71,32 @@ void main() {
 			settextobj(1, 40, 20, 1, openborconstant("FRONTPANEL_Z"), "sprite: " + sprite);
 		
 			int pixel = getgfxproperty(sprite, "pixel", 25, 25);
+			int size_x = getgfxproperty(sprite, "width");
+			int size_y = getgfxproperty(sprite, "height");
+			int center_x = getgfxproperty(sprite, "centerx");
+			int center_y = getgfxproperty(sprite, "centery");
 
-			settextobj(2, 40, 30, 1, openborconstant("FRONTPANEL_Z"), "pixel: " + pixel);
-		
+			float pos_x = get_entity_property(ent, "position_x");
+			float pos_y = get_entity_property(ent, "position_y");
+			float pos_z = get_entity_property(ent, "position_z");
+
+			int offset_x = 0; // Scroll and quake. screenx - ((entity->modeldata.noquake & NO_QUAKEN) ? 0 : gfx_x_offset);
+			int offset_y = 0;
+
+			int screen_draw_x = 0;
+			int screen_draw_y = 0;
+
+			screen_draw_x = pos_x - offset_x;
+			screen_draw_y = -4 + pos_z - pos_y - offset_y;
+
+			// To do: Handle scrolling and facing left.
+
+			drawdot(screen_draw_x, screen_draw_y, pos_z+1, rgbcolor(0, 255, 0), 0);
+			drawdot(screen_draw_x - center_x, screen_draw_y - (size_y - (size_y - center_y)), pos_z+1, rgbcolor(255, 0, 0), 0);
+
+			settextobj(2, 40, 30, 1, openborconstant("FRONTPANEL_Z"), "Pixel: " + pixel);
+			settextobj(3, 40, 50, 1, openborconstant("FRONTPANEL_Z"), "Center (X: " + center_x + ", Y: " + center_y + ")");
+			settextobj(4, 40, 60, 1, openborconstant("FRONTPANEL_Z"), "Size (X: " + size_x + ", Y: " + size_y + ")");
 		}
 		
 	}	
