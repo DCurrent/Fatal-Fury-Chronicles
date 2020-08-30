@@ -80,19 +80,85 @@ void main() {
 			float pos_y = get_entity_property(ent, "position_y");
 			float pos_z = get_entity_property(ent, "position_z");
 
-			int offset_x = 0; // Scroll and quake. screenx - ((entity->modeldata.noquake & NO_QUAKEN) ? 0 : gfx_x_offset);
+			int offset_x = 0; // Scroll and quake. 
 			int offset_y = 0;
+
+			// Apply scroll and quake effect to get our basic
+			// offset. Note that native engine code takes into 
+			// account the noquake model property.
+			// 
+			// screenx - ((entity->modeldata.noquake & NO_QUAKEN) ? 0 : gfx_x_offset);
+			// 
+			// At this time there's no way to get the noquake property
+			// in script. If it really becomes an issue, we'll need 
+			// to have an algorithm that uses location instead to 
+			// determine if we apply the quake offset. For now, we'll 
+			// assume we always do.
+
+			offset_x = openborvariant("xpos") - openborvariant("gfx_x_offset");
+			offset_y = openborvariant("ypos") - openborvariant("gfx_y_offset") - openborvariant("gfx_y_offset_adj");
 
 			int screen_draw_x = 0;
 			int screen_draw_y = 0;
 
 			screen_draw_x = pos_x - offset_x;
-			screen_draw_y = -4 + pos_z - pos_y - offset_y;
+			screen_draw_y = pos_z - pos_y - offset_y;
+
+			int sprite_right = 0;
+			int sprite_left = 0;
+
+			int pos_d;
+			
+			pos_d = get_entity_property(ent, "position_direction");
+			
+			if (pos_d == openborconstant("DIRECTION_RIGHT"))
+			{
+				sprite_left = screen_draw_x - center_x;
+				sprite_right = screen_draw_x + (size_x - center_x);
+			}
+			else
+			{
+				sprite_right = screen_draw_x + center_x;
+				sprite_left = screen_draw_x - (size_x - center_x);
+			}
 
 			// To do: Handle scrolling and facing left.
 
-			drawdot(screen_draw_x, screen_draw_y, pos_z+1, rgbcolor(0, 255, 0), 0);
-			drawdot(screen_draw_x - center_x, screen_draw_y - (size_y - (size_y - center_y)), pos_z+1, rgbcolor(255, 0, 0), 0);
+			drawdot(screen_draw_x, screen_draw_y, pos_z+1, rgbcolor(0, 0, 255), 0);
+			//drawdot(sprite_back, screen_draw_y - (size_y - (size_y - center_y)), pos_z + 1, rgbcolor(255, 0, 0), 0);
+			//drawdot(sprite_front, screen_draw_y - (size_y - (size_y - center_y)), pos_z + 1, rgbcolor(0, 255, 0), 0);
+
+			int i = 0;
+			int sprite_left_shift = getlocalvar("dc_shift");
+			int elapsed_time = openborvariant("elapsed_time");
+			int trigger_time = getlocalvar("dc_shift_time");
+
+			settextobj(6, 40, 80, 1, openborconstant("FRONTPANEL_Z"), "et: " + elapsed_time + ", tt: " + trigger_time);
+
+
+			// At each time increment, switch the shift
+			// to change our dot pattern.
+			if (elapsed_time > trigger_time || !trigger_time)
+			{
+				setlocalvar("dc_shift_time", elapsed_time + 20);
+				
+				if (sprite_left_shift)
+				{
+					sprite_left_shift = 0;
+				}
+				else
+				{
+					sprite_left_shift = 1;
+				}
+
+				setlocalvar("dc_shift", sprite_left_shift);
+			}
+
+			for (i = sprite_left + sprite_left_shift; i < sprite_right; i += 2)
+			{
+				settextobj(5, 40, 70, 1, openborconstant("FRONTPANEL_Z"), "i: " + (sprite_left + sprite_left_shift));
+				drawdot(i, screen_draw_y - (size_y - (size_y - center_y)), pos_z + 1, rgbcolor(100, 100, 100), 0);
+			}
 
 			settextobj(2, 40, 30, 1, openborconstant("FRONTPANEL_Z"), "Pixel: " + pixel);
 			settextobj(3, 40, 50, 1, openborconstant("FRONTPANEL_Z"), "Center (X: " + center_x + ", Y: " + center_y + ")");
