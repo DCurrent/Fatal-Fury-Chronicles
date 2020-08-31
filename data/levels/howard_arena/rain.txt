@@ -10,6 +10,8 @@ noquake  1 1
 
 palette data/levels/howard_arena/rain_0.png
 
+script data/levels/howard_arena/rain_event_update.c
+
 anim spawn
 	
 	delay  5831
