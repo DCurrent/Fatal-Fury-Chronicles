@@ -9,18 +9,82 @@ void ondestroy()
 void main() {
 
 	void    ent = getlocalvar("self");  // Target entity pointer.
-	int     ent_count = 0;				// Entity count.
-	int     i = 0;						// Loop counter.
-
+	
 	if (get_entity_property(ent, "animation_id") != openborconstant("ANI_IDLE"))
 	{
 		return;
 	}
 
-	// Get entity count.
-	ent_count = openborvariant("count_entities");
+	int     ent_count = 0;				// Entity count.
+	int		type = 0;
+	int     i = 0;						// Loop counter.
+
+	void sprite = NULL();
+
+	int pixel_color_index = 0;
+	int size_x = 0;
+	int size_y = 0;
+	int center_x = 0;
+	int center_y = 0;
+
+	float pos_x = 0.0;
+	float pos_y = 0.0;
+	float pos_z = 0.0;
+
+	int offset_x = 0; // Scroll and quake. 
+	int offset_y = 0;
+
+	int pixel_row_top = 0;
+	int pixel_row = 0;
+	int pixel_column = 0;
+
+	int column_offset = getlocalvar("dc_column_offset");
+	int row_offset = 1;
+	int elapsed_time = openborvariant("elapsed_time");
+	int trigger_time = getlocalvar("dc_column_offset_time");
+
+	int res_h = openborvariant("hresolution");
+	int res_v = openborvariant("vresolution");
+
+	int screen_draw_x = 0;
+	int screen_draw_y = 0;
+
+	int sprite_right = 0;
+	int sprite_left = 0;
+
+	int pos_d = 0;
+	
+	// Final dot draw locations.
+	int dot_pos_x = 0;
+	int dot_pos_y = 0;
+	int dot_pos_z = 0;
+	int dot_color = rgbcolor(150, 150, 150);
+	int dot_alpha = 0;
+
+	// At each time increment, switch the shift
+	// to change our dot pattern.
+	if (elapsed_time > trigger_time || !trigger_time)
+	{
+		setlocalvar("dc_column_offset_time", elapsed_time + 20);
+
+		if (column_offset)
+		{
+			row_offset = 1;
+			column_offset = 0;
+		}
+		else
+		{
+			row_offset = 2;
+			column_offset = 1;
+		}
+
+		setlocalvar("dc_column_offset", column_offset);
+	}
 
 	// Loop over each entity index.
+
+	ent_count = openborvariant("count_entities");
+
 	for (i = 0; i < ent_count; i++)
 	{
 		// Get entity pointer.
@@ -35,51 +99,9 @@ void main() {
 
 		if (type == openborconstant("TYPE_ENEMY") || type == openborconstant("TYPE_PLAYER") || type == openborconstant("TYPE_NPC"))
 		{
-			void sprite = getentityproperty(ent, "sprite");
-
-			//settextobj(1, 40, 20, 1, openborconstant("FRONTPANEL_Z"), "sprite: " + sprite);
-
-			int pixel_color_index = 0;
-			int size_x = getgfxproperty(sprite, "width");
-			int size_y = getgfxproperty(sprite, "height");
-			int center_x = getgfxproperty(sprite, "centerx");
-			int center_y = getgfxproperty(sprite, "centery");
-
-			float pos_x = get_entity_property(ent, "position_x");
-			float pos_y = get_entity_property(ent, "position_y");
-			float pos_z = get_entity_property(ent, "position_z");
-
-			int offset_x = 0; // Scroll and quake. 
-			int offset_y = 0;
-
-			int pixel_row_top = (size_y - (size_y - center_y));
-			int pixel_row = 0; //pixel_row_top;
-			int pixel_column = 0;
-
-			int column_offset = getlocalvar("dc_column_offset");
-			int row_offset = 1;
-			int elapsed_time = openborvariant("elapsed_time");
-			int trigger_time = getlocalvar("dc_column_offset_time");
-
-			// At each time increment, switch the shift
-			// to change our dot pattern.
-			if (elapsed_time > trigger_time || !trigger_time)
-			{
-				setlocalvar("dc_column_offset_time", elapsed_time + 20);
-
-				if (column_offset)
-				{
-					row_offset = 1;
-					column_offset = 0;
-				}
-				else
-				{
-					row_offset = 2;
-					column_offset = 1;
-				}
-
-				setlocalvar("dc_column_offset", column_offset);
-			}
+			pos_x = get_entity_property(ent, "position_x");
+			pos_y = get_entity_property(ent, "position_y");
+			pos_z = get_entity_property(ent, "position_z");
 
 			// Apply scroll and quake effect to get our basic
 			// offset. Note that native engine code takes into 
@@ -96,17 +118,27 @@ void main() {
 			offset_x = openborvariant("xpos") - openborvariant("gfx_x_offset");
 			offset_y = openborvariant("ypos") - openborvariant("gfx_y_offset") - openborvariant("gfx_y_offset_adj");
 
-			int screen_draw_x = 0;
-			int screen_draw_y = 0;
+			// If out of sight, don't waste the CPU power to calculate
+			// or draw anything.
+			if (pos_x < offset_x - 20 || pos_x > offset_x + res_h + 20)
+			{
+				continue;
+			}
 
+			sprite = getentityproperty(ent, "sprite");
+
+			size_x = getgfxproperty(sprite, "width");
+			size_y = getgfxproperty(sprite, "height");
+			center_x = getgfxproperty(sprite, "centerx");
+			center_y = getgfxproperty(sprite, "centery");
+
+			pixel_row_top = (size_y - (size_y - center_y));
+			pixel_row = 0; //pixel_row_top;
+			pixel_column = 0;
+			
 			screen_draw_x = pos_x - offset_x;
 			screen_draw_y = pos_z - pos_y - offset_y;
-
-			int sprite_right = 0;
-			int sprite_left = 0;
-
-			int pos_d;
-
+			
 			pos_d = get_entity_property(ent, "position_direction");
 
 			if (pos_d == openborconstant("DIRECTION_RIGHT"))
@@ -133,16 +165,9 @@ void main() {
 			// incrementing by 2 gives us the animated rain 
 			// effect and also halves the number of column
 			// loop iterations.
-
-			//log("\n\n ---- \n\n");
-
-			//settextobj(2, 40, 30, 1, openborconstant("FRONTPANEL_Z"), "Pixel: " + pixel_color_index);
-			//settextobj(3, 40, 50, 1, openborconstant("FRONTPANEL_Z"), "size (X: " + size_x + ", Y: " + size_y + ")");
-
+						
 			for (pixel_column = column_offset; pixel_column < size_x; pixel_column += 2)
 			{
-				// log("\n C: " + pixel_column);
-
 				for (pixel_row = 0; pixel_row < size_y; pixel_row++)
 				{
 					// Alternates drops up and down. We put it
@@ -158,25 +183,28 @@ void main() {
 					{
 						row_offset = 1;
 					}
-
-					// log("\n\t R: " + pixel_row);
-
+								
 					pixel_color_index = getgfxproperty(sprite, "pixel", pixel_column, pixel_row);
-					// log(", Index: " + pixel_color_index);
-
+					
 					if (pixel_color_index)
-					{						
-						// log(", TRUE");
-						
+					{		
+						// Sprite properties are not directional, but on 
+						// screen objects are, so we need to reverse the
+						// X coordinates before we use them to draw.
 						if (pos_d == openborconstant("DIRECTION_RIGHT"))
 						{
-							drawdot(sprite_left + pixel_column, screen_draw_y - (center_y - pixel_row) - row_offset, pos_z + 1, rgbcolor(150, 150, 150), 0);
+							dot_pos_x = sprite_left + pixel_column;
 						}
 						else
 						{
-							drawdot((sprite_right - pixel_column)-1, screen_draw_y - (center_y - pixel_row) - row_offset, pos_z + 1, rgbcolor(150, 150, 150), 0);
+							dot_pos_x = (sprite_right - pixel_column) - 1;
 						}
+
+						dot_pos_y = screen_draw_y - (center_y - pixel_row) - row_offset;
+						dot_pos_z = pos_z;
 						
+						drawdot(dot_pos_x, dot_pos_y, dot_pos_z, dot_color, dot_alpha);
+
 						break;
 					}
 				}				

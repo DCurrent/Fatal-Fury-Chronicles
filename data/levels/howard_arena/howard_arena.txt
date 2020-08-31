@@ -126,6 +126,140 @@ coords		2263 275
 flip		1
 at		0
 
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
 
 spawn		Ray
 health		1000
