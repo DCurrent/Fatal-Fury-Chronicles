@@ -1,22 +1,22 @@
-void oncreate()
+// Caskey, Damon V.
+// 2020-09-02 
+//
+// Simulate rain splatter on player, enemy, and
+// npc entities by mapping sprites, locating the
+// first non-transparent pixel top to bottom and
+// drawing a dot with 1-2 pixel random shifting.
+void dc_rain_splatter()
 {
-}
-
-void ondestroy()
-{
-}
-
-void main() {
 
 	void    ent = getlocalvar("self");  // Target entity pointer.
-	
+
 	if (get_entity_property(ent, "animation_id") != openborconstant("ANI_IDLE"))
 	{
 		return;
 	}
 
 	int     ent_count = 0;				// Entity count.
-	int		type = 0;
+	int		model_type = 0;
 	int     i = 0;						// Loop counter.
 
 	void sprite = NULL();
@@ -53,7 +53,7 @@ void main() {
 	int sprite_left = 0;
 
 	int pos_d = 0;
-	
+
 	// Final dot draw locations.
 	int dot_pos_x = 0;
 	int dot_pos_y = 0;
@@ -95,9 +95,9 @@ void main() {
 			continue;
 		}
 
-		int type = getentityproperty(ent, "type");
+		model_type = getentityproperty(ent, "type");
 
-		if (type == openborconstant("TYPE_ENEMY") || type == openborconstant("TYPE_PLAYER") || type == openborconstant("TYPE_NPC"))
+		if (model_type == openborconstant("TYPE_ENEMY") || model_type == openborconstant("TYPE_PLAYER") || model_type == openborconstant("TYPE_NPC"))
 		{
 			pos_x = get_entity_property(ent, "position_x");
 			pos_y = get_entity_property(ent, "position_y");
@@ -135,10 +135,10 @@ void main() {
 			pixel_row_top = (size_y - (size_y - center_y));
 			pixel_row = 0; //pixel_row_top;
 			pixel_column = 0;
-			
+
 			screen_draw_x = pos_x - offset_x;
 			screen_draw_y = pos_z - pos_y - offset_y;
-			
+
 			pos_d = get_entity_property(ent, "position_direction");
 
 			if (pos_d == openborconstant("DIRECTION_RIGHT"))
@@ -165,7 +165,7 @@ void main() {
 			// incrementing by 2 gives us the animated rain 
 			// effect and also halves the number of column
 			// loop iterations.
-						
+
 			for (pixel_column = column_offset; pixel_column < size_x; pixel_column += 2)
 			{
 				for (pixel_row = 0; pixel_row < size_y; pixel_row++)
@@ -183,11 +183,11 @@ void main() {
 					{
 						row_offset = 1;
 					}
-								
+
 					pixel_color_index = getgfxproperty(sprite, "pixel", pixel_column, pixel_row);
-					
+
 					if (pixel_color_index)
-					{		
+					{
 						// Sprite properties are not directional, but on 
 						// screen objects are, so we need to reverse the
 						// X coordinates before we use them to draw.
@@ -202,13 +202,26 @@ void main() {
 
 						dot_pos_y = screen_draw_y - (center_y - pixel_row) - row_offset;
 						dot_pos_z = pos_z;
-						
+
 						drawdot(dot_pos_x, dot_pos_y, dot_pos_z, dot_color, dot_alpha);
 
 						break;
 					}
-				}				
+				}
 			}
-		}		
-	}	
+		}
+	}
+}
+
+void oncreate()
+{
+}
+
+void ondestroy()
+{
+}
+
+void main() 
+{
+	dc_rain_splatter();
 }
