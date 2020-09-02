@@ -16,11 +16,11 @@ bgspeed 	1 0
 # you get fine control over the layer positon.
 
 # fglayer	filepath					Zpos 	xratio	zratio	xoffset	zoffset	xspace	zspace	xrepeat	zrepeat	trans	alpha	w-mode	amp	wl	ws	move	quake	neon
-fglayer		data/levels/howard_arena/city_0.png		-400	0.9	0.9	0.5	0	0	0	-1	1	0	0	0	0	0	0	0.0     0       1
+fglayer		data/levels/howard_arena/city_0.png		-400	0.9	0.9	0.5	41	0	0	-1	1	0	0	0	0	0	0	0.0     0       1
 fglayer		data/levels/howard_arena/clouds_0.png		-399	0.9	0.9	0.5	0	0	0	-1	1	0	0	3	3	1	0	2
-fglayer		data/levels/howard_arena/temple_b_0.png		-398	0.8	0.8	0.5	-18	0	0	-1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/temple_b_0.png		-398	0.8	0.8	0.5	2	0	0	-1	1	1	0	0	0	0	0	0.0
 fglayer		data/levels/howard_arena/temple_0.png		-397	0.75	0.75	0.5	20	0	0	-1	1	1	0	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/water_0.png		-398	0.75	0.75	0.5	20	0	0	-1	1	1	0	1	1.5	30	0.8	0.0
+fglayer		data/levels/howard_arena/water_0.png		-398	0.75	0.75	0.5	114	0	0	-1	1	1	0	1	1.5	30	0.8	0.0
 fglayer		data/levels/howard_arena/lamp_0.png		266	-0.3	-0.3	0.5	205	175	0	-1	1	1	0	0	0	0	0	0.0
 
 #---------------------
@@ -124,6 +124,11 @@ spawn		howard_arena_lamp_flame_b
 health		1000
 coords		2263 275 
 flip		1
+at		0
+
+spawn		Ray
+health		1000
+coords		400 250
 at		0
 
 spawn		Ray
