@@ -12,13 +12,13 @@
 // assuming the model has a land animation. The native AI
 // can not and does not ever use landing ability.
 
-int dc_elmers_get_blast()
+int dc_elmers_member_get_blast()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_BLAST;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_BLAST;
 
 	result = getlocalvar(id);
 
@@ -30,12 +30,12 @@ int dc_elmers_get_blast()
 	return result;
 }
 
-int dc_elmers_set_blast(int value)
+int dc_elmers_member_set_blast(int value)
 {
 	char id;
 
 	// Get ID.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_BLAST;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_BLAST;
 
 	// If value is default, make sure the variable
 	// is deleted.
@@ -57,9 +57,9 @@ void dc_elmers_apply_blast()
 	void ent; 
 	int value;
 	   	 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
-	value = dc_elmers_get_blast();
+	value = dc_elmers_member_get_blast();
 
 	set_entity_property(ent, "blast_state", value);
 }

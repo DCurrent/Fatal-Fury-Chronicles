@@ -5,13 +5,13 @@
 
 // Attacking turns the standard attack box on or off. 
 
-int dc_elmers_get_attacking()
+int dc_elmers_member_get_attacking()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ATTACKING;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ATTACKING;
 
 	result = getlocalvar(id);
 
@@ -28,7 +28,7 @@ int dc_elmers_set_attacking(int value)
 	char id;
 
 	// Get ID.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ATTACKING;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ATTACKING;
 
 	// If value is default, make sure the variable
 	// is deleted.
@@ -49,9 +49,9 @@ void dc_elmers_apply_attacking()
 	void ent;
 	int value;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
-	value = dc_elmers_get_attacking();
+	value = dc_elmers_member_get_attacking();
 
 	set_entity_property(ent, "attack_state", value);
 }

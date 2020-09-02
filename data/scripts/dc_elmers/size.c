@@ -5,13 +5,13 @@
 
 // When finding an offset based on height, apply this
 // as a mutiplier.
-float dc_elmers_get_size_height_factor()
+float dc_elmers_member_get_size_height_factor()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_SIZE_FACTOR_HEIGHT;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_SIZE_FACTOR_HEIGHT;
 
 	result = getlocalvar(id);
 
@@ -30,7 +30,7 @@ float dc_elmers_set_size_height_factor(int value)
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_SIZE_FACTOR_HEIGHT;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_SIZE_FACTOR_HEIGHT;
 
 	if (value == DC_ELMERS_DEFAULT_SIZE_FACTOR_HEIGHT)
 	{
@@ -53,7 +53,7 @@ int dc_elmers_find_size_height(void ent)
 
 	if (!ent)
 	{
-		ent = dc_elmers_get_entity();
+		ent = dc_elmers_member_get_entity();
 	}
 
 	animation = DC_ELMERS_REACT_ANIMATION;// get_entity_property(target, "animation_id");
@@ -61,7 +61,7 @@ int dc_elmers_find_size_height(void ent)
 
 	sprite = getentityproperty(ent, "spritea", "sprite", animation, frame);
 
-	result = getgfxproperty(sprite, "height"); //*dc_elmers_get_size_height_factor();
+	result = getgfxproperty(sprite, "height"); //*dc_elmers_member_get_size_height_factor();
 
 	// Round and then remove the decimal to get 
 	// whole number.

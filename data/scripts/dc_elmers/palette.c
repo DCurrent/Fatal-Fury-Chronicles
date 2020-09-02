@@ -5,13 +5,13 @@
 
 
 // Get
-int dc_elmers_get_palette_match()
+int dc_elmers_member_get_palette_match()
 {
 	char id;
 	void result;
 
 	// Get id from key and instance.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_PALETTE_MATCH;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_PALETTE_MATCH;
 
 	result = getlocalvar(id);
 
@@ -29,7 +29,7 @@ int dc_elmers_set_palette_match(void value)
 	char id;
 
 	// Get id from key and instance.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_PALETTE_MATCH;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_PALETTE_MATCH;
 
 	if (value == DC_ELMERS_DEFAULT_PALETTE_MATCH)
 	{
@@ -51,15 +51,15 @@ void dc_elmers_apply_palette_match()
 	void entity;
 
 	
-	target = dc_elmers_get_target();
-	entity = dc_elmers_get_entity();
+	target = dc_elmers_member_get_target();
+	entity = dc_elmers_member_get_entity();
 
 	if (!target || !entity)
 	{
 		return;
 	}
 
-	match = dc_elmers_get_palette_match();
+	match = dc_elmers_member_get_palette_match();
 
 	switch (match)
 	{

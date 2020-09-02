@@ -5,13 +5,13 @@
 // Accessors and Mutators.
 
 // X axis level position.
-int dc_elmers_get_level_x()
+int dc_elmers_member_get_level_x()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_LEVEL_X;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_LEVEL_X;
 
 	result = getlocalvar(id);
 
@@ -23,12 +23,12 @@ int dc_elmers_get_level_x()
 	return result;
 }
 
-int dc_elmers_set_level_x(int value)
+int dc_elmers_member_set_level_x(int value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_LEVEL_X;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_LEVEL_X;
 
 	if (value == DC_ELMERS_DEFAULT_LEVEL_X)
 	{
@@ -39,13 +39,13 @@ int dc_elmers_set_level_x(int value)
 }
 
 // Y axis level position.
-int dc_elmers_get_level_y()
+int dc_elmers_member_get_level_y()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_LEVEL_Y;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_LEVEL_Y;
 
 	result = getlocalvar(id);
 
@@ -57,12 +57,12 @@ int dc_elmers_get_level_y()
 	return result;
 }
 
-int dc_elmers_set_level_y(int value)
+int dc_elmers_member_set_level_y(int value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_LEVEL_Y;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_LEVEL_Y;
 
 	if (value == DC_ELMERS_DEFAULT_LEVEL_Y)
 	{
@@ -79,7 +79,7 @@ int dc_elmers_get_level_z()
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_LEVEL_Z;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_LEVEL_Z;
 
 	result = getlocalvar(id);
 
@@ -96,7 +96,7 @@ int dc_elmers_set_level_z(int value)
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_LEVEL_Z;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_LEVEL_Z;
 
 	if (value == DC_ELMERS_DEFAULT_LEVEL_Z)
 	{

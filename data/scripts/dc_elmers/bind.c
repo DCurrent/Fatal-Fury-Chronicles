@@ -9,12 +9,12 @@
 #import "data/scripts/dc_elmers/position.c"
 #import "data/scripts/dc_elmers/position_config.c"
 
-void dc_elmers_set_animation_id(int value)
+void dc_elmers_set_bind_animation_id(int value)
 {
 	void ent;
 	void bind;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	// Get bind pointer.
 	bind = get_entity_property(ent, "bind");
@@ -24,12 +24,12 @@ void dc_elmers_set_animation_id(int value)
 	return bind;
 }
 
-void dc_elmers_set_frame(int value)
+void dc_elmers_set_bind_frame(int value)
 {
 	void ent;
 	void bind;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	// Get bind pointer.
 	bind = get_entity_property(ent, "bind");
@@ -44,7 +44,7 @@ void dc_elmers_set_animation_match(int value)
 	void ent;
 	void bind;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	// Get bind pointer.
 	bind = get_entity_property(ent, "bind");
@@ -54,13 +54,13 @@ void dc_elmers_set_animation_match(int value)
 	return bind;
 }
 
-int dc_elmers_get_bind_direction()
+int dc_elmers_member_get_bind_direction()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_BIND_DIRECTION;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_BIND_DIRECTION;
 
 	result = getlocalvar(id);
 
@@ -74,12 +74,12 @@ int dc_elmers_get_bind_direction()
 
 //
 
-int dc_elmers_set_bind_direction(int value)
+int dc_elmers_member_set_bind_direction(int value)
 {
 	char id;
 
 	// Get ID.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_BIND_DIRECTION;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_BIND_DIRECTION;
 
 	// If value is default, make sure the variable
 	// is deleted.
@@ -94,7 +94,7 @@ int dc_elmers_set_bind_direction(int value)
 // Set new value to member and apply to bind property.
 void dc_elmers_alter_bind_direction(int value)
 {
-	dc_elmers_set_bind_direction(value);
+	dc_elmers_member_set_bind_direction(value);
 	dc_elmers_apply_bind_direction();
 }
 
@@ -106,8 +106,8 @@ void dc_elmers_apply_bind_direction()
 	int value;
 
 	// Get entity and value.
-	ent = dc_elmers_get_entity();
-	value = dc_elmers_get_bind_direction();
+	ent = dc_elmers_member_get_entity();
+	value = dc_elmers_member_get_bind_direction();
 
 	// Get bind pointer.
 	bind = get_entity_property(ent, "bind");
@@ -119,12 +119,12 @@ void dc_elmers_apply_bind_direction()
 
 //
 
-void dc_elmers_set_sorting(int value)
+void dc_elmers_set_bind_sorting(int value)
 {
 	void ent;
 	void bind;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	// Get bind pointer.
 	bind = get_entity_property(ent, "bind");
@@ -134,12 +134,12 @@ void dc_elmers_set_sorting(int value)
 	return bind;
 }
 
-void dc_elmers_set_target(void value)
+void dc_elmers_set_bind_target(void value)
 {
 	void ent;
 	void bind;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	// Get bind pointer.
 	bind = get_entity_property(ent, "bind");
@@ -154,7 +154,7 @@ int dc_elmers_get_bind_property(char prop_name)
 	void ent;
 	void bind;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	// Get bind pointer.
 	bind = get_entity_property(ent, "bind");
@@ -174,7 +174,7 @@ void dc_elmers_set_bind_property(void prop_name, int the_value)
 	void ent;
 	void bind;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	// Get bind pointer.
 	bind = get_entity_property(ent, "bind");
@@ -198,14 +198,14 @@ void dc_elmers_quick_offset_to_bind()
 	void ent;
 	void bind;
 
-	ent = dc_elmers_get_entity();
-	target = dc_elmers_get_target();
+	ent = dc_elmers_member_get_entity();
+	target = dc_elmers_member_get_target();
 
 	bind = get_entity_property(ent, "bind");
 
-	set_bind_property(bind, "offset_x", dc_elmers_find_scaled_offset_x(target, dc_elmers_get_offset_x()));
-	set_bind_property(bind, "offset_y", dc_elmers_find_scaled_offset_y(target, dc_elmers_get_offset_y()));
-	set_bind_property(bind, "offset_z", dc_elmers_get_offset_z());
+	set_bind_property(bind, "offset_x", dc_elmers_find_scaled_offset_x(target, dc_elmers_member_get_offset_x()));
+	set_bind_property(bind, "offset_y", dc_elmers_find_scaled_offset_y(target, dc_elmers_member_get_offset_y()));
+	set_bind_property(bind, "offset_z", dc_elmers_member_get_offset_z());
 
 	return bind;
 }
@@ -219,18 +219,18 @@ void dc_elmers_quick_bind()
 	void target;
 	void bind;
 
-	ent = dc_elmers_get_entity();
-	target = dc_elmers_get_target();
+	ent = dc_elmers_member_get_entity();
+	target = dc_elmers_member_get_target();
 
 	bind = get_entity_property(ent, "bind");
 
 	set_bind_property(bind, "target", target);
 
-	set_bind_property(bind, "mode_x", dc_elmers_get_anchor_x());
-	set_bind_property(bind, "mode_y", dc_elmers_get_anchor_y());
-	set_bind_property(bind, "mode_z", dc_elmers_get_anchor_z());
+	set_bind_property(bind, "mode_x", dc_elmers_member_get_anchor_x());
+	set_bind_property(bind, "mode_y", dc_elmers_member_get_anchor_y());
+	set_bind_property(bind, "mode_z", dc_elmers_member_get_anchor_z());
 
-	set_bind_property(bind, "direction", dc_elmers_get_direction());
+	set_bind_property(bind, "direction", dc_elmers_member_get_direction());
 	
 	dc_elmers_quick_offset_to_bind();	
 
@@ -248,7 +248,7 @@ void dc_elmers_quick_release()
 	void ent;
 	void bind;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	bind = get_entity_property(ent, "bind");
 

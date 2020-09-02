@@ -5,13 +5,13 @@
 
 // Tag is a user defined value the engine ignores.
 
-int dc_elmers_get_tag()
+int dc_elmers_member_get_tag()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_TAG;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_TAG;
 
 	result = getlocalvar(id);
 
@@ -23,12 +23,12 @@ int dc_elmers_get_tag()
 	return result;
 }
 
-int dc_elmers_set_tag(int value)
+int dc_elmers_member_set_tag(int value)
 {
 	char id;
 
 	// Get ID.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_TAG;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_TAG;
 
 	// If value is default, make sure the variable
 	// is deleted.
@@ -50,11 +50,11 @@ void dc_elmers_apply_tag()
 	void bind;
 	void value;
 	   	 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	bind = get_entity_property(ent, "bind");
 
-	value = dc_elmers_get_tag();
+	value = dc_elmers_member_get_tag();
 
 	set_bind_property(bind, "meta_tag", value);
 }
@@ -63,19 +63,19 @@ void dc_elmers_apply_tag()
 // 2019-05-29
 //
 // Get the property and apply it to member. 
-int dc_elmers_set_tag_from_property()
+int dc_elmers_member_set_tag_from_property()
 {
 	void ent;
 	void bind;
 	void value;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
 	bind = get_entity_property(ent, "bind");
 
 	value = get_bind_property(bind, "meta_tag");
 
-	dc_elmers_set_tag(value);
+	dc_elmers_member_set_tag(value);
 
 	return value;
 }

@@ -9,10 +9,6 @@
 // be unique vs all other libraries. Try to keep it short.
 #define DC_ELMERS_BASE_ID	"dcelme"
 
-// Function macros
-#define dc_elmers_find_screen_center_x() openborvariant("xpos") + (openborvariant("hresolution") / 2)
-#define dc_elmers_find_screen_center_y() openborvariant("ypos") + (openborvariant("vresolution") / 2)
-
 // Options.
 // -- Disabled. When disabled, calls to bind are skipped.
 #define DC_ELMERS_DISABLED_FALSE			0
@@ -182,7 +178,9 @@
 #define DC_ELMERS_DRAWMETHOD_SCALE_MAX_X	256
 #define DC_ELMERS_DRAWMETHOD_SCALE_MAX_Y	256
 
-// Function macros:
-#define dc_elmers_get_targets_opponent()		get_entity_property(dc_elmers_get_target(),"opponent")
+// Function macros
+#define dc_elmers_find_screen_center_x() openborvariant("xpos") + (openborvariant("hresolution") / 2)
+#define dc_elmers_find_screen_center_y() openborvariant("ypos") + (openborvariant("vresolution") / 2)
+#define dc_elmers_member_get_targets_opponent() get_entity_property(dc_elmers_member_get_target(),"opponent")
 
 #endif // !DC_ELMERS_CONFIG

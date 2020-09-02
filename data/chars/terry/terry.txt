@@ -2655,8 +2655,8 @@ anim freespecial12 # Burn Knuckle
 	# fire and forget, so spawn it first and
 	# we can re use the same instance of dc_elmers.
 
-	@cmd dc_elmers_set_offset_x 15
-	@cmd dc_elmers_set_offset_y 15
+	@cmd dc_elmers_member_set_offset_x 15
+	@cmd dc_elmers_member_set_offset_y 15
 	@cmd dc_elmers_quick_spot dc_gauntlet_quick_spawn("terry_burn_knuckle_burst")
 	
 

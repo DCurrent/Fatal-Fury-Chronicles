@@ -484,7 +484,7 @@ int dc_try_grapple_side_switch(int player_index)
 	}	
 
 	// Run the action function.
-	dc_elmers_set_target(getplayerproperty(player_index, "entity"));
+	dc_elmers_member_set_target(getplayerproperty(player_index, "entity"));
 	dc_elmers_side_switch();
 	
 	// Clear flag from key press.

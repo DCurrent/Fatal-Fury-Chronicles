@@ -15,13 +15,13 @@
 // To prevent this from happening, we use candamage to disable
 // our ability to attack normally. 
 
-int dc_elmers_get_can_damage()
+int dc_elmers_member_get_can_damage()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_CAN_DAMAGE;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_CAN_DAMAGE;
 
 	result = getlocalvar(id);
 
@@ -33,12 +33,12 @@ int dc_elmers_get_can_damage()
 	return result;
 }
 
-int dc_elmers_set_can_damage(int value)
+int dc_elmers_member_set_can_damage(int value)
 {
 	char id;
 
 	// Get ID.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_CAN_DAMAGE;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_CAN_DAMAGE;
 
 	// If value is default, make sure the variable
 	// is deleted.
@@ -50,13 +50,13 @@ int dc_elmers_set_can_damage(int value)
 	setlocalvar(id, value);
 }
 
-int dc_elmers_get_can_damage_old()
+int dc_elmers_member_get_can_damage_old()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_CAN_DAMAGE_OLD;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_CAN_DAMAGE_OLD;
 
 	result = getlocalvar(id);
 
@@ -68,12 +68,12 @@ int dc_elmers_get_can_damage_old()
 	return result;
 }
 
-int dc_elmers_set_can_damage_old(int value)
+int dc_elmers_member_set_can_damage_old(int value)
 {
 	char id;
 
 	// Get ID.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_CAN_DAMAGE_OLD;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_CAN_DAMAGE_OLD;
 
 	// If value is default, make sure the variable
 	// is deleted.
@@ -94,9 +94,9 @@ void dc_elmers_apply_can_damage()
 	void ent;
 	int value;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
-	value = dc_elmers_get_can_damage();
+	value = dc_elmers_member_get_can_damage();
 
 	changeentityproperty(ent, "candamage", value);
 }
@@ -110,9 +110,9 @@ void dc_elmers_apply_can_damage_old()
 	void ent;
 	int value;
 
-	ent = dc_elmers_get_entity();
+	ent = dc_elmers_member_get_entity();
 
-	value = dc_elmers_get_can_damage_old();
+	value = dc_elmers_member_get_can_damage_old();
 
 	changeentityproperty(ent, "candamage", value);
 }

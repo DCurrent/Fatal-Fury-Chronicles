@@ -17,6 +17,6 @@ void main()
 	common_spawn_damage_effect(take_damage_result);
 
 	// Release any grappled entities.
-	dc_elmers_set_target(ent);
+	dc_elmers_member_set_target(ent);
 	dc_elmers_disrupt_grapple();
 }

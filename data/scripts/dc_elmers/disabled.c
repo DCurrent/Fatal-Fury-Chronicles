@@ -8,13 +8,13 @@
 // partially through an animation without subsequent bind calls in 
 // the animation making a mess.
 
-int dc_elmers_get_disabled()
+int dc_elmers_member_get_disabled()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_DISABLED;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_DISABLED;
 
 	result = getlocalvar(id);
 
@@ -26,12 +26,12 @@ int dc_elmers_get_disabled()
 	return result;
 }
 
-int dc_elmers_set_disabled(int value)
+int dc_elmers_member_set_disabled(int value)
 {
 	char id;
 
 	// Get ID.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_DISABLED;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_DISABLED;
 
 	// If value is default, make sure the variable
 	// is deleted.

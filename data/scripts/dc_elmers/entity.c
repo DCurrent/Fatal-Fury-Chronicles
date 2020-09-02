@@ -5,13 +5,13 @@
 
 // Base entity functions will act on.
 // Get
-void dc_elmers_get_entity()
+void dc_elmers_member_get_entity()
 {
 	char id;
 	void result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ENT;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ENT;
 
 	result = getlocalvar(id);
 
@@ -24,12 +24,12 @@ void dc_elmers_get_entity()
 }
 
 // Set
-void dc_elmers_set_entity(void value)
+void dc_elmers_member_set_entity(void value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ENT;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ENT;
 
 	if (value == DC_ELMERS_DEFAULT_ENT)
 	{
@@ -41,13 +41,13 @@ void dc_elmers_set_entity(void value)
 
 // Target entity (if any).
 // Get
-void dc_elmers_get_target()
+void dc_elmers_member_get_target()
 {
 	char id;
 	void result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_TARGET;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_TARGET;
 
 	result = getlocalvar(id);
 
@@ -60,12 +60,12 @@ void dc_elmers_get_target()
 }
 
 // Set
-void dc_elmers_set_target(void value)
+void dc_elmers_member_set_target(void value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_TARGET;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_TARGET;
 
 	if (value == DC_ELMERS_DEFAULT_TARGET)
 	{
@@ -84,9 +84,9 @@ void dc_elmers_swap_entities()
 	void ent;
 	void target;
 
-	target = dc_elmers_get_target();
-	ent = dc_elmers_get_entity();
+	target = dc_elmers_member_get_target();
+	ent = dc_elmers_member_get_entity();
 
-	dc_elmers_set_entity(target);
-	dc_elmers_set_target(ent);
+	dc_elmers_member_set_entity(target);
+	dc_elmers_member_set_target(ent);
 }

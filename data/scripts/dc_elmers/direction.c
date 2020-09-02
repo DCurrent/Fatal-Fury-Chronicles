@@ -5,13 +5,13 @@
 
 // Non binding direction control.
 
-int dc_elmers_get_direction()
+int dc_elmers_member_get_direction()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_DIRECTION;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_DIRECTION;
 
 	result = getlocalvar(id);
 
@@ -23,12 +23,12 @@ int dc_elmers_get_direction()
 	return result;
 }
 
-int dc_elmers_set_direction(int value)
+int dc_elmers_member_set_direction(int value)
 {
 	char id;
 
 	// Get ID.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_DIRECTION;	
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_DIRECTION;	
 
 	// If value is default, make sure the variable
 	// is deleted.
@@ -53,10 +53,10 @@ int dc_elmers_apply_direction()
 	void target;
 	void ent;
 
-	target = dc_elmers_get_target();
-	ent = dc_elmers_get_entity();
+	target = dc_elmers_member_get_target();
+	ent = dc_elmers_member_get_entity();
 
-	adjustment = dc_elmers_get_direction();
+	adjustment = dc_elmers_member_get_direction();
 
 	direction_target = get_entity_property(target, "position_direction");
 	direction_ent = get_entity_property(ent, "position_direction");

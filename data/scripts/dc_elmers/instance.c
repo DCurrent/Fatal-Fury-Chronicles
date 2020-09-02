@@ -1,7 +1,7 @@
 #include "data/scripts/dc_elmers/config.h"
 
 // Which instance is in use?
-int dc_elmers_get_instance()
+int dc_elmers_member_get_instance()
 {
 	void result = getlocalvar(DC_ELMERS_MEMBER_INSTANCE);
 
@@ -13,7 +13,7 @@ int dc_elmers_get_instance()
 	return result;
 }
 
-void dc_elmers_set_instance(int value)
+void dc_elmers_member_set_instance(int value)
 {
 	setlocalvar(DC_ELMERS_MEMBER_INSTANCE, value);
 }
@@ -28,7 +28,7 @@ void dc_elmers_reset_instance()
 	int instance;
 
 	// Get instance.
-	instance = dc_elmers_get_instance();
+	instance = dc_elmers_member_get_instance();
 
 	// Destroy all instance variables.
 	dc_elmers_free_instance();
@@ -38,7 +38,7 @@ void dc_elmers_reset_instance()
 	// copy of the current instance.
 	if (instance != DC_ELMERS_DEFAULT_INSTANCE)
 	{
-		dc_elmers_set_instance(instance);
+		dc_elmers_member_set_instance(instance);
 	}
 }
 
@@ -54,7 +54,7 @@ void dc_elmers_free_instance()
 	char id;
 
 	// Get instance.
-	instance = dc_elmers_get_instance();
+	instance = dc_elmers_member_get_instance();
 
 	// Loop from 0 to end count of library variables.
 	for (i = 0; i < DC_ELMERS_MEMBER_THE_END; i++)
@@ -78,7 +78,7 @@ void dc_elmers_dump_instance()
 	char id;
 
 	// Get instance.
-	instance = dc_elmers_get_instance();
+	instance = dc_elmers_member_get_instance();
 
 	// Log base name and instance.
 	log("\n\n " + DC_ELMERS_BASE_ID + " dump:");
@@ -115,7 +115,7 @@ void dc_elmers_export_instance()
 	void value;
 
 	// Get instance.
-	instance = dc_elmers_get_instance();
+	instance = dc_elmers_member_get_instance();
 
 	// Loop from 0 to end count of instance variables.
 	for (i = 0; i < DC_ELMERS_MEMBER_THE_END; i++)
@@ -144,7 +144,7 @@ void dc_elmers_import_instance()
 	void value;
 
 	// Get instance.
-	instance = dc_elmers_get_instance();
+	instance = dc_elmers_member_get_instance();
 
 	// Loop from 0 to end count of instance variables.
 	for (i = 0; i < DC_ELMERS_MEMBER_THE_END; i++)
@@ -171,7 +171,7 @@ void dc_elmers_free_export()
 	char id;
 
 	// Get instance.
-	instance = dc_elmers_get_instance();
+	instance = dc_elmers_member_get_instance();
 
 	// Loop from 0 to end count of library variables.
 	for (i = 0; i < DC_ELMERS_MEMBER_THE_END; i++)

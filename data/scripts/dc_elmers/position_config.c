@@ -7,13 +7,13 @@
 // determine how far the entity is moved.
 
 // X axis.
-int dc_elmers_get_position_adjust_quantity_x()
+int dc_elmers_member_get_position_adjust_quantity_x()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_X;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_X;
 
 	result = getlocalvar(id);
 
@@ -25,12 +25,12 @@ int dc_elmers_get_position_adjust_quantity_x()
 	return result;
 }
 
-int dc_elmers_set_position_adjust_quantity_x(int value)
+int dc_elmers_member_set_position_adjust_quantity_x(int value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_X;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_X;
 
 	if (value == DC_ELMERS_DEFAULT_POSITION_QUANTITY_X)
 	{
@@ -41,13 +41,13 @@ int dc_elmers_set_position_adjust_quantity_x(int value)
 }
 
 // Y axis.
-int dc_elmers_get_position_adjust_quantity_y()
+int dc_elmers_member_get_position_adjust_quantity_y()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_Y;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_Y;
 
 	result = getlocalvar(id);
 
@@ -59,12 +59,12 @@ int dc_elmers_get_position_adjust_quantity_y()
 	return result;
 }
 
-int dc_elmers_set_position_adjust_quantity_y(int value)
+int dc_elmers_member_set_position_adjust_quantity_y(int value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_Y;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_Y;
 
 	if (value == DC_ELMERS_DEFAULT_POSITION_QUANTITY_Y)
 	{
@@ -75,13 +75,13 @@ int dc_elmers_set_position_adjust_quantity_y(int value)
 }
 
 // Z axis.
-int dc_elmers_get_position_adjust_quantity_z()
+int dc_elmers_member_get_position_adjust_quantity_z()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_Z;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_Z;
 
 	result = getlocalvar(id);
 
@@ -93,12 +93,12 @@ int dc_elmers_get_position_adjust_quantity_z()
 	return result;
 }
 
-int dc_elmers_set_position_adjust_quantity_z(int value)
+int dc_elmers_member_set_position_adjust_quantity_z(int value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_Z;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_POSITION_QUANTITY_Z;
 
 	if (value == DC_ELMERS_DEFAULT_POSITION_QUANTITY_Z)
 	{
@@ -112,13 +112,13 @@ int dc_elmers_set_position_adjust_quantity_z(int value)
 // base target position from (screen, a target entity, etc.).
 
 // X axis.
-int dc_elmers_get_anchor_x()
+int dc_elmers_member_get_anchor_x()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ANCHOR_X;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ANCHOR_X;
 
 	result = getlocalvar(id);
 
@@ -130,12 +130,12 @@ int dc_elmers_get_anchor_x()
 	return result;
 }
 
-int dc_elmers_set_anchor_x(int value)
+int dc_elmers_member_set_anchor_x(int value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ANCHOR_X;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ANCHOR_X;
 
 	if (value == DC_ELMERS_DEFAULT_ANCHOR_X)
 	{
@@ -146,13 +146,13 @@ int dc_elmers_set_anchor_x(int value)
 }
 
 // Y axis.
-int dc_elmers_get_anchor_y()
+int dc_elmers_member_get_anchor_y()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ANCHOR_Y;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ANCHOR_Y;
 
 	result = getlocalvar(id);
 
@@ -164,12 +164,12 @@ int dc_elmers_get_anchor_y()
 	return result;
 }
 
-int dc_elmers_set_anchor_y(int value)
+int dc_elmers_member_set_anchor_y(int value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ANCHOR_Y;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ANCHOR_Y;
 
 	if (value == DC_ELMERS_DEFAULT_ANCHOR_Y)
 	{
@@ -180,13 +180,13 @@ int dc_elmers_set_anchor_y(int value)
 }
 
 // z axis.
-int dc_elmers_get_anchor_z()
+int dc_elmers_member_get_anchor_z()
 {
 	char id;
 	int result;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ANCHOR_Z;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ANCHOR_Z;
 
 	result = getlocalvar(id);
 
@@ -198,12 +198,12 @@ int dc_elmers_get_anchor_z()
 	return result;
 }
 
-int dc_elmers_set_anchor_z(int value)
+int dc_elmers_member_set_anchor_z(int value)
 {
 	char id;
 
 	// Get id.
-	id = dc_elmers_get_instance() + DC_ELMERS_MEMBER_ANCHOR_Z;
+	id = dc_elmers_member_get_instance() + DC_ELMERS_MEMBER_ANCHOR_Z;
 
 	if (value == DC_ELMERS_DEFAULT_ANCHOR_Z)
 	{
