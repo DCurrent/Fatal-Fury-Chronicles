@@ -8,7 +8,7 @@ background	data/levels/howard_arena/city_0.png 	0 	0 	0 	0 	0 	0 	0 	0 	0	0	0	0	
 # panel		filepath (main)				filepath (neon)	filepath (blended)
 panel		data/levels/howard_arena/path_0.png 	none 		none
 #panel		data/levels/howard_arena/path_1.png 	none 		none
-order		a
+order		aaa
 
 #bgspeed 	1 1
 vbgspeed 	1 0
@@ -59,13 +59,13 @@ at		0
 load 		howard_arena_lamp_flame 3
 spawn		howard_arena_lamp_flame
 health		1000
-coords		699 205 32
+coords		753 205 32
 flip		1
 at		0
 
 spawn		howard_arena_lamp_flame
 health		1000
-coords		1073 205 30
+coords		1687 205 32
 at		0
 
 spawn		Ray
