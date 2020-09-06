@@ -18,7 +18,7 @@ vbgspeed 	1 0
 
 # fglayer	filepath					Zpos 	xratio	zratio	xoffset	zoffset	xspace	zspace	xrepeat	zrepeat	trans	alpha	w-mode	amp	wl	ws	move	quake	neon
 fglayer		data/levels/howard_arena/city_0.png		-399	0.8	0.8	0	44	0	0	-1	1	1	0	0	0	0	0	0.0     0       1
-fglayer		data/levels/howard_arena/cloud_0.png		-400	0.8	0.8	0	0	0	0	-1	-1	0	0	0	0	0	0	1
+fglayer		data/levels/howard_arena/clouds_0.png		-400	0.8	0.8	0	0	0	0	-1	-1	0	0	0	0	0	0	1
 fglayer		data/levels/howard_arena/temple_b_0.png		-398	0.75	0.75	0	2	0	0	-1	1	1	0	0	0	0	0	0.0
 fglayer		data/levels/howard_arena/temple_1.png		-397	0.7	0.7	0	17	0	0	-1	1	1	0	0	0	0	0	0.0
 fglayer		data/levels/howard_arena/temple_0.png		-395	0.65	0.65	0	31	0	0	-1	1	1	0	0	0	0	0	0.0
@@ -63,7 +63,7 @@ coords		699 205 32
 flip		1
 at		0
 
-#spawn		howard_arena_lamp_flame
+spawn		howard_arena_lamp_flame
 health		1000
 coords		1073 205 30
 at		0

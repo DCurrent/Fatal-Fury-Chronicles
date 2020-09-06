@@ -425,8 +425,8 @@ void clear()
 void main() 
 {
 	old_main();
-	//dc_rain_splatter();
+	dc_rain_splatter();
 
 	dc_layer_animation(5, 8, 20);	// Watefall
-	dc_layer_animation(11, 14, 20);	// lamps (on path)
+	dc_layer_animation(11, 14, 20);	// Lamps (foreground)
 }
