@@ -213,6 +213,51 @@ void dc_rain_splatter()
 	}
 }
 
+
+
+
+#ifndef DC_INSET
+
+#define DC_INSET    1
+
+#define KEY_SCREEN          "key_screen"
+#define KEY_BACKGROUND      "key_background"
+#define SCREEN_BACKGROUND   "data/misc/blank.png"
+
+#endif // DC_INSET
+
+void get_screen()
+{
+	void screen;
+	int  x;
+	int  y;
+	int  background_sprite;
+
+	x = openborvariant("hresolution");
+	y = openborvariant("vresolution");
+
+	// Get current screen.
+	screen = getlocalvar(KEY_SCREEN);
+
+	// If no screen is set up,
+	// initialize it here.
+	if (!screen)
+	{
+		// Load the background sprite for our screen.
+		background_sprite = loadsprite(SCREEN_BACKGROUND);
+
+		// Allocate screen and use it to populate
+		// the screen variable, then populate
+		// background variable.
+		screen = allocscreen(x, 60);
+		setlocalvar(KEY_SCREEN, screen);
+		setlocalvar(KEY_BACKGROUND, background_sprite);
+	}
+
+	return screen;
+}
+
+
 void oncreate()
 {
 }
@@ -221,7 +266,167 @@ void ondestroy()
 {
 }
 
+void old_main()
+{
+	//if(getglobalvar("game_paused")){return;}else{}
+	void count = getlocalvar("screen_count");
+	void current_time = openborvariant("elapsed_time");
+	
+	if (!count) 
+	{
+		count = current_time;
+		setlocalvar("screen_count", current_time);
+	}
+	else {}
+
+	void scr = get_screen();
+
+	int max_z = openborvariant("PLAYER_MAX_Z");
+	int min_z = openborconstant("MIN_INT");
+
+	
+	//if(openborvariant("game_paused"))return;
+	
+	//if (current_time - count > 1) //12
+	//{
+		clearscreen(scr);
+		drawspriteq(scr, 0, min_z, -85, 0, 0);
+		setlocalvar("screen_count", current_time);
+	//}
+	
+	//Set drawMethod
+	changedrawmethod(NULL(), "reset", 1);
+	changedrawmethod(NULL(), "enabled", 1);
+	//changedrawmethod(NULL(),"scalex",43);
+	//changedrawmethod(NULL(),"scaley",52);
+	changedrawmethod(NULL(), "watermode", 3);
+	changedrawmethod(NULL(), "beginsize", 6);
+	changedrawmethod(NULL(), "endsize", 0.01);
+	//changedrawmethod(NULL(), "scalex", 54);
+	//changedrawmethod(NULL(), "scaley", 54);
+	changedrawmethod(NULL(), "perspective", 0);
+
+	//Draw the resized customized screen to main screen.
+	float x = openborvariant("xpos") + 35;
+	float y = 83;
+
+	x = 0; //getentityproperty(self, "x") - x;
+	y = 0; // getentityproperty(self, "y") + getentityproperty(self, "base") - 22;
+
+	drawscreen(scr, x, -y, -84);
+	//changedrawmethod(NULL(),"scalex",256);
+	//changedrawmethod(NULL(),"scaley",328);
+	//changedrawmethod(NULL(),"alpha",2);
+	//drawsprite(getscriptvar(1),x,y,2);
+	changedrawmethod(NULL(), "enabled", 0);
+
+	//settextobj(0, 10, 50, 1, 999999994, openborvariant("PLAYER_MIN_Z"));
+	//settextobj(1, 10, 60, 1, 999999994, min_z);
+	//settextobj(2, 10, 70, 1, 999999994, openborconstant("MIN_INT"));
+	//settextobj(3, 10, 80, 1, 999999994, openborvariant("pause"));
+	//settextobj(2, 10, 70, 1, 999999994, "x: " + x);
+	//settextobj(3, 10, 80, 1, 999999994, "y: " + y);
+	//settextobj(4, 10, 90, 1, 999999994, openborvariant("elapsed_time"));
+	//settextobj(5, 10, 100, 1, 999999994, "min_z: " + min_z);
+	//settextobj(6, 10, 110, 1, 999999994, "max_z: " + max_z);
+}
+
+// Ccaskey, Damon V.
+// 2020-09-04
+//
+// Given a set of layers configured as frames, will
+// simulate simple looping animation by disabling
+// all but one layer from first_index to last_index 
+// in series.
+//
+// -- first_index: Index of first layer in set. Treated as 
+// the first frame and also added to localvars so there
+// can be mutiple instances of function in use without
+// interfere with each other.
+
+// -- last_index: Index of last layer in set.
+// -- delay: Animation delay. Identical to animation
+// delay used by models.
+
+void dc_layer_animation(int first_index, int last_index, int delay)
+{
+	int time_current = openborvariant("elapsed_time");
+	int time_expire = getlocalvar("dc_layer_animation_delay_expire" + first_index);
+	int layer_current = 0;
+	int layer_index = 0;
+
+	// Animation delay timing.
+	//
+	// If there is no time expired set yet or time
+	// has expired, set the next expire time and
+	// continue function. Otherwise we exit and wait.
+	if (!time_expire || time_current >= time_expire)
+	{
+		time_expire = time_current + delay;
+		setlocalvar("dc_layer_animation_delay_expire" + first_index, time_expire);
+	}
+	else
+	{
+		return;
+	}
+
+	// Get current layer. If this is first run of 
+	// function, current layer variable will be 
+	// empty, so initialize it with the first 
+	// layer index.
+
+	layer_current = getlocalvar("dc_layer_animation_last_layer" + first_index);
+
+	if (!layer_current)
+	{
+		layer_current = first_index;
+	}
+
+	// Loop over layers. Enable the current index, and
+	// disable all the others.
+	
+	for (layer_index = first_index; layer_index <= last_index; layer_index++)
+	{
+		if (layer_index == layer_current)
+		{
+			changelayerproperty("fglayer", layer_index, "enabled", 1);
+		}
+		else
+		{
+			changelayerproperty("fglayer", layer_index, "enabled", 0);
+		}
+	}
+		
+	// Increment to next layer index, or back to first 
+	// index if we are at the last layer in series.
+	// The record into a localvar for next cycle.
+
+	if (layer_current >= last_index)
+	{
+		layer_current = first_index;
+	}
+	else
+	{
+		layer_current++;
+	}
+
+	setlocalvar("dc_layer_animation_last_layer" + first_index, layer_current);
+}
+
+void clear()
+{
+	void scr = getindexedvar(0);
+	if (scr) {
+		free(scr);
+		free(getscriptvar(1));
+	}
+}
+
 void main() 
 {
-	dc_rain_splatter();
+	old_main();
+	//dc_rain_splatter();
+
+	dc_layer_animation(5, 8, 20);	// Watefall
+	dc_layer_animation(11, 14, 20);	// lamps (on path)
 }

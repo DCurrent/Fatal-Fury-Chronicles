@@ -3,7 +3,7 @@
 name	 howard_arena_waterfall
 health	 1
 type	 panel
-Speedf   0.75
+Speedf   0.65
 noquake  1 1
 
 

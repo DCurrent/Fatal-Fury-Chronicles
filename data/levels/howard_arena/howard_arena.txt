@@ -2,7 +2,7 @@ music		data/music/howard_arena.ogg 1292557
 direction	both
 
 # Default layers.
-# background	filepath					xratio	zratio	xoffset	zoffset	xspace	zspace	xrepeat	zrepeat	trans	alpha	w-mode	amp	wl	ws	move	quake	neon
+# background	filepath				xratio	zratio	xoffset	zoffset	xspace	zspace	xrepeat	zrepeat	trans	alpha	w-mode	amp	wl	ws	move	quake	neon
 background	data/levels/howard_arena/city_0.png 	0 	0 	0 	0 	0 	0 	0 	0 	0	0	0	0	0	0	0
 
 # panel		filepath (main)				filepath (neon)	filepath (blended)
@@ -10,27 +10,37 @@ panel		data/levels/howard_arena/path_0.png 	none 		none
 #panel		data/levels/howard_arena/path_1.png 	none 		none
 order		a
 
-bgspeed 	1 0
+#bgspeed 	1 1
+vbgspeed 	1 0
 
 # Additional layers. I like to use fglayer vs. bglayer because
 # you get fine control over the layer positon.
 
 # fglayer	filepath					Zpos 	xratio	zratio	xoffset	zoffset	xspace	zspace	xrepeat	zrepeat	trans	alpha	w-mode	amp	wl	ws	move	quake	neon
-fglayer		data/levels/howard_arena/city_0.png		-400	0.9	0.9	0.5	41	0	0	-1	1	0	0	0	0	0	0	0.0     0       1
-fglayer		data/levels/howard_arena/clouds_0.png		-399	0.9	0.9	0.5	0	0	0	-1	1	0	0	3	3	1	0	2
-fglayer		data/levels/howard_arena/temple_b_0.png		-398	0.8	0.8	0.5	2	0	0	-1	1	1	0	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/temple_0.png		-397	0.75	0.75	0.5	20	0	0	-1	1	1	0	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/water_0.png		-398	0.75	0.75	0.5	114	0	0	-1	1	1	0	1	1.5	30	0.8	0.0
-fglayer		data/levels/howard_arena/lamp_0.png		266	-0.3	-0.3	0.5	205	175	0	-1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/city_0.png		-399	0.8	0.8	0	44	0	0	-1	1	1	0	0	0	0	0	0.0     0       1
+fglayer		data/levels/howard_arena/cloud_0.png		-400	0.8	0.8	0	0	0	0	-1	-1	0	0	0	0	0	0	1
+fglayer		data/levels/howard_arena/temple_b_0.png		-398	0.75	0.75	0	2	0	0	-1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/temple_1.png		-397	0.7	0.7	0	17	0	0	-1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/temple_0.png		-395	0.65	0.65	0	31	0	0	-1	1	1	0	0	0	0	0	0.0
+
+# Waterfall Animation
+fglayer		data/levels/howard_arena/waterfall_0.png	-395	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/waterfall_1.png	-395	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/waterfall_2.png	-395	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/waterfall_3.png	-395	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
+# /waterfall animation
+
+fglayer		data/levels/howard_arena/water_0.png		-396	0.65	0.65	0	114	0	0	-1	1	1	0	1	1.5	30	0.8	0.0
+fglayer		data/levels/howard_arena/lamp_0.png		266	-0.3	-0.3	0	205	175	0	-1	1	1	0	0	0	0	0	0.0
+
+# Lamp flame animation
+fglayer		data/levels/howard_arena/lamp_flame_0.png	267	-0.3	-0.3	20	266 	183	0	-1	1	1	1	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/lamp_flame_1.png	267	-0.3	-0.3	20	266	183	0	-1	1	1	1	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/lamp_flame_2.png	267	-0.3	-0.3	20	266	183	0	-1	1	1	1	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/lamp_flame_3.png	267	-0.3	-0.3	20	266	183	0	-1	1	1	1	0	0	0	0	0.0
+# /Lamp flame animation
 
 #---------------------
-
-load 		howard_arena_waterfall 3
-spawn		howard_arena_waterfall
-health		1000
-coords		734 153
-flip		1
-at		0
 
 # Weather
 load 		howard_arena_lightning 3
@@ -53,220 +63,13 @@ coords		699 205 32
 flip		1
 at		0
 
-spawn		howard_arena_lamp_flame
+#spawn		howard_arena_lamp_flame
 health		1000
 coords		1073 205 30
 at		0
 
-# Flame in foreground lamps.
-load 		howard_arena_lamp_flame_b 3
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		163 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		373 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		583 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		793 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		1003 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		1213 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		1423 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		1633 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		1843 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		2053 275 
-flip		1
-at		0
-
-spawn		howard_arena_lamp_flame_b
-health		1000
-coords		2263 275 
-flip		1
-at		0
-
 spawn		Ray
 health		1000
 coords		400 250
 at		0
 
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
-
-spawn		Ray
-health		1000
-coords		400 250
-at		0
