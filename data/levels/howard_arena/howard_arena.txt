@@ -43,17 +43,18 @@ fglayer		data/levels/howard_arena/lamp_flame_2.png	267	-0.3	-0.3	21	266	183	0	-1
 fglayer		data/levels/howard_arena/lamp_flame_3.png	267	-0.3	-0.3	21	266	183	0	-1	1	1	1	0	0	0	0	0.0	
 # /Lamp flame animation
 
+# Rainfall animation.
+fglayer		data/levels/howard_arena/rain_0.png		300	0	0	0	0	0	0	-1	-1	0	2	0	0	0	0	0.0	
+fglayer		data/levels/howard_arena/rain_1.png		300	0	0	0	0	0	0	-1	-1	0	2	0	0	0	0	0.0	
+fglayer		data/levels/howard_arena/rain_2.png		300	0	0	0	0	0	0	-1	-1	0	2	0	0	0	0	0.0	
+fglayer		data/levels/howard_arena/rain_3.png		300	0	0	0	0	0	0	-1	-1	0	2	0	0	0	0	0.0	
+# /Rainfall animation.
+
 #---------------------
 
 # Weather
 load 		howard_arena_lightning 3
 spawn		howard_arena_lightning
-health		1000
-coords		240 280
-at		0
-
-load 		howard_arena_rain 3
-spawn		howard_arena_rain 
 health		1000
 coords		240 280
 at		0

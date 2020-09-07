@@ -1,39 +1,12 @@
-[0904/190457.148:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190502.068:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190502.153:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190507.074:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190507.159:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190512.080:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190512.164:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190517.086:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190517.170:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190522.090:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190522.173:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190527.095:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190527.179:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190532.101:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190532.184:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190537.105:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190537.190:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190542.108:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190542.193:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190547.110:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190547.195:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190552.112:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190552.198:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190557.114:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190557.200:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190602.117:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190602.202:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190607.119:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190607.204:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190612.122:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190612.206:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190617.124:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190617.208:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190622.125:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190622.210:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190627.129:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190627.212:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190632.132:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
-[0904/190632.214:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0907/092932.527:ERROR:mf_helpers.cc(14)] Error in dxva_video_decode_accelerator_win.cc on line 1612
+[0907/092932.527:ERROR:mf_helpers.cc(14)] Error in dxva_video_decode_accelerator_win.cc on line 842
+[0907/092932.547:WARNING:angle_platform_impl.cc(52)] compileToBinary(230): 
+C:\fakepath(69,8-58): warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+C:\fakepath(77,9-43): warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+
+[0907/093142.312:ERROR:mf_helpers.cc(14)] Error in dxva_video_decode_accelerator_win.cc on line 1612
+[0907/093142.312:ERROR:mf_helpers.cc(14)] Error in dxva_video_decode_accelerator_win.cc on line 842
+[0907/094523.846:ERROR:mf_helpers.cc(14)] Error in dxva_video_decode_accelerator_win.cc on line 1612
+[0907/094523.846:ERROR:mf_helpers.cc(14)] Error in dxva_video_decode_accelerator_win.cc on line 842
+[0907/095817.578:ERROR:mf_helpers.cc(14)] Error in dxva_video_decode_accelerator_win.cc on line 1612
+[0907/095817.578:ERROR:mf_helpers.cc(14)] Error in dxva_video_decode_accelerator_win.cc on line 842

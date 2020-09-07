@@ -26,13 +26,9 @@ load    jump_land			data/chars/misc/cvs_land_dust/jump_land.txt
 load    flash_slam_light	data/chars/misc/dust/flash_slam_light.txt
 load    flash_slam_heavy	data/chars/misc/dust/flash_slam_heavy.txt
 
-## Stage Items (panels, animation effects, etc.)
 # Howard Arena
 know 	howard_arena_lamp_flame		data/levels/howard_arena/lamp_flame.txt
-know 	howard_arena_lamp_flame_b	data/levels/howard_arena/lamp_flame_b.txt
 know 	howard_arena_lightning		data/levels/howard_arena/lightning.txt
-know 	howard_arena_rain			data/levels/howard_arena/rain.txt
-know 	howard_arena_waterfall		data/levels/howard_arena/waterfall.txt
 
 load	mai_shiranui			data/chars/mai/mai.txt
 

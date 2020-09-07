@@ -9,6 +9,8 @@ alpha    1
 
 palette data/levels/howard_arena/lightning_0.png
 
+ondrawscript data/levels/howard_arena/rain_event_update.c
+
 anim spawn 
 
 	delay	5825

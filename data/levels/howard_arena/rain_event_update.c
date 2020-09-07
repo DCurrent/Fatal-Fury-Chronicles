@@ -257,9 +257,42 @@ void get_screen()
 	return screen;
 }
 
+#define WATERFALL_INDEX_FIRST 8
+#define WATERFALL_INDEX_LAST 11
+#define WATERFALL_DELAY 20
+
+#define LAMPS_INDEX_FIRST 14
+#define LAMPS_INDEX_LAST 17
+#define LAMPS_DELAY 20
+
+#define RAIN_INDEX_FIRST 18
+#define RAIN_INDEX_LAST 21
+#define RAIN_DELAY 8
+
+#define STORM_START_TIME 11662 // 5831
+
+// Caskey, Damon V.
+// 2020-09-07
+//
+// Disable or enable a group of layers.
+// -- first_index: Index of first layer in set.
+// -- last_index: Index of last layer in set.
+// -- Property: Property name.
+// -- value: Value to apply.
+void dc_layer_group_set_property(int index_first, int index_last, char property, int value)
+{
+	int index = 0;
+
+	for (index = index_first; index <= index_last; index++)
+	{		
+		changelayerproperty("fglayer", index, property, value);		
+	}
+}
 
 void oncreate()
 {
+	// Disable all rain layers.
+	//dc_layer_group_set_property(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, "enabled", 0);
 }
 
 void ondestroy()
@@ -321,7 +354,6 @@ void old_main()
 // -- last_index: Index of last layer in set.
 // -- delay: Animation delay. Identical to animation
 // delay used by models.
-
 void dc_layer_animation(int first_index, int last_index, int delay)
 {
 	int time_current = openborvariant("elapsed_time");
@@ -398,9 +430,34 @@ void clear()
 
 void main() 
 {
+	int elapsed_time = openborvariant("elapsed_time");
+
 	old_main();
 	dc_rain_splatter();
 
-	dc_layer_animation(8, 11, 20);	// Watefall
-	dc_layer_animation(14, 17, 20);	// Lamps (foreground)
+	dc_layer_animation(WATERFALL_INDEX_FIRST, WATERFALL_INDEX_LAST, WATERFALL_DELAY);	// Watefall
+	dc_layer_animation(LAMPS_INDEX_FIRST, LAMPS_INDEX_LAST, LAMPS_DELAY);	// Lamps (foreground)
+
+	if (elapsed_time >= STORM_START_TIME)
+	{
+		dc_layer_animation(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, RAIN_DELAY);	// Rain
+	}	
+	else
+	{
+		dc_layer_group_set_property(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, "enabled", 0);
+	}
 }
+
+#undef WATERFALL_INDEX_FIRST
+#undef WATERFALL_INDEX_LAST
+#undef WATERFALL_DELAY
+
+#undef LAMPS_INDEX_FIRST
+#undef LAMPS_INDEX_LAST
+#undef LAMPS_DELAY
+
+#undef RAIN_INDEX_FIRST
+#undef RAIN_INDEX_LAST
+#undef RAIN_DELAY
+
+#undef STORM_START_TIME
