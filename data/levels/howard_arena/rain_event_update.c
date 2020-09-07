@@ -267,17 +267,7 @@ void ondestroy()
 }
 
 void old_main()
-{
-	//if(getglobalvar("game_paused")){return;}else{}
-	void count = getlocalvar("screen_count");
-	void current_time = openborvariant("elapsed_time");
-	
-	if (!count) 
-	{
-		count = current_time;
-		setlocalvar("screen_count", current_time);
-	}
-	else {}
+{	
 
 	void scr = get_screen();
 
@@ -287,13 +277,9 @@ void old_main()
 	
 	//if(openborvariant("game_paused"))return;
 	
-	//if (current_time - count > 1) //12
-	//{
-		clearscreen(scr);
-		drawspriteq(scr, 0, min_z, -85, 0, 0);
-		setlocalvar("screen_count", current_time);
-	//}
-	
+	clearscreen(scr);
+	drawspriteq(scr, 0, min_z, -85, 0, 0);
+
 	//Set drawMethod
 	changedrawmethod(NULL(), "reset", 1);
 	changedrawmethod(NULL(), "enabled", 1);
@@ -305,6 +291,7 @@ void old_main()
 	//changedrawmethod(NULL(), "scalex", 54);
 	//changedrawmethod(NULL(), "scaley", 54);
 	changedrawmethod(NULL(), "perspective", 0);
+	changedrawmethod(NULL(), "alpha", 0);
 
 	//Draw the resized customized screen to main screen.
 	float x = openborvariant("xpos") + 35;
@@ -314,21 +301,8 @@ void old_main()
 	y = 0; // getentityproperty(self, "y") + getentityproperty(self, "base") - 22;
 
 	drawscreen(scr, x, -y, -84);
-	//changedrawmethod(NULL(),"scalex",256);
-	//changedrawmethod(NULL(),"scaley",328);
-	//changedrawmethod(NULL(),"alpha",2);
-	//drawsprite(getscriptvar(1),x,y,2);
+	
 	changedrawmethod(NULL(), "enabled", 0);
-
-	//settextobj(0, 10, 50, 1, 999999994, openborvariant("PLAYER_MIN_Z"));
-	//settextobj(1, 10, 60, 1, 999999994, min_z);
-	//settextobj(2, 10, 70, 1, 999999994, openborconstant("MIN_INT"));
-	//settextobj(3, 10, 80, 1, 999999994, openborvariant("pause"));
-	//settextobj(2, 10, 70, 1, 999999994, "x: " + x);
-	//settextobj(3, 10, 80, 1, 999999994, "y: " + y);
-	//settextobj(4, 10, 90, 1, 999999994, openborvariant("elapsed_time"));
-	//settextobj(5, 10, 100, 1, 999999994, "min_z: " + min_z);
-	//settextobj(6, 10, 110, 1, 999999994, "max_z: " + max_z);
 }
 
 // Ccaskey, Damon V.
@@ -427,6 +401,6 @@ void main()
 	old_main();
 	dc_rain_splatter();
 
-	dc_layer_animation(5, 8, 20);	// Watefall
-	dc_layer_animation(11, 14, 20);	// Lamps (foreground)
+	dc_layer_animation(8, 11, 20);	// Watefall
+	dc_layer_animation(14, 17, 20);	// Lamps (foreground)
 }

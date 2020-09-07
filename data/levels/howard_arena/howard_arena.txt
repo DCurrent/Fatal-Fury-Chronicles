@@ -8,7 +8,7 @@ background	data/levels/howard_arena/city_0.png 	0 	0 	0 	0 	0 	0 	0 	0 	0	0	0	0	
 # panel		filepath (main)				filepath (neon)	filepath (blended)
 panel		data/levels/howard_arena/path_0.png 	none 		none
 #panel		data/levels/howard_arena/path_1.png 	none 		none
-order		aaa
+order		aa
 
 #bgspeed 	1 1
 vbgspeed 	1 0
@@ -17,27 +17,30 @@ vbgspeed 	1 0
 # you get fine control over the layer positon.
 
 # fglayer	filepath					Zpos 	xratio	zratio	xoffset	zoffset	xspace	zspace	xrepeat	zrepeat	trans	alpha	w-mode	amp	wl	ws	move	quake	neon
-fglayer		data/levels/howard_arena/city_0.png		-399	0.8	0.8	0	44	0	0	-1	1	1	0	0	0	0	0	0.0     0       1
-fglayer		data/levels/howard_arena/clouds_0.png		-400	0.8	0.8	0	0	0	0	-1	-1	0	0	0	0	0	0	1
-fglayer		data/levels/howard_arena/temple_b_0.png		-398	0.75	0.75	0	2	0	0	-1	1	1	0	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/temple_1.png		-397	0.7	0.7	0	17	0	0	-1	1	1	0	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/temple_0.png		-395	0.65	0.65	0	31	0	0	-1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/city_0.png		-399	0.9	0.8	0	44	0	0	-1	1	1	0	0	0	0	0	0.0     0       1
+fglayer		data/levels/howard_arena/clouds_0.png		-400	0.85	0.85	0	0	0	0	-1	-1	0	0	0	0	0	0	2
+fglayer		data/levels/howard_arena/field_c_0.png		-398	0.8	0.75	0	39	0	0	-1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/pagoda_a_0.png		-398	0.78	0.73	40	10	370	0	2	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/field_b_0.png		-397	0.75	0.7	20	68	0	0	-1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/field_a_0.png		-396	0.7	0.7	0	38	0	0	-1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/pagoda_a_0.png		-395	0.68	0.68	185	22	0	0	1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/temple_a_0.png		-394	0.65	0.65	0	31	0	0	-1	1	1	0	0	0	0	0	0.0
 
 # Waterfall Animation
-fglayer		data/levels/howard_arena/waterfall_0.png	-395	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/waterfall_1.png	-395	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/waterfall_2.png	-395	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/waterfall_3.png	-395	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/waterfall_0.png	-393	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/waterfall_1.png	-393	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/waterfall_2.png	-393	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/waterfall_3.png	-393	0.65	0.65	709	62	0	0	1	1	1	0	0	0	0	0	0.0
 # /waterfall animation
 
-fglayer		data/levels/howard_arena/water_0.png		-396	0.65	0.65	0	114	0	0	-1	1	1	0	1	1.5	30	0.8	0.0
+fglayer		data/levels/howard_arena/water_0.png		-395	0.65	0.65	0	114	0	0	-1	1	0	0	1	1.5	30	0.8	0.0
 fglayer		data/levels/howard_arena/lamp_0.png		266	-0.3	-0.3	0	205	175	0	-1	1	1	0	0	0	0	0	0.0
 
 # Lamp flame animation
-fglayer		data/levels/howard_arena/lamp_flame_0.png	267	-0.3	-0.3	20	266 	183	0	-1	1	1	1	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/lamp_flame_1.png	267	-0.3	-0.3	20	266	183	0	-1	1	1	1	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/lamp_flame_2.png	267	-0.3	-0.3	20	266	183	0	-1	1	1	1	0	0	0	0	0.0
-fglayer		data/levels/howard_arena/lamp_flame_3.png	267	-0.3	-0.3	20	266	183	0	-1	1	1	1	0	0	0	0	0.0
+fglayer		data/levels/howard_arena/lamp_flame_0.png	267	-0.3	-0.3	21	266 	183	0	-1	1	1	1	0	0	0	0	0.0	
+fglayer		data/levels/howard_arena/lamp_flame_1.png	267	-0.3	-0.3	21	266	183	0	-1	1	1	1	0	0	0	0	0.0	
+fglayer		data/levels/howard_arena/lamp_flame_2.png	267	-0.3	-0.3	21	266	183	0	-1	1	1	1	0	0	0	0	0.0	
+fglayer		data/levels/howard_arena/lamp_flame_3.png	267	-0.3	-0.3	21	266	183	0	-1	1	1	1	0	0	0	0	0.0	
 # /Lamp flame animation
 
 #---------------------
