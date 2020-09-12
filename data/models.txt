@@ -28,7 +28,6 @@ load    flash_slam_heavy	data/chars/misc/dust/flash_slam_heavy.txt
 
 # Howard Arena
 know 	howard_arena_lamp_flame		data/levels/howard_arena/lamp_flame.txt
-know 	howard_arena_lightning		data/levels/howard_arena/lightning.txt
 
 load	mai_shiranui			data/chars/mai/mai.txt
 
