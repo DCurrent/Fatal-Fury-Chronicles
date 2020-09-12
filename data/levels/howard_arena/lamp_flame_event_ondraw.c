@@ -428,12 +428,159 @@ void clear()
 	}
 }
 
+#include "data/scripts/dc_d20/main.c"
+
+void dc_lightining_flash()
+{
+#define FLASH_WAIT_MIN 0			// Minimum time between lightning occurence.
+#define FLASH_WAIT_MAX 4000			// Maximum time between lightning occurence.
+#define POSITION_X 0
+#define POSITION_Y 0
+#define POSITION_Z 1000
+#define FLASH_BLEND 1
+
+#define THUNDER_DIFFERENTIAL 10		// Play thunder sound when differential is this value.
+
+#define FLASH_COLOR_WHITE	rgbcolor(255, 255, 255)
+#define FLASH_COLOR_YELLOW	rgbcolor(255, 255, 153)
+#define FLASH_COLOR_BLUE	rgbcolor(153, 204, 204)
+
+#define FRAME_0_DELAY 40
+#define FRAME_1_DELAY FRAME_0_DELAY + 64
+#define FRAME_2_DELAY FRAME_1_DELAY + 24
+
+	int elapsed_time = openborvariant("elapsed_time");
+	int time_point = getlocalvar("dc_lf_time");
+	int time_differential = 0;
+	int box_size_x = 0;
+	int box_size_y = 0;
+	int box_color = 0;
+	
+	// If time temp is empty, initialize it to current 
+	// elapsed time. Then get difference between time 
+	// point vs. current elapsed time.
+
+	if (typeof(time_point) != openborconstant("VT_INTEGER"))
+	{
+		time_point = elapsed_time;
+		setlocalvar("dc_lf_time", time_point);
+	}
+
+	time_differential = elapsed_time - time_point;
+
+	// If the time difference is negative, we are in the
+	// interval between animations. Exit and do nothing.
+
+	if (time_differential < 0)
+	{
+		return;
+	}
+
+	// Now take action based on time. We're actually just
+	// choosing colors for the drawbox function. By cycling
+	// through certain color sets, we get an initial flash,
+	// then a strobing effect, and finally a lingering light
+	// that closely approximates a lightning strike.
+
+	if (time_differential < FRAME_0_DELAY)
+	{
+		// Play thunder sound if we aren't already.
+
+		int playid = getlocalvar("dc_lf_playid");
+		int sample_id = loadsample("data/sounds/custom/thunder_0.wav");
+
+		if (typeof(playid) == openborconstant("VT_INTEGER"))
+		{
+			if (querychannel(playid) == -1)
+			{
+				playsample(sample_id, 0, 120, 120, 100, 0);
+				playid = openborvariant("sample_play_id");
+
+				setlocalvar("dc_lf_playid", playid);
+			}
+		}
+		else
+		{
+			playsample(sample_id, 0, 120, 120, 100, 0);
+			playid = openborvariant("sample_play_id");
+
+			setlocalvar("dc_lf_playid", playid);
+		}
+
+		box_color = FLASH_COLOR_WHITE;
+	}
+	else if (time_differential >= FRAME_0_DELAY && time_differential < FRAME_1_DELAY)
+	{
+		// Randomly switch between blue and yellow.
+
+		dc_d20_set_range_min(0);
+		dc_d20_set_range_max(1);
+
+		if (dc_d20_random_int())
+		{
+			box_color = FLASH_COLOR_BLUE;
+		}
+		else
+		{
+			box_color = FLASH_COLOR_YELLOW;
+		}
+	}
+	else if (time_differential >= FRAME_1_DELAY && time_differential < FRAME_2_DELAY)
+	{
+		box_color = FLASH_COLOR_BLUE;
+	}
+	else
+	{
+		// Animation is finished. 
+		// 
+		// If elapsed time is divisible by 100, then
+		// reset time point to empty. This gives us a 
+		// slight chance of immediately looping back 
+		// and instantly doing another lightning strike. 
+		// We also delete the play ID that prevents thunder
+		// overlap so a second thunder sound can play.
+		// Just like real storms occasionally producing 
+		// a crecendo of lightning.
+		// 
+		// Otherwise set the time point to be a randomized
+		// period ahead of current elapsed time. This will 
+		// cause time differential to be negative until current
+		// elapsed time catches up, giving us an interval
+		// between lightning strikes.
+
+		if (elapsed_time % 100 == 0)
+		{
+			time_point = NULL();
+		}
+		else
+		{
+			dc_d20_set_range_min(FLASH_WAIT_MIN);
+			dc_d20_set_range_max(FLASH_WAIT_MAX);
+
+			time_point = elapsed_time + dc_d20_random_int();
+		}		
+
+		setlocalvar("dc_lf_time", time_point);
+		setlocalvar("dc_lf_playid", NULL());
+
+		box_color = FLASH_COLOR_BLUE;
+	}
+
+	// Draw the box to create lightning effect.
+
+	box_size_x = openborvariant("hresolution");
+	box_size_y = openborvariant("vresolution");
+
+	drawbox(POSITION_X, POSITION_Y, box_size_x, box_size_y, POSITION_Z, box_color, FLASH_BLEND);
+
+	return;
+}
+
 void main() 
 {
 	int elapsed_time = openborvariant("elapsed_time");
 
 	old_main();
-	dc_rain_splatter();
 
 	dc_layer_animation(WATERFALL_INDEX_FIRST, WATERFALL_INDEX_LAST, WATERFALL_DELAY);	// Watefall
 	dc_layer_animation(LAMPS_INDEX_FIRST, LAMPS_INDEX_LAST, LAMPS_DELAY);	// Lamps (foreground)
@@ -441,11 +588,13 @@ void main()
 	if (elapsed_time >= STORM_START_TIME)
 	{
 		dc_layer_animation(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, RAIN_DELAY);	// Rain
+		dc_lightining_flash();
+		dc_rain_splatter();
 	}	
 	else
 	{
 		dc_layer_group_set_property(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, "enabled", 0);
-	}
+	}		
 }
 
 #undef WATERFALL_INDEX_FIRST

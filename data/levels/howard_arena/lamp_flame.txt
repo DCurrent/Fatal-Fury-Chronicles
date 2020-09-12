@@ -5,6 +5,7 @@ Speedf   0.0
 noquake  1 0
 alpha	 1
 
+ondrawscript data/levels/howard_arena/lamp_flame_event_ondraw.c
 
 anim idle 
 

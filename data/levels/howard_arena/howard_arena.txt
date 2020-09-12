@@ -52,13 +52,6 @@ fglayer		data/levels/howard_arena/rain_3.png		300	0	0	0	0	0	0	-1	-1	0	2	0	0	0	0	
 
 #---------------------
 
-# Weather
-load 		howard_arena_lightning 3
-spawn		howard_arena_lightning
-health		1000
-coords		240 280
-at		0
-
 # Flame in lamps on play area.
 load 		howard_arena_lamp_flame 3
 spawn		howard_arena_lamp_flame
