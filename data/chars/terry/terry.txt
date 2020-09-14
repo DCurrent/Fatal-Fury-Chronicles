@@ -962,7 +962,7 @@ anim runattack # Cross
 	bbox.size.x 42
 	bbox.size.y 94
 	
-	
+	frame	data/chars/terry/atk_jab_0.png
 	frame	data/chars/terry/atk_cross_0.png
 	
 	@cmd	dc_fidelity_quick_play DC_FIDELITY_TYPE_SOUND_ATTACK_HEAVY
