@@ -10,11 +10,6 @@ void dc_rain_splatter()
 
 	void    ent = getlocalvar("self");  // Target entity pointer.
 
-	if (get_entity_property(ent, "animation_id") != openborconstant("ANI_IDLE"))
-	{
-		return;
-	}
-
 	int     ent_count = 0;				// Entity count.
 	int		model_type = 0;
 	int     i = 0;						// Loop counter.
@@ -31,8 +26,8 @@ void dc_rain_splatter()
 	float pos_y = 0.0;
 	float pos_z = 0.0;
 
-	int offset_x = 0; // Scroll and quake. 
-	int offset_y = 0;
+	int scroll_x = 0; // Scroll and quake. 
+	int scroll_y = 0;
 
 	int pixel_row_top = 0;
 	int pixel_row = 0;
@@ -46,8 +41,8 @@ void dc_rain_splatter()
 	int res_h = openborvariant("hresolution");
 	int res_v = openborvariant("vresolution");
 
-	int screen_draw_x = 0;
-	int screen_draw_y = 0;
+	int screen_pos_x = 0;
+	int screen_pos_y = 0;
 
 	int sprite_right = 0;
 	int sprite_left = 0;
@@ -57,12 +52,13 @@ void dc_rain_splatter()
 	// Final dot draw locations.
 	int dot_pos_x = 0;
 	int dot_pos_y = 0;
-	int dot_pos_z = 0;
 	int dot_color = rgbcolor(150, 150, 150);
-	int dot_alpha = 0;
+
+#define DC_RAIN_SPLATTER_DOT_ALPHA 0	
 
 	// At each time increment, switch the shift
 	// to change our dot pattern.
+
 	if (elapsed_time > trigger_time || !trigger_time)
 	{
 		setlocalvar("dc_column_offset_time", elapsed_time + 20);
@@ -103,9 +99,9 @@ void dc_rain_splatter()
 			pos_y = get_entity_property(ent, "position_y");
 			pos_z = get_entity_property(ent, "position_z");
 
-			// Apply scroll and quake effect to get our basic
-			// offset. Note that native engine code takes into 
-			// account the noquake model property.
+			// Apply scroll and quake effect to get our scrolling
+			// position in the stage. Note that native engine code
+			// takes into account the noquake model property.
 			// 
 			// screenx - ((entity->modeldata.noquake & NO_QUAKEN) ? 0 : gfx_x_offset);
 			// 
@@ -115,15 +111,26 @@ void dc_rain_splatter()
 			// determine if we apply the quake offset. For now, we'll 
 			// assume we always do.
 
-			offset_x = openborvariant("xpos") - openborvariant("gfx_x_offset");
-			offset_y = openborvariant("ypos") - openborvariant("gfx_y_offset") - openborvariant("gfx_y_offset_adj");
+			scroll_x = openborvariant("xpos") - openborvariant("gfx_x_offset");
+			scroll_y = openborvariant("ypos") - openborvariant("gfx_y_offset") - openborvariant("gfx_y_offset_adj");
 
-			// If out of sight, don't waste the CPU power to calculate
-			// or draw anything.
-			if (pos_x < offset_x - 20 || pos_x > offset_x + res_h + 20)
+			// If out of visible screen, exit this loop iteration.
+			// There's no use wasting CPU power to calculate
+			// or draw something we can't see.
+
+			if (pos_x < scroll_x - 20 || pos_x > scroll_y + res_h + 20)
 			{
 				continue;
 			}
+
+			// Use the scrolling position and entitiy's absolute
+			// position to get the position on screen.
+
+			screen_pos_x = pos_x - scroll_x;
+			screen_pos_y = pos_z - pos_y - scroll_y;
+
+			// Get the sprite pointer. Then get its basic dimensions 
+			// and offsets.
 
 			sprite = getentityproperty(ent, "sprite");
 
@@ -132,26 +139,29 @@ void dc_rain_splatter()
 			center_x = getgfxproperty(sprite, "centerx");
 			center_y = getgfxproperty(sprite, "centery");
 
-			pixel_row_top = (size_y - (size_y - center_y));
-			pixel_row = 0; //pixel_row_top;
-			pixel_column = 0;
-
-			screen_draw_x = pos_x - offset_x;
-			screen_draw_y = pos_z - pos_y - offset_y;
+			// Sprites do not flip in memory, so we don't need
+			// to worry about direction in our pixel testing, but 
+			// we do need to account for it when drawing the rain
+			// dots onto screen. Get the left and right column
+			// as it will appear based on entity direction.
 
 			pos_d = get_entity_property(ent, "position_direction");
 
 			if (pos_d == openborconstant("DIRECTION_RIGHT"))
 			{
-				sprite_left = screen_draw_x - center_x;
-				sprite_right = screen_draw_x + (size_x - center_x);
+				sprite_left = screen_pos_x - center_x;
+				sprite_right = screen_pos_x + (size_x - center_x);
 			}
 			else
 			{
-				sprite_right = screen_draw_x + center_x;
-				sprite_left = screen_draw_x - (size_x - center_x);
+				sprite_right = screen_pos_x + center_x;
+				sprite_left = screen_pos_x - (size_x - center_x);
 			}
 
+			// Locate the top row of pixels.
+
+			pixel_row_top = (size_y - (size_y - center_y));
+			
 			// Now let's map the sprite.
 			//
 			// Starting at top row and column offset, loop accross 
@@ -175,6 +185,7 @@ void dc_rain_splatter()
 					// pixels to be intentionally out of sync 
 					// with column loop and found pixels. This
 					// gives us a little bit of random effect.
+					
 					if (row_offset == 1)
 					{
 						row_offset = 2)
@@ -184,13 +195,24 @@ void dc_rain_splatter()
 						row_offset = 1;
 					}
 
+					// Check the pixel. If it is not transparent we have
+					// found the top outline of visible pixels in the
+					// sprite. Now we can draw our rain dot.
+
 					pixel_color_index = getgfxproperty(sprite, "pixel", pixel_column, pixel_row);
 
 					if (pixel_color_index)
 					{
-						// Sprite properties are not directional, but on 
-						// screen objects are, so we need to reverse the
-						// X coordinates before we use them to draw.
+						// Now we calculate the on screen X position to
+						// draw dot. If entity is facing right, we add
+						// on screen location of sprite's left row to
+						// column cursor position and we're done.
+						//
+						// If entity is facing left, we need to work in 
+						// reverse. As noted above, this is because sprites
+						// do not change direction in memory, only as the
+						// are drawn to the screen.
+
 						if (pos_d == openborconstant("DIRECTION_RIGHT"))
 						{
 							dot_pos_x = sprite_left + pixel_column;
@@ -200,10 +222,14 @@ void dc_rain_splatter()
 							dot_pos_x = (sprite_right - pixel_column) - 1;
 						}
 
-						dot_pos_y = screen_draw_y - (center_y - pixel_row) - row_offset;
-						dot_pos_z = pos_z;
+						// Now get Y position. Same process as X, but using
+						// the row cursor and we don't have to worry about
+						// direction. Include row offset we set above to
+						// give the dot a random up/down movement.
+						
+						dot_pos_y = screen_pos_y - (center_y - pixel_row) - row_offset;
 
-						drawdot(dot_pos_x, dot_pos_y, dot_pos_z, dot_color, dot_alpha);
+						drawdot(dot_pos_x, dot_pos_y, pos_z, dot_color, DC_RAIN_SPLATTER_DOT_ALPHA);
 
 						break;
 					}
@@ -211,9 +237,9 @@ void dc_rain_splatter()
 			}
 		}
 	}
+
+	#undef DC_RAIN_SPLATTER_DOT_ALPHA
 }
-
-
 
 
 #ifndef DC_INSET
@@ -257,24 +283,6 @@ void get_screen()
 	return screen;
 }
 
-#define WATERFALL_INDEX_FIRST 8
-#define WATERFALL_INDEX_LAST 11
-#define WATERFALL_DELAY 20
-
-#define LAMPS_INDEX_FIRST 14
-#define LAMPS_INDEX_LAST 17
-#define LAMPS_DELAY 20
-
-#define LAMP_RAIN_INDEX_FIRST 22
-#define LAMP_RAIN_INDEX_LAST 23
-#define LAMP_RAIN_DELAY 20
-
-#define RAIN_INDEX_FIRST 18
-#define RAIN_INDEX_LAST 21
-#define RAIN_DELAY 12
-
-#define STORM_START_TIME 11662 // 5831
-
 // Caskey, Damon V.
 // 2020-09-07
 //
@@ -293,51 +301,39 @@ void dc_layer_group_set_property(int index_first, int index_last, char property,
 	}
 }
 
-void oncreate()
-{
-	// Disable all rain layers.
-	//dc_layer_group_set_property(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, "enabled", 0);
-}
-
-void ondestroy()
-{
-}
-
-void old_main()
+void dc_draw_cloud_layer()
 {	
+#define DC_HA_CLOUD_SCREEN_POSITION_X 0
+#define DC_HA_CLOUD_SCREEN_POSITION_Y 0
+#define DC_HA_CLOUD_SCREEN_POSITION_Z -84
+
+#define DC_HA_CLOUD_SPRITE_QUE_Z_MAX -85
+#define DC_HA_CLOUD_SPRITE_QUE_Z_MIN openborconstant("MIN_INT")
+#define DC_HA_CLOUD_SPRITE_QUE_NEWONLY 0
+#define DC_HA_CLOUD_SPRITE_OFFSET_X 0
+#define DC_HA_CLOUD_SPRITE_OFFSET_Y 0
+
 
 	void scr = get_screen();
 
-	int max_z = openborvariant("PLAYER_MAX_Z");
-	int min_z = openborconstant("MIN_INT");
+	// Clear the screen, then add our target sprites.
 
-	
-	//if(openborvariant("game_paused"))return;
-	
 	clearscreen(scr);
-	drawspriteq(scr, 0, min_z, -85, 0, 0);
+	drawspriteq(scr, DC_HA_CLOUD_SPRITE_QUE_NEWONLY, DC_HA_CLOUD_SPRITE_QUE_Z_MIN, DC_HA_CLOUD_SPRITE_QUE_Z_MAX, DC_HA_CLOUD_SPRITE_OFFSET_X, DC_HA_CLOUD_SPRITE_OFFSET_Y);
 
-	//Set drawMethod
+	// Set global drawMethods.
+
 	changedrawmethod(NULL(), "reset", 1);
 	changedrawmethod(NULL(), "enabled", 1);
-	//changedrawmethod(NULL(),"scalex",43);
-	//changedrawmethod(NULL(),"scaley",52);
 	changedrawmethod(NULL(), "watermode", 3);
 	changedrawmethod(NULL(), "beginsize", 6);
 	changedrawmethod(NULL(), "endsize", 0.01);
-	//changedrawmethod(NULL(), "scalex", 54);
-	//changedrawmethod(NULL(), "scaley", 54);
 	changedrawmethod(NULL(), "perspective", 0);
 	changedrawmethod(NULL(), "alpha", 0);
 
-	//Draw the resized customized screen to main screen.
-	float x = openborvariant("xpos") + 35;
-	float y = 83;
+	// Draw the screen, then disable the drawmethod.
 
-	x = 0; //getentityproperty(self, "x") - x;
-	y = 0; // getentityproperty(self, "y") + getentityproperty(self, "base") - 22;
-
-	drawscreen(scr, x, -y, -84);
+	drawscreen(scr, DC_HA_CLOUD_SCREEN_POSITION_X, DC_HA_CLOUD_SCREEN_POSITION_Y, DC_HA_CLOUD_SCREEN_POSITION_Z);
 	
 	changedrawmethod(NULL(), "enabled", 0);
 }
@@ -550,20 +546,20 @@ void dc_lightining_flash()
 		// elapsed time catches up, giving us an interval
 		// between lightning strikes.
 
-		if (elapsed_time % 100 == 0)
-		{
-			time_point = NULL();
-		}
-		else
-		{
+		//if (elapsed_time % 100 == 0)
+		//{
+		//	time_point = NULL();
+		//}
+		//else
+		//{
 			dc_d20_set_range_min(DC_LF_FLASH_WAIT_MIN);
 			dc_d20_set_range_max(DC_LF_FLASH_WAIT_MAX);
 
 			time_point = elapsed_time + dc_d20_random_int();
-		}		
+		//}		
 
 		setlocalvar("dc_lf_time", time_point);
-		setlocalvar("dc_lf_playid", NULL());
+		setlocalvar("dc_lf_playid", -1);
 
 		box_color = DC_LF_FLASH_COLOR_BLUE;
 	}
@@ -595,40 +591,106 @@ void dc_lightining_flash()
 	#undef DC_LF_FRAME_2_DELAY
 }
 
-void main() 
+// Control stage effects for Howard Arena.
+void dc_howard_arena_control()
 {
+#define WATERFALL_INDEX_FIRST 8
+#define WATERFALL_INDEX_LAST 11
+#define WATERFALL_DELAY 20
+
+#define LAMP_FLAME_DELAY 20
+
+#define LAMP_FLAME_BACKGROUND_INDEX_FIRST 14
+#define LAMP_FLAME_BACKGROUND_INDEX_LAST 17
+
+#define LAMP_FLAME_BACKGROUND_FLIPPED_INDEX_FIRST 18
+#define LAMP_FLAME_BACKGROUND_FLIPPED_INDEX_LAST 21
+
+#define LAMP_FLAME_FOREGROUND_INDEX_FIRST 22
+#define LAMP_FLAME_FOREGROUND_INDEX_LAST 25
+
+#define RAIN_INDEX_FIRST 26
+#define RAIN_INDEX_LAST 29
+#define RAIN_DELAY 12
+
+#define LAMP_RAIN_INDEX_FIRST 30
+#define LAMP_RAIN_INDEX_LAST 31
+#define LAMP_RAIN_DELAY 20
+
+
+
+#define STORM_START_TIME 400 //11662 // 5831	
+
 	int elapsed_time = openborvariant("elapsed_time");
 
-	// 3D screen draw.
-	old_main();
+	// Perspective cloud screen draw.
+	dc_draw_cloud_layer();
 
-	dc_layer_animation(WATERFALL_INDEX_FIRST, WATERFALL_INDEX_LAST, WATERFALL_DELAY);	// Watefall
-	dc_layer_animation(LAMPS_INDEX_FIRST, LAMPS_INDEX_LAST, LAMPS_DELAY);	// Lamps (foreground)
+	// Background lamp frames.
+	dc_layer_animation(LAMP_FLAME_BACKGROUND_INDEX_FIRST, LAMP_FLAME_BACKGROUND_INDEX_LAST, LAMP_FLAME_DELAY);
+	dc_layer_animation(LAMP_FLAME_BACKGROUND_FLIPPED_INDEX_FIRST, LAMP_FLAME_BACKGROUND_FLIPPED_INDEX_LAST, LAMP_FLAME_DELAY);
+
+	// Waterfall and foreground lamp flames.
+	dc_layer_animation(WATERFALL_INDEX_FIRST, WATERFALL_INDEX_LAST, WATERFALL_DELAY);
+	dc_layer_animation(LAMP_FLAME_FOREGROUND_INDEX_FIRST, LAMP_FLAME_FOREGROUND_INDEX_LAST, LAMP_FLAME_DELAY);
+
+	// If it's time for the storm, apply the animations
+	// and effects we need. Otherwise make sure the 
+	// storm effect layers are disabled.
 
 	if (elapsed_time >= STORM_START_TIME)
 	{
+		// Rain effect animation and rain splatter on foreground lamps.
 		dc_layer_animation(LAMP_RAIN_INDEX_FIRST, LAMP_RAIN_INDEX_LAST, LAMP_RAIN_DELAY);	// Rain
 		dc_layer_animation(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, RAIN_DELAY);	// Rain
+
+		// Randomized lightning flash effect.		
 		dc_lightining_flash();
+
+		// Rain splatter on active entities (players, enemies, etc.)
 		dc_rain_splatter();
-	}	
+	}
 	else
 	{
 		dc_layer_group_set_property(LAMP_RAIN_INDEX_FIRST, LAMP_RAIN_INDEX_LAST, "enabled", 0);
 		dc_layer_group_set_property(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, "enabled", 0);
-	}		
-}
+	}
 
 #undef WATERFALL_INDEX_FIRST
 #undef WATERFALL_INDEX_LAST
 #undef WATERFALL_DELAY
 
-#undef LAMPS_INDEX_FIRST
-#undef LAMPS_INDEX_LAST
-#undef LAMPS_DELAY
+#undef LAMP_FLAME_DELAY
+
+#undef LAMP_FLAME_BACKGROUND_INDEX_FIRST
+#undef LAMP_FLAME_BACKGROUND_INDEX_LAST
+
+#undef LAMP_FLAME_BACKGROUND_FLIPPED_INDEX_FIRST
+#undef LAMP_FLAME_BACKGROUND_FLIPPED_INDEX_LAST
+
+#undef LAMP_FLAME_FOREGROUND_INDEX_FIRST
+#undef LAMP_FLAME_FOREGROUND_INDEX_LAST
 
 #undef RAIN_INDEX_FIRST
 #undef RAIN_INDEX_LAST
 #undef RAIN_DELAY
 
 #undef STORM_START_TIME
+}
+
+void oncreate()
+{
+	// Disable all rain layers.
+	//dc_layer_group_set_property(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, "enabled", 0);
+}
+
+void ondestroy()
+{
+}
+
+void main() 
+{
+	// Perspective cloud screen draw.
+	dc_draw_cloud_layer();
+	dc_howard_arena_control();
+}
