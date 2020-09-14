@@ -265,9 +265,13 @@ void get_screen()
 #define LAMPS_INDEX_LAST 17
 #define LAMPS_DELAY 20
 
+#define LAMP_RAIN_INDEX_FIRST 22
+#define LAMP_RAIN_INDEX_LAST 23
+#define LAMP_RAIN_DELAY 20
+
 #define RAIN_INDEX_FIRST 18
 #define RAIN_INDEX_LAST 21
-#define RAIN_DELAY 8
+#define RAIN_DELAY 12
 
 #define STORM_START_TIME 11662 // 5831
 
@@ -432,22 +436,20 @@ void clear()
 
 void dc_lightining_flash()
 {
-#define FLASH_WAIT_MIN 0			// Minimum time between lightning occurence.
-#define FLASH_WAIT_MAX 4000			// Maximum time between lightning occurence.
-#define POSITION_X 0
-#define POSITION_Y 0
-#define POSITION_Z 1000
-#define FLASH_BLEND 1
+	#define DC_LF_FLASH_WAIT_MIN 0			// Minimum time between lightning occurence.
+	#define DC_LF_FLASH_WAIT_MAX 4000			// Maximum time between lightning occurence.
+	#define DC_LF_POSITION_X 0
+	#define DC_LF_POSITION_Y 0
+	#define DC_LF_POSITION_Z 1000
+	#define DC_LF_FLASH_BLEND 1
 
-#define THUNDER_DIFFERENTIAL 10		// Play thunder sound when differential is this value.
+	#define DC_LF_FLASH_COLOR_WHITE		rgbcolor(255, 255, 255)
+	#define DC_LF_FLASH_COLOR_YELLOW	rgbcolor(255, 255, 153)
+	#define DC_LF_FLASH_COLOR_BLUE		rgbcolor(153, 204, 204)
 
-#define FLASH_COLOR_WHITE	rgbcolor(255, 255, 255)
-#define FLASH_COLOR_YELLOW	rgbcolor(255, 255, 153)
-#define FLASH_COLOR_BLUE	rgbcolor(153, 204, 204)
-
-#define FRAME_0_DELAY 40
-#define FRAME_1_DELAY FRAME_0_DELAY + 64
-#define FRAME_2_DELAY FRAME_1_DELAY + 24
+	#define DC_LF_FRAME_0_DELAY 40
+	#define DC_LF_FRAME_1_DELAY DC_LF_FRAME_0_DELAY + 64
+	#define DC_LF_FRAME_2_DELAY DC_LF_FRAME_1_DELAY + 24
 
 	int elapsed_time = openborvariant("elapsed_time");
 	int time_point = getlocalvar("dc_lf_time");
@@ -482,7 +484,7 @@ void dc_lightining_flash()
 	// then a strobing effect, and finally a lingering light
 	// that closely approximates a lightning strike.
 
-	if (time_differential < FRAME_0_DELAY)
+	if (time_differential < DC_LF_FRAME_0_DELAY)
 	{
 		// Play thunder sound if we aren't already.
 
@@ -507,9 +509,9 @@ void dc_lightining_flash()
 			setlocalvar("dc_lf_playid", playid);
 		}
 
-		box_color = FLASH_COLOR_WHITE;
+		box_color = DC_LF_FLASH_COLOR_WHITE;
 	}
-	else if (time_differential >= FRAME_0_DELAY && time_differential < FRAME_1_DELAY)
+	else if (time_differential >= DC_LF_FRAME_0_DELAY && time_differential < DC_LF_FRAME_1_DELAY)
 	{
 		// Randomly switch between blue and yellow.
 
@@ -518,16 +520,16 @@ void dc_lightining_flash()
 
 		if (dc_d20_random_int())
 		{
-			box_color = FLASH_COLOR_BLUE;
+			box_color = DC_LF_FLASH_COLOR_BLUE;
 		}
 		else
 		{
-			box_color = FLASH_COLOR_YELLOW;
+			box_color = DC_LF_FLASH_COLOR_YELLOW;
 		}
 	}
-	else if (time_differential >= FRAME_1_DELAY && time_differential < FRAME_2_DELAY)
+	else if (time_differential >= DC_LF_FRAME_1_DELAY && time_differential < DC_LF_FRAME_2_DELAY)
 	{
-		box_color = FLASH_COLOR_BLUE;
+		box_color = DC_LF_FLASH_COLOR_BLUE;
 	}
 	else
 	{
@@ -540,7 +542,7 @@ void dc_lightining_flash()
 		// We also delete the play ID that prevents thunder
 		// overlap so a second thunder sound can play.
 		// Just like real storms occasionally producing 
-		// a crecendo of lightning.
+		// a crescendo of lightning.
 		// 
 		// Otherwise set the time point to be a randomized
 		// period ahead of current elapsed time. This will 
@@ -554,8 +556,8 @@ void dc_lightining_flash()
 		}
 		else
 		{
-			dc_d20_set_range_min(FLASH_WAIT_MIN);
-			dc_d20_set_range_max(FLASH_WAIT_MAX);
+			dc_d20_set_range_min(DC_LF_FLASH_WAIT_MIN);
+			dc_d20_set_range_max(DC_LF_FLASH_WAIT_MAX);
 
 			time_point = elapsed_time + dc_d20_random_int();
 		}		
@@ -563,7 +565,7 @@ void dc_lightining_flash()
 		setlocalvar("dc_lf_time", time_point);
 		setlocalvar("dc_lf_playid", NULL());
 
-		box_color = FLASH_COLOR_BLUE;
+		box_color = DC_LF_FLASH_COLOR_BLUE;
 	}
 
 	// Draw the box to create lightning effect.
@@ -571,15 +573,33 @@ void dc_lightining_flash()
 	box_size_x = openborvariant("hresolution");
 	box_size_y = openborvariant("vresolution");
 
-	drawbox(POSITION_X, POSITION_Y, box_size_x, box_size_y, POSITION_Z, box_color, FLASH_BLEND);
+	drawbox(DC_LF_POSITION_X, DC_LF_POSITION_Y, box_size_x, box_size_y, DC_LF_POSITION_Z, box_color, DC_LF_FLASH_BLEND);
 
 	return;
+
+	#undef DC_LF_FLASH_WAIT_MIN
+	#undef DC_LF_FLASH_WAIT_MAX
+	#undef DC_LF_POSITION_X
+	#undef DC_LF_POSITION_Y
+	#undef DC_LF_POSITION_Z
+	#undef DC_LF_FLASH_BLEND
+
+	#undef THUNDER_DIFFERENTIAL
+
+	#undef DC_LF_FLASH_COLOR_WHITE
+	#undef DC_LF_FLASH_COLOR_YELLOW
+	#undef DC_LF_FLASH_COLOR_BLUE
+
+	#undef DC_LF_FRAME_0_DELAY
+	#undef DC_LF_FRAME_1_DELAY
+	#undef DC_LF_FRAME_2_DELAY
 }
 
 void main() 
 {
 	int elapsed_time = openborvariant("elapsed_time");
 
+	// 3D screen draw.
 	old_main();
 
 	dc_layer_animation(WATERFALL_INDEX_FIRST, WATERFALL_INDEX_LAST, WATERFALL_DELAY);	// Watefall
@@ -587,12 +607,14 @@ void main()
 
 	if (elapsed_time >= STORM_START_TIME)
 	{
+		dc_layer_animation(LAMP_RAIN_INDEX_FIRST, LAMP_RAIN_INDEX_LAST, LAMP_RAIN_DELAY);	// Rain
 		dc_layer_animation(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, RAIN_DELAY);	// Rain
 		dc_lightining_flash();
 		dc_rain_splatter();
 	}	
 	else
 	{
+		dc_layer_group_set_property(LAMP_RAIN_INDEX_FIRST, LAMP_RAIN_INDEX_LAST, "enabled", 0);
 		dc_layer_group_set_property(RAIN_INDEX_FIRST, RAIN_INDEX_LAST, "enabled", 0);
 	}		
 }
