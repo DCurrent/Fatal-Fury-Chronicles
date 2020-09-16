@@ -260,7 +260,7 @@ void get_screen()
 	int  background_sprite;
 
 	x = openborvariant("hresolution");
-	y = openborvariant("vresolution");
+	y = 60; // openborvariant("vresolution");
 
 	// Get current screen.
 	screen = getlocalvar(KEY_SCREEN);
@@ -275,7 +275,7 @@ void get_screen()
 		// Allocate screen and use it to populate
 		// the screen variable, then populate
 		// background variable.
-		screen = allocscreen(x, 60);
+		screen = allocscreen(x, y);
 		setlocalvar(KEY_SCREEN, screen);
 		setlocalvar(KEY_BACKGROUND, background_sprite);
 	}
@@ -330,7 +330,6 @@ void dc_draw_cloud_layer()
 	changedrawmethod(NULL(), "endsize", 0.01);
 	changedrawmethod(NULL(), "perspective", 0);
 	changedrawmethod(NULL(), "alpha", 0);
-
 	// Draw the screen, then disable the drawmethod.
 
 	drawscreen(scr, DC_HA_CLOUD_SCREEN_POSITION_X, DC_HA_CLOUD_SCREEN_POSITION_Y, DC_HA_CLOUD_SCREEN_POSITION_Z);
@@ -619,7 +618,7 @@ void dc_howard_arena_control()
 
 
 
-#define STORM_START_TIME 400 //11662 // 5831	
+#define STORM_START_TIME 11662	
 
 	int elapsed_time = openborvariant("elapsed_time");
 
