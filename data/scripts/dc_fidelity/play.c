@@ -205,6 +205,8 @@ int dc_fidelity_select_sample_id(void index_list)
 // 2018-10-14
 //
 // Play requested sample with X axis based stereo.
+//
+// Returns channel used or -1 on failure.
 int dc_fidelity_quick_play(int type)
 {
 	int		sample_id;		// Sample ID to play.
@@ -226,7 +228,7 @@ int dc_fidelity_quick_play(int type)
 // 2019-04-20
 //
 // Similar to quick play, but play the selected sound
-// with a dley by sending it to a timed list.
+// with a delay by sending it to a timed list.
 void dc_fidelity_timed_play(int type, int delay)
 {
 	int		sample_id;		// Sample ID to play.
@@ -248,6 +250,8 @@ void dc_fidelity_timed_play(int type, int delay)
 // 2019-04-20 (offloading from quick_play)
 //
 // Play sample with auto balance.
+//
+// Returns channel used or -1 on failure.
 int dc_fidelity_play_balanced(int sample_id)
 {
 	void ent;
@@ -308,7 +312,7 @@ int dc_fidelity_play_balanced(int sample_id)
 // There's no way to know id a sample ID is actually valid, but
 // it must be a positive integer, so we can at least check that.
 //
-// Returns 1 if sample plays, 0 otherwise.
+// Returns channel if sample plays, -1 otherwise.
 int dc_fidelity_playsample(int sample_id, int volume_left, int volume_right)
 {
 	int priority;
@@ -318,13 +322,13 @@ int dc_fidelity_playsample(int sample_id, int volume_left, int volume_right)
 	// Sample ID must be a valid integer.
 	if (typeof(sample_id) != openborconstant("VT_INTEGER"))
 	{
-		return 0;
+		return -1;
 	}
 
 	// Sample ID must be 0+.
 	if (sample_id < 0)
 	{
-		return 0;
+		return -1;
 	}
 
 	loop = dc_fidelity_get_sound_loop();
@@ -332,9 +336,7 @@ int dc_fidelity_playsample(int sample_id, int volume_left, int volume_right)
 	speed = dc_fidelity_get_sound_speed();
 
 	// Play the sample.
-	playsample(sample_id, priority, volume_left, volume_right, speed, loop);
-
-	return 1;
+	return playsample(sample_id, priority, volume_left, volume_right, speed, loop);
 }
 
 // Caskey, Damon V.
@@ -394,6 +396,12 @@ void dc_fidelity_play_timed()
 			sample_id = get(timed_sample, DC_FIDELITY_TIMED_SAMPLE_SAMPLE_ID);
 			ent = get(timed_sample, DC_FIDELITY_TIMED_SAMPLE_ENTITY);
 
+			// Destroy timed sample array and remove 
+			// element from list.
+			free(timed_sample);
+			delete(timed_list, i);
+
+			// Ensure entity is valid and alive.
 			if (!get_entity_property(ent, "exists"))
 			{
 				continue;
@@ -406,12 +414,6 @@ void dc_fidelity_play_timed()
 
 			dc_fidelity_set_entity(ent);
 			dc_fidelity_play_balanced(sample_id);
-
-			// Destroy timed sample array and remove 
-			// element from list.
-			free(timed_sample);
-
-			delete(timed_list, i);
 		}
 	}
 }
