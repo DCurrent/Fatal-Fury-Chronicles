@@ -118,7 +118,7 @@ void dc_rain_splatter()
 			// There's no use wasting CPU power to calculate
 			// or draw something we can't see.
 
-			if (pos_x < scroll_x - 20 || pos_x > scroll_y + res_h + 20)
+			if (pos_x < scroll_x - 20 || pos_x > scroll_x + res_h + 20)
 			{
 				continue;
 			}
