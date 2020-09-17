@@ -1,0 +1,19 @@
+name	 test_affine_controller
+health	 1
+type	 none
+
+# Why not update/updated or just use a level script? Because 
+# due to execution order, only the ondraw event captures
+# sprite que correctly. Attempting to capture and draw the
+# sprite que to screens with other events may produce odd
+# effects. The screen contents may appear to swap positions
+# on Z axis or disappear when paused. 
+
+ondrawscript data/levels/test_affine/test_affine_controller_event_ondraw.c
+
+anim idle 
+
+	delay	8
+	offset	0 0
+	bbox	0
+	frame data/chars/misc/blank.png

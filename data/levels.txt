@@ -69,3 +69,9 @@ lives  1
 nosame 0 2
 z       207 265 
 file	data/levels/howard_arena/howard_arena.txt
+
+set	Test:_Affine
+lives  1
+nosame 0 2
+z       150 200 
+file	data/levels/test_affine/test_affine.txt

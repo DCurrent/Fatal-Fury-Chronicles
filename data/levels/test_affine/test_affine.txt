@@ -1,0 +1,68 @@
+music		data/music/puella_theme_0.ogg
+direction	both
+
+# Default layers.
+# background	filepath								xratio	zratio	xoffset	zoffset	xspace	zspace	xrepeat	zrepeat	trans	alpha	w-mode	amp	wl	ws	move	quake	neon
+background		data/sprites/line_0.png 				0 		0 		0 		0 		0 		0 		0 		0 		0		0		0		0	0	0	0
+
+# panel		filepath (main)				filepath (neon)	filepath (blended)
+panel		data/levels/test_affine/path_0.png 	none 		none
+order		aa
+
+#bgspeed 	1 1
+#vbgspeed 	1 0
+
+# Additional layers. I like to use fglayer vs. bglayer because
+# you get fine control over the layer positon.
+
+# fglayer	filepath									Zpos 	xratio	zratio	xoffset	zoffset	xspace	zspace	xrepeat	zrepeat	trans	alpha	w-mode		amp		wl		ws		move	quake	neon
+
+
+#fglayer		data/sprites/grid_1.png						-150	0		0		0		0		0		0		-1		1		0		0		3			1.8		1.4		0		0.0     1       0
+#fglayer		data/sprites/grid_1.png						-150	0		0		0		40		0		0		-1		1		0		0		3			1.4		1.2		0		0.0     1       0
+#fglayer		data/sprites/grid_1.png						-150	0		0		0		80		0		0		-1		1		0		0		3			1.2		1.1		0		0.0     1       0
+
+#fglayer		data/sprites/grid_1.png						-150	0		0		0		120		0		0		-1		1		0		0		3			1.1		1.1		0		0.0     1       0
+
+#fglayer		data/sprites/grid_1.png						-150	0		0		0		160		0		0		-1		1		0		0		3			1.1		1.2		0		0.0     1       0
+#fglayer		data/sprites/grid_1.png						-150	0		0		0		200		0		0		-1		1		0		0		3			1.2		1.4		0		0.0     1       0
+#fglayer		data/sprites/grid_1.png						-150	0		0		0		240		0		0		-1		1		0		0		3			1.4		1.8		0		0.0     1       0
+
+###########
+fglayer		data/sprites/line_0.png							-150	0		0		0		10		0		0		-1		1		0		0		3		2.28	1.64	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		30		0		0		-1		1		0		0		3		1.64	1.32	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		50		0		0		-1		1		0		0		3		1.32	1.16	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		70		0		0		-1		1		0		0		3		1.16	1.06	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		90		0		0		-1		1		0		0		3		1.06	1.02	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		110		0		0		-1		1		0		0		3		1.02	1.0		0		0.0     1       1
+
+fglayer		data/sprites/line_0.png							-150	0		0		0		130		0		0		-1		1		0		0		3		1.0		1.0		0		0.0		1       1
+
+fglayer		data/sprites/line_0.png							-150	0		0		0		150		0		0		-1		1		0		0		3		1.0		1.02	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		170		0		0		-1		1		0		0		3		1.02	1.06	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		190		0		0		-1		1		0		0		3		1.06	1.16	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		210		0		0		-1		1		0		0		3		1.16	1.32	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		230		0		0		-1		1		0		0		3		1.32	1.64	0		0.0     1       1
+fglayer		data/sprites/line_0.png							-150	0		0		0		250		0		0		-1		1		0		0		3		1.64	2.28	0		0.0     1       1
+#fglayer		data/sprites/line_0.png						-150	0		0		0		260		0		0		-1		1		0		0		3		2.28	3.56	0		0.0     1       1
+##########
+
+# Walking area
+#fglayer		data/sprites/grid_0.png						-150	0		0		0		150		0		0		-1		1		0		0		0			0.8		1.2		0		0.0     1       0
+#fglayer		data/sprites/grid_0_line.png				-150	0		0		0		190		0		0		-1		1		0		0		0			0.8		1.2		0		0.0     1       0
+
+
+#---------------------
+
+#load 		test_affine_controller 3
+#spawn		test_affine_controller
+#coords		0 0 0
+#at		0
+
+
+
+spawn		Ray
+health		1000
+coords		400 250
+at		0
+
